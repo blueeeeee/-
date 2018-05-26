@@ -20,11 +20,11 @@ thead{
 }
 tbody tr:nth-child(odd)
 {
-	background: e6e6fa;
+	background: #e6e6fa;
 }
 tbody tr:nth-child(even)
 {
-	background: fff0f5;
+	background: #fff0f5;
 }
 /*遇到的问题
 对表头thead只有一格内容设置时，
