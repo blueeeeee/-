@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<title>克隆元素</title>
+	<script type="text/javascript">
+		//克隆元素
+		function cloneImg(){
+			//得到元素DOM
+			var myImg=document.getElementById("myImg");
+			//克隆出新的元素
+			var newImg=myImg.cloneNode(true);
+			//使用appendChild()函数挂接
+			document.getElementById("myContent").appendChild(newImg);
+		}
+	</script>
+</head>
+<body style="text-align: center;">
+	<p id="myContent">
+		<input type="button" value="克隆" onclick="cloneImg();">
+		<br>
+		<!--定义图片元素-->
+		<img id="myImg" src="./24img.png" width="200" height="100">
+	</p> 
+</body>
+</html>
+
+<!--
+	cloneNode()的参数类型为布尔，即true或者false。当为true时，表示克隆元素及其所有子节点；而false则表示克隆元素但不包含它的子节点。在大多数情况下，我们的实际需求是要复制所有的节点，因此常常使用true参数.
+-->

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>灯箱效果</title>
+	<script type="text/javascript">
+		//监听显示灯箱层的按钮事件
+		function showLightBox(){
+			//获取层box的DOM
+			var box=document.getElementById('box');
+			box.style.display='block';//显示层
+		}
+		//关闭事件的函数
+		function closeLightBox(){
+			//获取层的DOM
+			var box=document.getElementById('box');
+			box.style.display='none';//隐藏层
+		}
+	</script>
+	<style type="text/css">
+		#box{
+			position: absolute;
+			left: 0;
+			top: 0;
+			z-index: 99;
+			border: 1px solid red;
+			width: 100%;
+			height: 100%;
+			background-color: gray;
+			margin: 0 auto;
+			display: none;
+		}
+		#box img{
+			position: relative;
+			top: 40px;
+		}
+		#closeBtn{
+			position: absolute;
+			top: 5px;
+			right: 5px;
+			color: yellow;
+			text-decoration:none;
+		}
+	</style>
+</head>
+<body style="text-align: center;">
+	<p>文字文字</p>
+	<p>
+		<input type="button" value="show" onclick="showLightBox();">
+	</p>
+	<div id="box">
+		<img src="img.jpg" id="pic1">
+		<a href="javascript:closeLightBox();" id="closeBtn">关闭</a>
+	</div>
+</body>
+</html>

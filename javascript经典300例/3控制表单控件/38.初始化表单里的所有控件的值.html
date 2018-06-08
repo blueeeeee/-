@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<title>初始化表单里的所有控件的值到最初状态</title>
+	<script type="text/javascript">
+		//初始化表单里的所有控件的值到最初的状态
+		function init(){
+			var f=document.forms[0];//获取表单DOM
+			f.reset();//使用reset函数
+		}
+	</script>
+</head>
+<body>
+	<!--定义表单-->
+	<form>
+		文本框：<input type="text" name="myText">
+		<br>
+		单选框：<input type="radio" name="myRadio" value="1">
+		<input type="radio" name="myRadio" value="2">
+		<br>
+		下拉列表：
+		<select name="mySelect">
+			<option value="">==请选择==</option>
+			<option value="1">1</option>
+			<option value="2">2</option>
+		</select>
+		<br>
+		<input type="button" value="初始化" onclick="init()">
+	</form>	
+</body>
+</html>

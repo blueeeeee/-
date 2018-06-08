@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<title>需要确认的链接</title>
+	<script type="text/javascript">
+		function confirmOpen(link){
+			//弹出提示框，要求用户确认
+			if(confirm('您确认打开'+link+'吗')){
+				return true;
+			}else{
+				return false;
+			}
+		}
+	</script>
+</head>
+<body style="text-align: center;">
+	<a href="https://www.baidu.com" onclick="return(confirmOpen(this.href))">打开链接</a>
+</body>
+</html>
+<!--链接能否打开，主要依赖于链接的地址是否可用，以及onclick事件是否返回true。本例效果的实现，主要依赖于后者。在实例代码中，我们监听了链接的onclick事件，当且仅当用户确认继续打开链接以后，链接才会被打开。-->

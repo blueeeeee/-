@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<title>隐藏表格中的数据</title>
+	<script type="text/javascript">
+		var hasHide=false;
+		function hideTb1(){
+			var tb1=document.getElementById('tb1');
+			var rows=tb1.rows;//得到当前表格的row数组
+			var len=tb1.rows.length;//当前的行数
+			for(var i=1;i<len;i++){
+				if(hasHide){
+					rows[i].style.display='';//如果已经隐藏则显示
+				}else//如果还没有隐藏则隐藏
+					rows[i].style.display='none';
+			}
+			hasHide=hasHide==false?true:false;//把隐藏变量值取反
+		}
+	</script>
+</head>
+<body style="text-align: center;">
+	<label>双击表头隐藏表格数据</label>
+	<table id="tb1" align="center" border="1">
+		<tr ondblclick="hideTb1();">
+			<th>名字</th>
+			<!--年龄列可以进行排序操作-->
+			<th>年龄</th>
+		</tr>
+		<tr>
+			<td>A</td>
+			<td>12</td>
+		</tr>
+		<tr>
+			<td>B</td>
+			<td>11</td>
+		</tr>
+		<tr>
+			<td>C</td>
+			<td>15</td>
+		</tr>
+	</table>
+</body>
+</html>

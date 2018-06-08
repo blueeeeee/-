@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<title>鼠标放上链接出现不同的颜色</title>
+	<script type="text/javascript">
+		//定义链接的mouseover事件
+		function defineLinkColor(){
+			//获得网页里所有连接的DOM
+			var linkDOMS=document.getElementsByTagName("a");
+			//遍历所有的链接DOM
+			for(var i=0;i<linkDOMS.length;i++){
+				//为每一个链接的mouseover定义事件回调
+				linkDOMS[i].onmouseover=function(){
+					this.style.color='lime';//为当前的链接改变样式
+				}
+			}
+			/*for(var j=0;j<linkDOMS.length;j++){
+				linkDOMS[j].onmouseout=function(){
+					this.style.color='';
+				}
+			}鼠标移出后恢复链接颜色*/
+		}
+	</script>
+</head>
+<body onload="defineLinkColor();">
+	<!--定义链接-->
+	<p align="center">
+		<a href="#">链接一</a>
+		<a href="#">链接二</a>
+	</p>
+</body>
+</html>

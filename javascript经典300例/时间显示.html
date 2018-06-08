@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>显示时间</title>
+	<script type="text/javascript">
+		function startTime(){
+			var time=new Date()
+            var h=time.getHours()
+            var m=time.getMinutes()
+            var s=time.getSeconds()
+            m=checkTime(m)
+            s=checkTime(s)
+            document.getElementById('txt').innerHTML=h+":"+m+":"+s
+            t=setTimeout('startTime()',500)
+		}
+		function checkTime(i){
+			if (i<10) 
+				{i="0"+i}
+				return i
+		}
+	</script>
+</head>
+<body onload="startTime()">
+	<div id="txt"></div>
+</body>
+</html>
+
+<!--
+	onload为针对window对象触发的事件，应用到body!标签，在页面结束加载之后触发。
+	注意innerHTML的写法，以及后面用 = ,注意t=setTimeout('startTime()',500)中的时间为500ms!。
+-->

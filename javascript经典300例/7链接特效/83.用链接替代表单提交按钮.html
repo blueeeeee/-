@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>用链接替代表单提交按钮</title>
+	<style type="text/css">
+		form{width: 300px;border: 1px solid black;margin: 5px auto;}
+	</style>
+	<script type="text/javascript">
+		//自定义按钮的样式
+		function submitForm(){
+			var form=document.forms[0];//得到表单DOM
+			form.submit();
+		}
+	</script>
+</head>
+<body style="text-align: center;">
+	<!--定义表单-->
+	<form action="" method="get">
+		<br><input type="text" name=""><br>
+		<a href="#" id="myLink" onclick="submitForm()">提交表单</a>
+	</form>
+</body>
+</html>

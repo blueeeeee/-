@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<title>窗口打开时显示大图广告及其自动关闭</title>
+	<script type="text/javascript">
+		//显示广告图片
+		function showAdPic(){
+			//获得广告的DOM
+			var ad=document.getElementById('ad');
+			//直接在DOM中添加HTML源码来添加一个图片的DOM
+			ad.innerHTML='<img src="./img.png" width="300" height="200">';
+			//设置定时器，5s以后关闭广告图片
+			setTimeout(function(){
+				var ad=document.getElementById('ad');
+				//1.
+				//ad.style.display='none';//隐藏图片,均适用
+				//2.
+				//ad.remove(ad.selectedIndex);//直接移除DOM元素,IE11不适用
+				//3.
+				ad.parentNode.removeChild(ad);//移除dom大部分浏览器均适用
+				//4.
+				//ad.removeNode(true);//仅适用于IE11
+			},5000);
+        }
+        //使用window的onload元素进行回调处理
+        window.onload=showAdPic;
+	</script>
+</head>
+<body style="text-align: center;">
+	<p>
+		网页内容上部
+	</p>
+	<p id="ad"></p>
+	<p>
+		网页内容下部
+	</p>
+</body>
+</html>

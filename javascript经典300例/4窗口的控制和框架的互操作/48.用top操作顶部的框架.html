@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<title>用top操作顶部框架</title>
+	<script type="text/javascript">
+		//子框架的互相引用
+		function alertFrames(){
+			//使用top变量得到顶层的父框架
+			var topFrame=top;
+			//用提示框展示topFrame的html
+			alert(topFrame.document.body.innerHTML);
+		}
+	</script>
+</head>
+<body style="text-align: center;">
+<!--定义框架-->
+	<iframe id="frame1"></iframe>
+	<iframe id="frame2"></iframe>
+	<br>
+	<input type="button" value="用top操作顶部框架" onclick="alertFrames();">	
+</body>
+</html>

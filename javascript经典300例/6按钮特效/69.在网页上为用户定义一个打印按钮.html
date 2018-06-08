@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<title>在网页上为用户定义一个打印按钮</title>
+	<script type="text/javascript">
+		function printDoc(btn){
+			window.print();//调用window的打印函数
+		}
+	</script>
+</head>
+<body style="text-align: center;">
+	<!--定义表单，按钮-->
+	<form action="" method="post" style="display: block;width: 200px;height: 200px;border: 1px solid black;">
+		<br><br><br>
+		<input type="button" value="打印" id="myPrintBtn" onclick="printDoc(this);">
+		<br>
+	</form>
+</body>
+</html>
+
+<!--
+	print() 方法用于打印当前窗口的内容。
+	调用 print() 方法所引发的行为就像用户单击浏览器的打印按钮。通常，这会产生一个对话框，让用户可以取消或定制打印请求。
+-->

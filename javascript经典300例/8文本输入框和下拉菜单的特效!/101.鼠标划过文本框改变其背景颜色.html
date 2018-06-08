@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<title>鼠标滑过文本框改变其背景颜色</title>
+	<script type="text/javascript">
+		function init(){
+			var texts=document.getElementsByTagName('input');
+			for (var i = 0; i < texts.length; i++){
+				var t=texts[i];
+				t.onmouseover=function(){
+					this.style.backgroundColor='red';
+				}
+				t.onmouseout=function(){
+					this.style.backgroundColor='';//恢复背景颜色
+				}
+			}
+		}
+	</script>
+</head>
+<body style="text-align: center;" onload="init();">
+	<!--定义文本框-->
+	<input type="text"/>
+	<input type="text"/>
+</body>
+</html>
+
+<!--
+onmouseover 属性在鼠标指针移动到元素上时触发。
+onmouseout 属性在鼠标指针移动到元素外时触发。
+注释：不适用以下元素：<base>、<bdo>、<br>、<head>、<html>、<iframe>、<meta>、<param>、<script>、<style> 或 <title>。
+-->

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<title>鼠标进出时字体大小的变化</title>
+	<script type="text/javascript">
+		//鼠标指针移进
+		function mOver(pDom){
+			pDom.style.fontSize='20px';//调整字体样式大小为20像素
+		}
+		//鼠标指针移出
+		function mOut(pDom){
+			pDom.style.fontSize='';//调整字体大小样式为默认
+		}
+	</script>
+</head>
+<body style="text-align: center;">
+	<!--定义一块区域-->
+	<p style="margin: 5px auto;width: 200px;height: 200px;border: 1px solid black;" onmouseover="mOver(this);"
+		onmouseout="mOut(this);">	
+		把鼠标移动到该区域 把鼠标移动到该区域 把鼠标移动到该区域 把鼠标移动到该区域 把鼠标移动到该区域 把鼠标移动到该区域
+	</p>
+</body>
+</html>

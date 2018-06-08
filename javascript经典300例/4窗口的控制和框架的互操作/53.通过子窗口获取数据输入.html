@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<title>通过子窗口获取数据输入_parent</title>
+	<script type="text/javascript">
+		//为子窗口准备的传值函数
+		function passValue(val){
+			alert("子窗口的输入是："+val);
+		}
+		function openNewWin(){
+			//使用window的open()函数打开一个子窗口
+			var win=window.open("53.childWin.html");
+		}
+	</script>
+</head>
+<body style="text-align: center;">
+	<input type="button" value="打开子窗口" onclick="openNewWin();">
+</body>
+</html>

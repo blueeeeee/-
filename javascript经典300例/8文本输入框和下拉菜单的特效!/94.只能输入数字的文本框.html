@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>只能输入数字的文本框</title>
+	<script type="text/javascript">
+		function validateInput(){
+			//获得文本框的DOM
+			var myText=document.getElementById('myText');//获取用户输入的值
+			var val=myText.value;//获取用户输入的值
+			if(!/\b[0-9]+\b/.test(val)){//使用正则校验
+				alert("只输入数字");//提示错误信息
+			}
+		}
+	</script>
+</head>
+<body style="text-align: center;">
+	<!--定义文本框-->
+	请输入:<input type="text" value="" id="myText"><br><br>
+	<!--定义按钮-->
+	<input type="button" value="提交校验" id="myBtn" onclick="validateInput();">
+</body>
+</html>
+
+<!--
+实例中的正则表达式使用“[0-9]”这样的方式来表示数字范围，其实正则表达式还可以使用“＼d”来表示数字（“＼D”表示非数字），也就是说，实例中的正则表达式还可以这么写：
+/\b\d+\b/.test(val);
+-->

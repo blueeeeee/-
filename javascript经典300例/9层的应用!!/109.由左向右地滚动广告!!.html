@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>由左向右地滚动广告</title>
+	<script type="text/javascript">
+		var timer=null;//定时器
+		function init(){
+		    //页面加载完成的事件回调
+		    var time=30;//定义滚动的时间间隔，毫秒
+			//获取容器的DOM
+		    var con_ul=document.getElementById('con_ul');
+			function MyMarquee(){
+				//滚动条的位置往左边移动一像素
+				var left=con_ul.style.left;//得到当前的坐标
+				left=parseInt(left);//得到数字的值
+				con_ul.style.left=(left-1)+'px';//把左坐标向左移动
+				//如果移动到了头
+				//console.log(left);
+				//console.log(parseInt(con_ul.style.width));//用于调试
+				/*if (-1*left==parseInt(con_ul.style.width)*8/9){
+					con_ul.innerHTML+=con_ul.innerHTML;//复制li
+					var d=parseInt(con_ul.style.width);
+					d+=parseInt(con_ul.style.width);
+					con_ul.style.width=d+'px';//宽度加宽
+				}此段代码实现无限循环轮播，但会无限创造dom节点*/
+				if (-1*left==parseInt(con_ul.style.width)*8/9) {
+					con_ul.style.left=(parseInt(con_ul.style.width)*-1/9)+'px';
+				}
+			}
+			timer=setInterval(MyMarquee,time);
+			//开始一个定时执行
+			con_ul.onmouseover=function(){//定义鼠标移入事件
+				clearInterval(timer);//结束滚动
+			}
+			con_ul.onmouseout=function(){//定义鼠标移出事件
+				timer=setInterval(MyMarquee,time);//再次开始
+			}
+		}
+	</script>
+	<style type="text/css">
+		#container #con_ul li{
+			overflow: hidden;
+			float: left;
+			margin: 0 5px;
+		}
+		img{
+			display: block;
+		}
+	</style>
+</head>
+<body style="text-align: center" onload="init()">
+	<div id="container" style="width: 980px;height:580px;visibility: visible;overflow: hidden;position: relative;z-index: 2;left: 0px;">
+		<ul id="con_ul" style="margin: 0px;padding: 0px;position: relative;list-style-type: none;z-index: 1;left: 0px;width: 8730px;height: 540px;">
+			<li><a href="#" target="_blank"><img src="img.jpg"><br>123123123123</a></li>
+			<li><a href="#" target="_blank"><img src="img2.jpg"><br>123123123123</a></li>
+			<li><a href="#" target="_blank"><img src="img3.jpg"><br>123123123123</a></li>
+			<li><a href="#" target="_blank"><img src="img4.jpg"><br>123123123123</a></li>
+			<li><a href="#" target="_blank"><img src="img5.jpg"><br>123123123123</a></li>
+			<li><a href="#" target="_blank"><img src="img.jpg"><br>123123123123</a></li>
+			<li><a href="#" target="_blank"><img src="img2.jpg"><br>123123123123</a></li>
+			<li><a href="#" target="_blank"><img src="img3.jpg"><br>123123123123</a></li>
+			<li><a href="#" target="_blank"><img src="img4.jpg"><br>123123123123</a></li>
+		</ul>
+	</div>
+</body>
+</html>

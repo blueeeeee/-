@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>输入文字时文本边框闪烁</title>
+	<script type="text/javascript">
+		function init(){
+			//获取所有的文本DOM
+			var texts=document.getElementsByTagName('input');
+			for (var i = 0; i < texts.length; i++) {//遍历所有的文本框
+				var t=texts[i];//当前文本框
+				t.onfocus=function(){//监听聚焦事件
+					var e=this;//保留当前DOM的运用
+					timer=setInterval(function(){//开始闪烁的定时器
+						var c=e.style.borderColor;//获取当前边框颜色变量
+						if(c=='yellow'){//如果是黄色
+							e.style.borderColor='';//恢复原色
+						}else{//否则边框变成黄色
+							e.style.borderColor='yellow';
+						}
+					},1000);//每一秒闪烁一次
+				};
+				t.onblur=function(){
+					this.style.borderColor='';//恢复边框颜色
+					clearInterval(timer);//清除定时器
+				}
+			}
+		}
+	</script>
+</head>
+<body style="text-align: center;" onload="init()">
+	<!--定义文本框-->
+	<input type="text">
+	<input type="text">
+</body>
+</html>
+
+<!--
+onfocus 属性在元素获得焦点时触发。
+onfocus 常用于 <input>、<select> 以及 <a>.
+提示：onfocus 属性与 onblur 属性相反。
+注释：onfocus 属性不适用于以下元素：<base>、<bdo>、<br>、<head>、<html>、<iframe>、<meta>、<param>、<script>、<style> 或 <title>。
+-->

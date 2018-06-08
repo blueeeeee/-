@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>若干秒后不操作自动关闭窗口</title>
+	<script type="text/javascript">
+		
+		var willClose=true;//定义一个是否关闭的全局变量
+		//单击网页
+		function clickBody(){
+			willClose=false;//单击网页以后，把变量置为false
+		}
+		setInterval(function(){
+			if(willClose){//判断是否需要关闭
+				//@grant window.close
+				window.close();//关闭窗口
+			}else{
+				willClose=true;//如果单击过，重新开始计算
+			}
+		},10000);
+	</script>
+</head>
+<body style="text-align: center;" onclick="clickBody()">
+用户如果在10s内不点击网页，窗口会自动关闭
+</body>
+</html>
+
+<!--
+	setInterval()可按照指定的周期（毫秒计）来调用函数或计算表达式，会不停地调用函数，直到clearInterval()被调用或窗口被关闭。
+    注意点击部分应是body部分，否则点击无效！
+    涉及到window.close(),存在浏览器兼容问题，具体详见实例3
+-->

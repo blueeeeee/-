@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<title>用链接模拟一个按钮</title>
+	<script type="text/javascript">
+		function defineLink(){
+			var myLink=document.getElementById('myLink');
+			myLink.style.fontSize='16px';
+			myLink.style.textAlign='center';
+			myLink.style.color='white';
+			myLink.style.padding='4px 10px';
+			myLink.style.margin='3px';
+			myLink.style.background='gray';
+			myLink.style.textDecoration='none';
+			myLink.style.borderColor='#eeeeee #717171 #717171 #eeeeee';
+			myLink.style.borderStyle='solid';
+			myLink.style.borderWidth='1px';
+		}
+	</script>
+</head>
+<body onload="defineLink();" style="text-align: center;">
+	<!--定义X链接-->
+	<a href="#" id="myLink">按钮式链接</a>
+</body>
+</html>
+
+<!--4个边框的颜色不能一样，否则就没有按钮突出的效果，实例代码就是把上边框和左边框的颜色加深，把下边框和右边框的颜色变浅。-->

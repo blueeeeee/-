@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<title>随意改变层的尺寸</title>
+	<script type="text/javascript">
+		function change(x){
+			var con=document.getElementById('container');
+			var w=parseInt(con.style.width);
+			var h=parseInt(con.style.height);
+			w+=x;
+			h+=x;
+			con.style.width=w+'px';
+			con.style.height=h+'px';
+		}
+	</script>
+</head>
+<body style="text-align: center;">
+	<div id="container" style="width: 100px;height: 100px;background-color: gray;">
+		这是一个层
+	</div>
+	<input type="button" value="大一点" onclick="change(10);">
+	<input type="button" value="小一点" onclick="change(-10);">
+</body>
+</html>

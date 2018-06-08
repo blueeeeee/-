@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<title>删除表格中的任意一行</title>
+	<script type="text/javascript">
+		function delRow(){
+			var tb1=document.getElementById('tb1');
+			var i=document.getElementById('rowIndex').value;
+			i--;//索引要比行号小1
+			tb1.deleteRow(i);//调用table自带的deleteRow()函数删除行
+		}
+	</script>
+</head>
+<body style="text-align: center;">
+	<p>
+		<label>删除的行号：</label><input type="text" name="rowIndex" id="rowIndex" size="5">
+		<input type="button" value="删除" onclick="delRow();">
+	</p>
+	<table id="tb1" align="center" border="1">
+		<tr>
+			<td>col1</td>
+			<td>col2</td>
+		</tr>
+		<tr>
+			<td>col11</td>
+			<td>col22</td>
+		</tr>
+		<tr>
+			<td>col111</td>
+			<td>col222</td>
+		</tr>
+	</table>
+</body>
+</html>

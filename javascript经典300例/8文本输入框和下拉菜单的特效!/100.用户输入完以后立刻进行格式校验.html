@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<title>用户输入完以后立刻进行格式校验</title>
+	<script type="text/javascript">
+		function validateTel(){
+			//获得文本框的DOM
+			var myTel=document.getElementById('myTel');
+			var val=myTel.value;//获取用户输入的值
+			if (!/\b[0-9]+\b/.test(val)) {//使用正则校验
+				alert('只能输入数字');
+				//修改样式，引起注意
+				myTel.style.border='1px solid red'
+			}else if (val.length!=11) {
+				alert('手机号码是11位');//提示错误信息
+				//修改样式，引起注意
+				myTel.style.border='1px solid green';
+				return true;
+			}
+		}
+	</script>
+</head>
+<body style="text-align: center;">
+	<!--定义文本框-->
+	请输入手机号码：<input type="text" value="" id="myTel" onblur="validateTel();"/>
+	<br><br>
+	<!--定义按钮-->
+	<input type="button" value="提交" id="myBtn">
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<title>将表格的数据根据某一列排序</title>
+	<script type="text/javascript">
+		var sortType="";//asc为升序，desc为降序
+		function sortTb1(){//为表格排序的函数
+			var tb1=document.getElementById('tb1');//获取DOM
+			var arr=[ ];//定义数组变量保存数据
+			var rows=tb1.rows;//得到当前表格的row数据
+			var len=tb1.rows.length;//当前的行数
+			//console.log(len);
+			for(var i=1;i<len;i++){
+				//得到数据的name
+				var name=rows[i].cells[0].innerHTML;
+				//得到数据的age
+				var age=rows[i].cells[1].innerHTML;
+				//把数据保存到数组变量里
+				arr[arr.length]={'name':name,'age':age};
+			}
+				for(var i=0;i<len-1;i++){//把之前的行先删除，注意第一行是表头
+					tb1.deleteRow(1);//始终删除第一行
+				}
+				if(sortType=='')//如果初始的排序是空，则用升序
+					sortType='asc';
+				else if (sortType=='asc')//如果之前是升序，则这次用降序
+					sortType='desc';
+				else
+					sortType='asc';//默认为升序
+				//为数组的sort函数制定排序规则函数
+				arr=arr.sort(function(obj1,obj2){
+					if (sortType=='desc') {//升序
+						return obj2['age']-obj1['age'];
+					}else{//降序
+						return obj1['age']-obj2['age'];
+					}
+				});
+
+				for (var i = 0; i < arr.length; i++) //遍历数据数组
+				{
+					var r=tb1.insertRow();//插入一行
+					var t1=r.insertCell(0);//插入一个单元格
+					var t2=r.insertCell(1);//插入一个单元格
+					t1.innerHTML=arr[i]['name'];//为单元格赋值
+					t2.innerHTML=arr[i]['age'];//为单元格赋值
+				}
+		}
+	</script>
+</head>
+<body style="text-align: center;">
+	<table id="tb1" align="center" border="1">
+		<tr>
+			<th>名字</th>
+			<!--年龄列可以进行排序操作-->
+			<th onclick="sortTb1()">年龄</th>
+		</tr>
+		<tr>
+			<td>A</td>
+			<td>12</td>
+		</tr>
+		<tr>
+			<td>B</td>
+			<td>11</td>
+		</tr>
+		<tr>
+			<td>C</td>
+			<td>15</td>
+		</tr>
+	</table>
+</body>
+</html>
+
+<!--
+	sort() 方法用于对数组的元素进行排序。
+	如果调用该方法时没有使用参数，将按字母顺序对数组中的元素进行排序，说得更精确点，是按照字符编码的顺序进行排序。要实现这一点，首先应把数组的元素都转换成字符串（如有必要），以便进行比较。
+
+	如果想按照其他标准进行排序，就需要提供比较函数，该函数要比较两个值，然后返回一个用于说明这两个值的相对顺序的数字。比较函数应该具有两个参数 a 和 b，其返回值如下：
+
+	若 a 小于 b，在排序后的数组中 a 应该出现在 b 之前，则返回一个小于 0 的值。
+	若 a 等于 b，则返回 0。
+	若 a 大于 b，则返回一个大于 0 的值。
+-->

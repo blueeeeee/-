@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<title>删除所有的子元素</title>
+	<script type="text/javascript">
+		//删除元素的函数
+		function deleteChilds(){
+			var ul=document.getElementsByTagName('ul')[0];//获取父DOM
+			if(ul.hasChildNodes()){
+				var len=ul.childNodes.length;//子元素的个数
+				for(var i=0;i<len;i++){//遍历
+					ul.removeChild(ul.childNodes[0]);//从第一个元素开始删除
+				}
+			}
+		}
+	</script>
+</head>
+<body style="text-align: center;">
+	<ul>
+		<li>item1</li>
+		<li>iten2</li>
+		<li>item3</li>
+		<li>item4</li>
+	</ul>
+	<br>
+	<input type="button" value="删除所有子元素" onclick="deleteChilds()"/>
+</body>
+</html>

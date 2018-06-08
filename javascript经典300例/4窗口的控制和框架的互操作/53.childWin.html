@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>通过子窗口获取数据输入</title>
+	<script type="text/javascript">
+		function passValue(){
+			//获取用户输入的值
+			var val=document.getElementById("mytext").value;
+			window.opener.passValue(val);//调用父窗口的函数传入值
+			self.close();//关闭子窗口
+		}
+	</script>
+</head>
+<body>
+	<!--定义输入框的按钮-->
+	<input type="text" name="mytext" id="mytext">
+	<input type="button" value="通过子窗口获取数据输入" onclick="passValue();">
+</body>
+</html>
+
+<!--只有IE11能完整运行-->

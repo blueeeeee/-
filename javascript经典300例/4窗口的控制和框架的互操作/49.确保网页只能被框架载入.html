@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<title>确保网页只能被框架载入</title>
+	<script type="text/javascript">
+		function init(){//初始化函数
+			if(top==self){//判断当前区域是否为顶层函数
+				alert("本网页只能在框架中载入");
+				//覆盖原有的网页内容，改为提示内容
+				document.body.innerHTML='<h2>本网页只能在框架中载入</h2>';
+				window.close();//关闭窗口
+			}
+		}
+	</script>
+</head>
+<body style="text-align: center;" onload="init();">
+	网页内容...
+</body>
+</html>
+<!--firefox下无法自动关闭窗口，部分浏览器关闭时会弹出提示框-->

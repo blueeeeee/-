@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<title>阅读完协议以后才可以单机的注册按钮</title>
+	<script type="text/javascript">
+		function doScroll(){
+			//获取协议和按钮的DOM
+			var d=document.getElementById('xieyi');
+			var btn=document.getElementById('btn');
+			//console.log(d.scrollTop);
+			//console.log(d.offsetHeight);
+			//console.log(d.clientHeight);
+			//console.log(d.scrollHeight);
+			/*if(d.scrollTop+d.offsetHeight>186){//判断是否滚动到最底部
+				btn.disabled=false;//恢复按钮可用
+			}此方法欠佳，应用下面方法*/
+			if(d.scrollHeight - d.scrollTop === d.clientHeight){
+				btn.disabled=false;
+			}
+			var t=document.getElementById('btn');
+			//console.log(t.getAttribute("disabled"));
+		}
+	</script>
+</head>
+<body style="text-align: center;">
+	<div style="width: 200px;height: 150px;overflow-y: scroll;margin: 5px auto;border: 1px solid black;"
+	onscroll="doScroll()" id="xieyi">
+		请认真阅读本协议...<br>
+		...<br>
+		...<br>
+		...<br>
+		...<br>
+		...<br>
+		...<br>
+		...<br>...<br>
+		协议 end.
+	</div><br>
+	<input type="button" value="注册" id="btn" disabled=true>
+</body>
+</html>
+
+<!--
+	scrollTop：滚动条距离顶部的位置，当一个元素的容器没有产生垂直方向的滚动条,那它的 scrollTop 的值默认为0. 
+	scrollHeight：内容区域的真实高度（也就是滚动区域）
+	clientHeight：内容区域的可见高度(此处为150px，不包含border)
+	对于方法一：
+	经过对IE11，firefox，chrome，edge调试
+    firefox滚动到底部时，height=d.scrollTop+d.offsetHeight=70+152=222px
+    IE11的height=35+152=187px
+    chrome的height=60+152=212px
+    edge的height=40+152=192px
+    故此处设置为了>186,但会导致其它浏览器未到底部时就激活了按钮，仍需改进，或许可以分别对浏览器进行判断，但较麻烦。
+-->
+

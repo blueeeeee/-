@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<title>通过单击按钮改变状态栏信息</title>
+	<script type="text/javascript">
+		function modifyStatus(){
+			window.status='hello world';//为Status设置新的值
+			//console.log(window.status);
+		}
+	</script>
+</head>
+<body style="text-align: center;">
+	<!--定义按钮-->
+	<input type="button" value="修改状态栏" id="myBtn" onclick="modifyStatus()">
+</body>
+</html>
+
+<!--状态栏，指的是浏览器窗口底部的横条。status 属性是一个可读可写的字符串，声明了要在窗口状态栏中显示的一条消息。通常显示这条消息的时间是有限的，直到其他的消息将它覆盖，或者用户把鼠标移动到窗口的其他区域为止。不少浏览器已经关闭了脚本化它们的状态栏的功能。这是一项安全措施，防止隐藏了超链接真正目的的钓鱼攻击。
+-->

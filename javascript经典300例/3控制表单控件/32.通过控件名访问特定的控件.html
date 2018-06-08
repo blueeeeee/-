@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<title>通过控件名访问特定的控件</title>
+	<script type="text/javascript">
+		//通过控件名访问特定的控件
+		function getFormDom(){
+			var f=document.forms[0];//获取表单DOM
+			var myText=f.myText;//通过名字获取控件DOM
+			//提示控件的name和value
+			alert(myText.name+":"+myText.value);
+		}
+	</script>
+</head>
+<body style="text-align: center;">
+	<!--定义表单-->
+	<form>
+		文本框：<input type="text" name="myText"/>
+		<br>
+		<input type="button" value="获取控件" onclick="getFormDom()">
+	</form>
+</body>
+</html>

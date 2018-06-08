@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<title>根据name获取网页中的全部复选框</title>
+	<script type="text/javascript">
+		//获取多个DOM
+		function getDomByName(){
+			var doms=document.getElementsByName("myName");
+			var str='';//定义拼接字符变量
+			for(var i=0;i<doms.length;i++){
+				str+=doms[i].tagName;//拼接标签的名字
+				str+=",";//分隔符
+			}
+			alert("两个DOM的标签是："+str);//提示
+		}
+	</script>
+</head>
+<body style="text-align: center;">
+	<p>
+		<!--定义有name属性的元素-->
+		<a href="#" name="myName">链接</a>
+		<span name="myName">文字</span>
+		<br>
+		<input type="button" value="get" onclick="getDomByName()"/>
+	</p>
+</body>
+</html>
+
+<!--
+	表单name属性的作用：
+	name属性表单元素的名称
+	1.name属性用于对提交到服务器后的表单数据进行标识。
+	2.在客户端通过javascript引用数据，提供了在脚本中引用表单的方法。
+	注：只有设置了name属性的表单元素才能在提交表单时传递它们的值。
+-->

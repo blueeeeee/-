@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>首字母或全部字母大写</title>
+	<script type="text/javascript">
+		function validateInput(){
+			var myText1=document.getElementById('myText1');
+			var myText2=document.getElementById('myText2');
+			var val1=myText1.value;//文本框1的值
+			var val2=myText2.value;//文本框2的值
+			var errMsg='';//定义错误提示字符
+			//判断是否以大写字母开头
+			if(val1!=''&&(val1.charAt(0)>'Z'||val1.charAt(0)<'A')){
+				//拼接错误字符
+				errMsg+='文本框1的首字母需要大写\n';
+			}
+			if (val2!=''&&!/\b[A-Z]+\b/.test(val2)) {
+				//拼接错误字符
+				errMsg+='文本框2的需要全部为大写字母\n';
+			}
+			if (errMsg!='')
+				alert(errMsg);//展示错误提示字符
+		}
+	</script>
+</head>
+<body style="text-align: center;">
+	<!--定义文本框-->
+	文本框1：<input type="text" value="" id="myText1">(首字母大写)<br><br>
+	文本框2：<input type="text" value="" id="myText2">(全部字母大写)<br><br>
+	<!--定义按钮-->
+	<input type="button" value="提交校验" id="myBtn" onclick="validateInput();">
+</body>
+</html>
+
+<!--
+charAt() 方法可返回指定位置的字符。
+-->

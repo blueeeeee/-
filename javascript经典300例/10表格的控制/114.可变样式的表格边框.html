@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>可变样式的表格边框</title>
+	<script type="text/javascript">
+		function chBorder(c){
+			var tab1=document.getElementById('tb1');
+			tb1.style.border='1px solid '+c;
+		}
+	</script>
+</head>
+<body style="text-align: center;">
+	<table id="tb1" align="center" border="1" onmouseover="chBorder('red')" onmouseout="chBorder('black')">
+		<tr>
+			<th>名字</th>
+			<th>年龄</th>
+		</tr>
+		<tr>
+			<td>A</td>
+			<td>12</td>
+		</tr>
+		<tr>
+			<td>B</td>
+			<td>11</td>
+		</tr>
+		<tr>
+			<td>C</td>
+			<td>15</td>
+		</tr>
+	</table>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<title>用背景色重点突出表格行</title>
+	<script type="text/javascript">
+		function chCell(){
+			var tb1=document.getElementById('tb1');//获取DOM
+			var rows=tb1.rows;//得到当前表格的row数组
+			var len=tb1.rows.length;//当前的行数
+			for(var i=1;i<len;i++){
+				var r=rows[i];//当前行
+				r.onclick=function(){
+					if (this.style.backgroundColor=='pink') {
+						this.style.backgroundColor='white';
+					}else{
+						//否则就让背景色变成粉红色
+						this.style.backgroundColor='pink'
+					}
+				};
+			}
+		}
+	</script>
+</head>
+<body style="text-align: center;" onload="chCell();">
+	<table id="tb1" align="center" border="1">
+		<tr>
+			<th>名字</th>
+			<!--年龄列可以进行排序操作-->
+			<th>年龄</th>
+		</tr>
+		<tr>
+			<td>A</td>
+			<td>12</td>
+		</tr>
+		<tr>
+			<td>B</td>
+			<td>11</td>
+		</tr>
+		<tr>
+			<td>C</td>
+			<td>15</td>
+		</tr>
+	</table>
+</body>
+</html>
+

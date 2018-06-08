@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>成为焦点时清除文本框内容</title>
+	<script type="text/javascript">
+		function clearContent(myText){
+			myText.value='';
+		}
+	</script>
+</head>
+<body style="text-align: center;">
+	<!--定义文本框-->
+	请输入:<input type="text" value="hello" id="myText" onfocus="clearContent(this);"><br><br>
+	<!--定义按钮-->
+	<input type="button" value="按钮" id="myBtn">
+</body>
+</html>

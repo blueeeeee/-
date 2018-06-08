@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>克隆表格</title>
+	<script type="text/javascript">
+		var hasHide=false;//初始化是没有隐藏的
+		//复制表格的函数
+		function copyTbl(){
+			var tb1=document.getElementById('tb1');
+			t=document.createElement('table');//创建一个表格元素
+			t.align=tb1.align;//复制tb1的对齐属性
+			t.border=tb1.border;//复制tb1的边框属性
+			t.innerHTML=tb1.innerHTML;//复制tb1的完整的标签和内容
+			document.body.appendChild(t);//添加新创建的元素到body尾部
+		}
+	</script>
+</head>
+<body style="text-align: center;">
+	<label>双击表头复制一个相同的表格出来</label>
+	<table id="tb1" align="center" border="1">
+		<tr ondblclick="copyTbl();">
+			<th>名字</th>
+			<th>年龄</th>
+		</tr>
+		<tr>
+			<td>A</td>
+			<td>12</td>
+		</tr>
+		<tr>
+			<td>B</td>
+			<td>11</td>
+		</tr>
+		<tr>
+			<td>C</td>
+			<td>15</td>
+		</tr>
+	</table>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>按钮在单击以后失效</title>
+	<script type="text/javascript">
+		//提交表单
+		function submitForm(){
+			//让按钮失效
+			document.getElementById("myBtn").disabled=true;
+			document.forms[0].submit();//提交表单
+		}
+	</script>
+</head>
+<body>
+		<!--定义表单，按钮-->
+	<form action="" method="post" style="display: block;width: 250px;">
+		<br>
+		用户名：<input type="text" name="username"><br/>
+		密码：<input type="password"/><br/>
+		<input type="button" value="提交" onclick="submitForm();" id="myBtn"/><br/>
+	</form>
+</body>
+</html>

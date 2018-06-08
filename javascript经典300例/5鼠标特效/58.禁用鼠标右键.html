@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>禁用鼠标右键</title>
+	<script type="text/javascript">
+		//为文档的鼠标按下事件定义回调
+		document.onmousedown=function(event){
+			//判断事件的值是否为鼠标右键
+			if (event.button==2) {
+				alert('禁用鼠标右键！');//提示用户禁用鼠标右键
+			}
+		}
+	</script>
+</head>
+<body style="text-align: center;">
+	<h2>禁用鼠标右键</h2>
+</body>
+</html>
+
+<!--
+	IE11和edge下会同时弹出两个菜单栏
+    鼠标按下可能的值及其含义：
+    0，没按键；1，按左键；2，按右键；3，按左键和右键；4，按中间键；5，按中间键和左键；6，按右键和中间键；7，按所有键
+    只允许左键：if(even.button!=1)
+-->

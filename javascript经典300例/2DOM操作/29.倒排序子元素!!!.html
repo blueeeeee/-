@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>倒排序子元素</title>
+	<script type="text/javascript">
+		//倒排序子元素的函数
+		function deleteChilds(){
+			//获取父DOM
+			var ul=document.getElementsByTagName('ul')[0];
+			//判断是否包含子元素
+			if (ul.hasChildNodes()) {
+				var len=ul.childNodes.length;//子元素的个数
+				var arr=[];//新数组变量用于存储节点
+				//console.log(len); 输出为9  共有9个子节点
+				for(var i=0;i<len;i++){//遍历
+					arr[i]=ul.childNodes[0];//把节点存入数组
+					ul.removeChild(ul.childNodes[0]);//从第一元素开始删除
+				}
+				//倒过来遍历所有的节点
+				for(var i=len-1;i>=0;i--){
+					ul.appendChild(arr[i]);//添加到ul为子元素
+				}
+			}
+		}
+	</script>
+</head>
+<body style="text-align: center;">
+	<ul>
+		<li>item1</li>
+		<li>item2</li>
+		<li>item3</li>
+		<li>item4</li>
+	</ul>
+	<br>
+	<input type="button" value="倒排子元素" onclick="deleteChilds()">
+</body>
+</html>

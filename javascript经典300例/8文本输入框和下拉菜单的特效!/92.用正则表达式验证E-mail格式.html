@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>用正则表达式验证E-mail格式</title>
+	<script type="text/javascript">
+		//格式校验
+		function validateInput(){
+			//获得文本框的DOM
+			var myText=document.getElementById('myText');
+			var email=myText.value;//获得用户输入的E-mail
+			var emailReg=/^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]{2,3}){1,2})$/;
+			if (emailReg.test(email)) {//判断是否符合格式要求
+				alert("校验通过，允许提交")//通过
+			}else{
+				alert("校验失败，请检查重新输入");
+			}
+		}
+	</script>
+</head>
+<body style="text-align: center;">
+	<!--定义文本框-->
+	请输入E-mail:<input type="text" value="" id="myText"><br><br>
+	<!--定义按钮-->
+	<input type="button" value="提交校验" id="myBtn" onclick="validateInput();">
+</body>
+</html>
+
+<!--E-mail地址的主要特点如下：以“@”符号作为分隔点；左边是用户的名字；右边是邮件的域名；域名至少需要一个“.”作为分隔符。JavaScript的正则表达式是一种比较特殊的对象，它可以通过“／”来定义，然后使用test()函数来校验目标字符串是否符合规则。-->

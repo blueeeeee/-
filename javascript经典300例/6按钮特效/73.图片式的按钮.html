@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<title>图片式的按钮</title>
+	<script type="text/javascript">
+		function picBtn(){
+			//获取按钮DOM
+			var myBtn=document.getElementById('myBtn');
+			myBtn.style.width='100px';
+			myBtn.style.height='30px';
+			myBtn.style.color='white';
+			//定义按钮的背景图片
+		    myBtn.style.background='url(img.jpg)';	
+		}
+	</script>
+</head>
+<body style="text-align: center;" onload="picBtn()">
+	<!--定义按钮-->
+	<input type="button" value="一个按钮" id="myBtn">
+</body>
+</html>

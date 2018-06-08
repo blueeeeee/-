@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<title>带关闭按钮的右下角的提示层</title>
+	<script type="text/javascript">
+	//网页加载完成函数
+	function init(){
+		//得到层的DOM
+		var con1=document.getElementById('con1');
+		con1.style.bottom='10px';
+		con1.style.right='20px';
+	}	
+	//关闭事件的回调函数
+	function close(){
+		//通过css的display函数来隐藏层
+		document.getElementById('con1').style.display='none';
+	}
+	</script>
+	<style type="text/css">
+		#con1{
+			background-color: gray;
+			position: fixed;
+			width: 100px;
+			height: 100px;
+			z-index: 99;
+		}
+		#con1_title{
+			text-align: right;
+		}
+	</style>
+</head>
+<body style="text-align: center;" onload="init()">
+	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <div id="con1">
+        <p class="con1_title"><a href="javascript:close()">X</a></p>
+    	<p>这是一个广告</p>
+    </div>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>

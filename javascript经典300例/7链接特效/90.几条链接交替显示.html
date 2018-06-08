@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<title>几条链接交替显示</title>
+	<script type="text/javascript">
+		var arr=[];//数据数组变量
+		//初始化数据
+		arr[arr.length]=['链接1','https://www.baidu.com'];
+		arr[arr.length]=['链接2','https://www.baidu.com'];
+		arr[arr.length]=['链接3','https://www.baidu.com'];
+		var index=0;//当前下标
+		function init(){//初始化函数
+			setInterval(function(){//开始定时器
+				if (index>=arr.length)//如果超出边界
+					index=0;//恢复到0
+					//拼接链接的html字符
+					var str='<a href="'+arr[index][1]+'">'+arr[index][0]+'</a>'
+					//获取链接所在的DOM
+					var demo=document.getElementById('demo');
+					demo.innerHTML=str;//填充内容
+					index++;
+			},2000)
+
+		}
+	</script>
+</head>
+<body style="text-align: center;" onload="init()">
+	<div id="demo"></div>
+</body>
+</html>

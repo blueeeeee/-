@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<title>网页打开5秒后弹出广告窗口</title>
+	<script type="text/javascript">
+		function init(){//初始化函数
+			setTimeout(function(){//5秒的定时
+				//open一个新窗口
+				window.open('./56.childWin.html','广告标题','width=200，height=200')
+			},5000);//5000毫秒
+		}
+	</script>
+</head>
+<body style="text-align: center;" onload="init();">
+	<h2>广告窗口将5s后打开</h2>
+</body>
+</html>
+
+<!--由于浏览器设置，会阻止窗口的弹出-->

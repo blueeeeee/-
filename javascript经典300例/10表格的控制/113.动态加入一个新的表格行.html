@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>动态加入一个新的表格行</title>
+	<script type="text/javascript">
+		function addRow(){
+			var tb1=document.getElementById('tb1');//获取DOM
+			//使用innerHTML加一个表格行
+			tb1.innerHTML+='<tr><td>col1</td><td>col2</td></tr>';
+		}
+	</script>
+</head>
+<body style="text-align: center;">
+	<p>
+		<input type="button" value="加一行" onclick="addRow();">
+	</p>
+	<table id="tb1" align="center" border="1">
+		<tr>
+			<td>col1</td>
+			<td>col2</td>
+		</tr>
+	</table>
+</body>
+</html>

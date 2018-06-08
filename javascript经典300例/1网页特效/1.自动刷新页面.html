@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>自动刷新页面</title>
+	<script type="text/javascript">
+		//刷新网页的函数
+		function fresh(){
+			window.location.reload();//调用location的reload函数
+		}
+		setTimeout('fresh()',10000);
+	</script>
+</head>
+<body style="text-align:center">
+	<p>网页自动刷新中</p>
+</body>
+</html>
+
+<!--
+location对象包含有关当前URL的信息,是window对象的一个部分，可通过window.location属性来访问。有三个方法：assign()加载新的文档；reload()重新加载当前文档；replace()用新的文档替换当前文档。
+window.location.assign(url) ： 加载 URL 指定的新的 HTML 文档。 就相当于一个链接，跳转到指定的url，当前页面会转为新页面内容，可以点击后退返回上一个页面。
+window.location.replace(url) ： 通过加载 URL 指定的文档来替换当前文档，这个方法是替换当前窗口页面，前后两个页面共用一个。
+
+setTimeout()方法用于在指定的毫秒数后调用函数或计算表达式。
+setTimeout(code,millisec)
+提示：setTimeout() 只执行code一次。如果要多次调用，请使用 setInterval() 或者让code自身再次调用 setTimeout()。
+
+可直接使用代码：
+<meta http-equiv="refresh" content="20">
+
+--> 

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Enter键自动提交表单</title>
+	<script type="text/javascript">
+	//当用户按下键时
+		function formKeyPress(event){
+		if(event.keyCode==13){//判断是否按的是Enter键
+			document.forms[0].submit();//提交表单
+		}else{
+			return false;//返回
+		}
+	}
+	</script>
+</head>
+<body style="text-align: center;">
+	<!--定义表单，按钮-->
+	<form action="" method="post" style="display: block;width: 250px;">
+		<br>
+		用户名：<input type="text" name="username"><br>
+		密码：<input type="password"onkeypress="fontKeyPress()";/><br>
+		<input type="submit" value="提交"/><br>
+	</form>
+</body>
+</html>
+
+<!--
+	onkeypress事件，它的含义是当用户从键盘按下任何一个键时都会触发该事件。
+-->

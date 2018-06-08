@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<title>三级联动的省市县下拉菜单</title>
+	<script type="text/javascript">
+		var arr=new Array();//数据数组
+		//定义数据，结构为id，名字，父id
+		arr[arr.length]=[1,'北京市',null];
+		arr[arr.length]=[2,'四川省',null];
+		arr[arr.length]=[3,'广东省',null];
+		arr[arr.length]=[4,'北京市',1];
+		arr[arr.length]=[5,'成都市',2];
+		arr[arr.length]=[6,'广州市',3];
+		arr[arr.length]=[7,'深圳市',3];
+		arr[arr.length]=[8,'武侯区',5];
+		arr[arr.length]=[9,'青羊区',5];
+		arr[arr.length]=[10,'白云区',6];
+		arr[arr.length]=[11,'增城市',6];
+		arr[arr.length]=[12,'从化市',6];
+		//动态设置下拉项目
+		function fillOptions(type){
+			if (type=='province') {
+				//获取省份下拉菜单的DOM
+				var province=document.getElementById("province");
+				province.innerHTML='';//内容先置空
+				//填充省的字符
+				var proStr='<option value=""></option>';
+				for (var i = 0; i < arr.length; i++) {//遍历数组
+					var item=arr[i];//当前项
+					//如果没有父id，则是省份
+					if (item[2]==null)
+						proStr+='<option value='+item[0]+'>'+item[1]+'</option>'
+				}
+				province.innerHTML=proStr;//填充新内容
+			}else if(type=='city'){
+				//获取当前省份的id
+				var currProId=document.getElementById("province").value;
+				if (currProId=='')
+					return false;
+				//获取城市下拉菜单的DOM
+				var city=document.getElementById("city");
+				city.innerHTML='';//内容先置空
+				//填充市的字符
+				var cityStr='<option value=""></option>';
+				for (var i = 0; i < arr.length; i++) {//遍历数组
+					var item=arr[i];//当前项
+					//判断是否为当前省下的城市
+					if (item[2]==currProId)
+						cityStr+='<option value='+item[0]+'>'+item[1]+'<option>';
+				}
+				city.innerHTML=cityStr;//填充新内容
+			}else if (type=='area') {
+				//获取当前城市的id
+				var currCityId=document.getElementById('city').value;
+				if (currCityId=='')
+					return false;
+				//获取区县下拉菜单的DOM
+				var area=document.getElementById("area");
+				area.innerHTML='';//内容先置空
+				//填充区县的字符
+				var areaStr='<option value=""></option>';
+				for (var i = 0; i < arr.length; i++) {
+					var item=arr[i];//当前项
+					//判断是否为当前城市下的区县
+					if (item[2]==currCityId) 
+						areaStr+='<option value='+item[0]+'>'+item[1]+'</option>';	
+				}
+				area.innerHTML=areaStr;
+			}
+		}
+	</script>
+</head>
+<body style="text-align: center;" onload="fillOptions('province');">
+	<!--定义下拉菜单-->
+	省：<select id="province" onchange="fillOptions('city');"></select><br><br>
+	市：<select id="city" onchange="fillOptions('area');"></select><br><br>
+	县/区：<select id="area"></select><br><br>
+</body>
+</html>

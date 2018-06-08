@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>得到是谁打开了子窗口</title>
+	<script type="text/javascript">
+		//得到是谁打开了子窗口
+		function getParentWin(){
+			//使用提示框展示父窗口的body内容
+			alert(window.opener.document.body.innerHTML);
+		}
+	</script>
+</head>
+<body style="text-align: center;">
+	<input type="button" value="父窗口的文档内容" onclick="getParentWin();">
+</body>
+</html>
+
+<!--
+	此为子页面
+	症状:能弹出子页面没毛病,但问题是谷歌浏览器及opera在子页面上点击选择按钮毫无反应。
+
+	原因:是opener属性的缘故,但不是谷歌浏览器的兼容性问题,首先要知道js安全机制原则上是不能访问本地文件的,并且谷歌浏览器的安全设置级别比较高,认定你在"本地"应用opener属性的时候是通过js打开本地文件,所以操作被截止.
+
+	但是,在实际开发环境中是不会产生这个问题的,因为当把页面文件部署到服务器上,通过谷歌浏览器输入  localhost/******   或者   127.0.0.1/******  访问该页面,是没有毛病的。
+
+	window.opener属性仅仅对子窗口有效，因为该属性是引用window.open()函数的调用者，也就是父窗口。如果不是通过open()函数打开的窗口，则opener属性是null。
+-->

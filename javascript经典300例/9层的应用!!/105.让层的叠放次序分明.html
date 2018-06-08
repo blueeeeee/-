@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<title>让层的叠放层次分明</title>
+	<script type="text/javascript">
+		//改变层叠放顺序的函数
+		function change(){
+			//得到DOM
+			var con1=document.getElementById('con1');
+			var con2=document.getElementById('con2');
+			//如果现在的con1放在下边，则把它的z-index设置的高一点
+			if (con1.style.zIndex==1) {
+				con2.style.zIndex=1;//设置con2的z-index
+				con1.style.zIndex=2;//设置con1的z-index
+			}else{
+				con1.style.zIndex=1;//设置con1的z-index
+				con2.style.zIndex=2;//设置con2的z-index
+			}
+		}
+	</script>
+	<style type="text/css">
+		div{
+			width: 100px;
+			height: 100px;
+			position: absolute;
+		}
+		#con1{
+			background-color: pink;
+			left: 100px;
+			top: 100px;
+			z-index=2;
+		}
+		#con2{
+			background-color:gray;
+			left: 50px;
+			top: 50px;
+			z-index: 1;
+		}
+	</style>
+</head>
+<body style="text-align: center;">
+	<div id="con1">
+		这是一个层
+	</div>
+	<div id="con2"> 
+		这是一个层
+	</div>
+	<input type="button" value="改变层次" onclick="change();">
+</body>
+</html>

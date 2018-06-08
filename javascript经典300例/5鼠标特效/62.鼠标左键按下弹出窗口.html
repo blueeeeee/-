@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<title>当按下鼠标左键的弹出广告窗口</title>
+	<script type="text/javascript">
+		//监听双击事件
+		function defineClick(){
+			//定义弹出窗口函数
+			document.onclick=function(){
+				//以全屏的方式打开广告窗口
+				window.open('60.鼠标进出时字体大小变化.html','这是我的广告窗口','fullscreen=1');
+			}
+		}
+	</script>
+</head>
+<body onload="defineClick();">
+	<!--定义标签-->
+	<p align="center">单击屏幕任意位置</p>
+</body>
+</html>

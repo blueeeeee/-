@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<title>双击鼠标滚动到网页底部</title>
+	<script type="text/javascript">
+		var nowPos;//当前的位置
+		var myTimer;//定时器变量
+		function startIt(){
+			//开始定时器，以10ms为单位
+			myTimer=window.setInterval("scrollPage()",10);
+		}
+		//停止函数
+		function stopIt(){
+			//取消定时器
+			clearInterval(myTimer);
+		}
+		//滚动屏幕的函数
+		function scrollPage(){
+			window.scrollBy(0,1);//以一像素为单位开始滚屏
+		}
+		document.onmousedown=stopIt;//监听单击事件
+		document.ondblclick=startIt;//监听双击事件
+	</script>
+</head>
+<body>
+	<!--定义标签，让网页比较长-->
+	<p align="center">双击开始滚屏，单击则停止</p>
+	<p>11</p><p>12</p><p>13</p><p>14</p><p>15</p><p>16</p><p>17</p><p>18</p><p>19</p><p>20</p><p>21</p><p>21</p><p>22</p><p>23</p><p>24</p><p>25</p><p>26</p><p>27</p><p>28</p><p>29</p><p>30</p>
+	<p>这就是底部啦！</p>
+</body>
+</html>
+
+<!--
+	scrllBy(xnum,ynum),两个参数分别为向右和向下滚动的元素
+	事件：http://www.w3school.com.cn/jsref/jsref_events.asp
+-->

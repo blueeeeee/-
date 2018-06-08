@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>删除按钮必需的提醒功能</title>
+	<script type="text/javascript">
+		function deleteInfo(){
+			var confirmDel=false;//初始为false
+			//使用弹出框来接收用户是否确定删除
+			confirmDel=window.confirm("确定删除吗？");
+			if (confirmDel){
+				//var info=document.getElementsByTagName("h2")[0];
+				//info.parentNode.removeChild(info);
+				alert('删除成功');
+			}else{
+				return false;//否则返回false，什么都不做
+			}
+		}
+	</script>
+</head>
+<body>
+	<!--定义按钮-->
+	<h2>删除一条信息</h2>
+	<input type="button" value="删除" id="myBtn" onclick="deleteInfo()"/>
+</body>
+</html>
+
+<!--
+	confirm() 方法用于显示一个带有指定消息和 OK 及取消按钮的对话框。
+	如果用户点击确定按钮，则 confirm() 返回 true。如果点击取消按钮，则 confirm() 返回 false。
+	在用户点击确定按钮或取消按钮把对话框关闭之前，它将阻止用户对浏览器的所有输入。在调用 confirm() 时，将暂停对 JavaScript 代码的执行，在用户作出响应之前，不会执行下一条语句。
+-->

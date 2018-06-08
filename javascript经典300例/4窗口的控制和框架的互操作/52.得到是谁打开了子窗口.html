@@ -1,0 +1,18 @@
+<!--得到是谁打开了子窗口_parent.html-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>得到是谁打开了子窗口</title>
+	<script type="text/javascript">
+		//打开一个新的窗口
+		function openNewWin(){
+			//使用window的open函数打开一个子窗口
+			var win=window.open("52.childWin.html");
+		}
+	</script>
+</head>
+<body style="text-align: center;">
+	<input type="button" value="打开子窗口" onclick="openNewWin()">
+</body>
+</html>

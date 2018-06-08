@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<title>用鼠标拖动图片</title>
+	<script type="text/javascript">
+		function dragPic(e){
+			var e=e||window.event;//获取真实的事件变量
+			var myElement=e.srcElement||e.target;//获取事件的源DOM
+			if (e.preventDefault) 
+				e.preventDefault();//避免默认的事件处理
+			else
+				//如果没有preventDefault则返回值为false
+			    e.returnvalue=false;
+			var mypic=document.getElementById("mypic");
+			mypic['draging']=true;//设置拖动属性为true
+			//计算得到拖动以前的图片距离左上角点的left和top的值
+			var relLeft=e.clientX-parseInt(myElement.style.left);
+			var relTop=e.clientY-parseInt(myElement.style.top);
+			//当鼠标放开时，则停止拖动
+			myElement.onmouseup=function(){
+				mypic['draging']=false;//设置拖动属性为false
+			}
+			//定义鼠标的移动事件，注意这里是document的
+			//表示图片的整个网页里的鼠标移动
+			document.onmousemove=function(eMove){
+				//获取真实的时间变量s
+				var eMove=eMove||window.event;
+				if (mypic['draging']==true) {//如果处于正在拖动中
+					//设置新的left值，减去鼠标垫距左上角的距离
+					myElement.style.left=eMove.clientX=relLeft+"px";
+					//设置新的top值，减去鼠标点距左上角的距离
+					myElement.style.top=eMove.clientY=relTop+"px";
+					return false;
+				}
+			}
+			}
+			//当网页加载好以后就为图片拖动定义事件
+			window.onload=function(){
+				//获取图片的DOM
+				var mypic=document.getElementById("mypic");
+				//定义一个属性用于存储是否正在拖动
+				mypic['draging']=false;
+				//根据浏览器的不同，调用不同的添加事件监听器
+				if(navigator.userAgent.indexOf("MSIE")>0){
+					//ie
+					//为图片定义鼠标按下事件
+					mypic.attachEvent("onmousedown",dragPic);}
+					else{
+						//非IE
+						//为图片定义鼠标按下事件
+						mypic.addEventListener("mousedown",dragPic,false);
+				}
+		}
+	</script>
+</head>
+<body>
+	<!--定义图片-->
+	<img id="mypic" src="64.img.jpg" style="left: 10px;top: 10px;position: absolute;width:300px;height: 150px" >
+</body>
+</html>
+
+<!--
+	1.event.srcElement：表示的当前的这个事件源。
+	IE下,event对象有srcElement属性,但是没有target属性;Firefox下,event对象有target属性,但是没有srcElement属性.但他们的作用是相当的.
+	2.preventDefault(),取消事件的默认动作。
+	3.当通过点运算符(.)方法对象属性时，属性名用一个标识符来表示。标识符必须直接出现再js程序中，它们不是数据类型，因此程序无法修改它们。
+	反过来讲，当通过[]来方式对象的属性时，属性名通过字符串表示。字符串是js的数据类型，再程序运行时可以修改和创建它们。
+    4.中括号运算符总是能代替点运算符。但点运算符却不一定能全部代替中括号运算符。
+	中括号运算符可以用字符串变量的内容作为属性名。点运算符不能。
+	中括号运算符可以用纯数字为属性名。点运算符不能。
+	中括号运算符可以用js的关键字和保留字作为属性名。点运算符不能。
+    5.clientX 事件属性返回当事件被触发时鼠标指针向对于浏览器页面（或客户区）的水平坐标。clientY 事件属性返回当事件被触发时鼠标指针向对于浏览器页面（客户区）的垂直坐标。客户区指的是当前窗口。 
+    clientX：当鼠标事件发生时（不管是onclick，还是omousemove，onmouseover等），鼠标相对于浏览器（这里说的是浏览器的有效区域）x轴的位置；  
+    clientY：当鼠标事件发生时，鼠标相对于浏览器（这里说的是浏览器的有效区域）y轴的位置；  
+    screenX：当鼠标事件发生时，鼠标相对于显示器屏幕x轴的位置；
+	screenY：当鼠标事件发生时，鼠标相对于显示器屏幕y轴的位置； 
+	offsetX：当鼠标事件发生时，鼠标相对于事件源x轴的位置  
+	offsetY：当鼠标事件发生时，鼠标相对于事件源y轴的位置 
+	https://blog.csdn.net/u014205965/article/details/45606797 
+
+    6.Internet Explorer 从 5.0 开始提供了一个 attachEvent 方法，使用这个方法，就可以给一个事件指派多个处理过程了。attachEvent 对于目前的 Opera 也适用。但是问题是 Mozilla/Firefox 并不支持这个方法。但是它支持另一个 addEventListener 方法，这个方法跟 attachEvent 差不多，也是用来给一个事件指派多个处理过程的。但是它们指派的事件有些区别，在 attachEvent 方法中，事件是以 “on” 开头的，而在 addEventListener 中，事件没有开头的 “on”，另外 addEventListener 还有第三个参数，一般这个参数指定为 false 就可以了。

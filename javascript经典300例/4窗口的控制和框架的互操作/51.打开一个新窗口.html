@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>打开一个新窗口</title>
+	<script type="text/javascript">
+		//打开一个新的窗口
+		function openNewWin(){
+			//使用window的open()函数打开一个子窗口
+			var win=window.open("46.subFrame.html");
+		}
+	</script>
+</head>
+<body style="text-align: center;">
+	<input type="button" value="打开一个新的窗口" onclick="openNewWin();">
+</body>
+</html>
+<!--
+	window.open(pageURL,name,parameters)pageURL为子窗口路径，name为子窗口句柄，parameters为窗口参数（各参数用逗号分隔）。
+    window.open('subWindow.html','my_sub_window','height＝200,width＝300,top＝0,left＝0, toolbar＝no,status＝no')
+-->

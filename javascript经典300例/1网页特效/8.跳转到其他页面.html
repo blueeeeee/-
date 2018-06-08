@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>跳转到其它页面</title>
+	<script type="text/javascript">
+		//跳转地址
+		function changeURL(){
+			//得到新的URL值
+			var newURL=document.getElementById('newURL').value="https://www.baidu.com";
+			//通过修改地址栏的地址来跳转新的网页地址
+			self.location.href=newURL;
+		}
+	</script>
+</head>
+<body style="text-align: center;">
+	<p>
+		<!--定义输入框和按钮-->
+		<input type="text" value="" name="newURL" id="newURL"/>
+		<input type="button" value="跳转地址" onclick="changeURL()">
+	</p>
+</body>
+</html>
+
+<!--
+	有时候页面的跳转不是通过用户点击的方式，而要进行一定的逻辑判断，js可以通过控制地址栏的地址来达到该目的。
+	本例中采用的是修改self的地址来实现，如果网页处于一个框架中，那么这样的跳转仅限于框架里，而不是整个窗口。如果需要把整个窗口都跳转成另外一个URL，则只需要把实例中的self换成window。
+-->

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<title>页面加载完毕的判断+</title>
+	<script type="text/javascript">
+		//加载完成以后的回调函数
+		function myOnload(){
+			alert('网页加载完毕'); //提示一句话
+		}
+		//使用window的onload元素进行回调
+		window.onload=myOnload;
+		//文档加载完毕的回调，为onreadystatechange设置回调
+		document.onreadystatechange=myPageLoad;
+		//定义回调函数
+		function myPageLoad(){
+			//判断文档的readyState属性
+			//console.log(document.readyState);
+			if (document.readyState=="complete") {
+				alert('文档加载完毕');
+				//提示一句话
+			}
+		}
+	</script>
+</head>
+<body style="text-align: center;">
+	hello
+</body>
+</html>
+
+<!--
+	window的onload回调是在网页里的所有元素（包括文档，图片，脚本，样式等）都被加载完毕以后就可以进行脚本的执行，此时就需要为document的onreadyStatechange设置回调，并判断onreadystatechange设置回调，并判断readyState属性了。文档加载完毕实在网页加载完毕之前。
+    
+    一个document 的 Document.readyState 属性描述了文档的加载状态。
+    一个文档的 readyState 可以是以下之一：
+	loading / 加载     document 仍在加载。
+	interactive / 互动      文档已经完成加载，文档已被解析，但是诸如图像，样式表和框架之类的子资源仍在加载。
+	complete / 完成    文档和所有子资源已完成加载。状态表示 load 事件即将被触发。
+	当这个属性的值变化时，document 对象上的readystatechange 事件将被触发。
+
+ -->

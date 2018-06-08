@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<title>避免浏览器使用缓存加载页面</title>
+	<script type="text/javascript">
+		//加载完成以后的回调函数
+		function myOnLoad(){
+			//获取所有的超级链接dom
+			var links=document.getElementsByTagName('a');
+			for(var i=0;i<links.length;i++){//遍历
+				var link=links[i];			//得到当前链接的dom
+				var href=link.href;			//链接的地址
+				if (href.indexOf('?')>-1) {	//地址中是否已经包含了参数
+					//修改链接地址，加上一个参数：当前时间的毫秒数
+					href+='&time'+new Date().getTime();
+				}else{
+					href+='?time'+new Date().getTime();
+				}
+				link.href=href;//赋新的地址
+			}
+		}
+		//使用window的onload元素进行回调处理
+		window.onload=myOnLoad;
+	</script>
+</head>
+<body>
+	<p>
+		<!--定义网页的超级链接-->
+		<a href="a.html">链接1</a>
+		<a href="b.html">链接2</a>
+	</p>
+</body>
+</html>
+
+<!--
+	防止浏览器缓存，浏览器为了提高用户访问同一页面的速度，会对页面数据进行缓存，当输入的参数没有变化的，浏览器认为是相同页面，直接调用缓存的信息。当url请求地址不变时，有时候会导致浏览器不发送请求，直接从缓存中读取之前的数据，如果数据改变了，而没加随机数，读取的数据会跟之前一样， 加上随机数，就是欺骗浏览器url改变了，会每次都向服务器发送请求而不去读缓存。
+	目前暂未测试到兼容性问题，注意浏览器请求时的url。
+-->

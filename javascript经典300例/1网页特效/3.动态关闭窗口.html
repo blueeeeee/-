@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<!--此为html4.0的写法-->
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>动态关闭网页</title>
+	<script type="text/javascript">
+		//关闭窗口
+		function closeWin(){
+			//@grant window.close
+			//1.
+			//window.opener=null;   
+      		//window.open('', '_self', ''); 
+			//window.close();//调用window对象的close()函数，关闭窗口
+			//2.
+			//open(location, '_self').close();
+			//3.  
+			//window.location.href="about:blank";
+            //window.close();
+            //4.
+            window.close();
+		}
+	</script>
+</head>
+<body>
+	<!--定义关闭窗口的按钮-->
+	<input type="button" value="关闭此窗口！" onclick="closeWin()"/>
+
+</body>
+</html>
+<!--
+	遇到的问题：此实例在firefox运行过程中遇到“脚本不得关闭非脚本打开的窗口”的问题.
+	1.在js中添加 //@grant window.close 代码可解决针对Tampermonkey或者GreasyMonkey情况,其他不适用,IE会弹出警告窗口，确认后可关闭
+	2.或在window.close前添加 window.opener=null;window.open('','_self','') 仅适用于IE浏览器下
+	3.使用open(location, '_self').close();IE下也适用
+	以上情况 chrome均适用，目前除了修改firefox的设置，暂时未找到解决firefox的办法
+
+	window.open详解：https://blog.csdn.net/business122/article/details/8273053
+-->

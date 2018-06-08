@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>父框架对子框架的引用</title>
+	<script type="text/javascript">
+		function referFrames2(){//引用frame2框架
+			//var frames=window.frames;//得到框架数组
+			//var frame1=frames[0];//得到父框架
+			//var subFrames=frame1.frames;//子框架数组
+			//var frame2=subFrames[0];
+			var frame2=window.frames[0].frames[0];//得到最底层的框架
+			alert(frame2.document);//用提示框展示框架的document
+		}
+	</script>
+</head>
+<body>
+	<!--定义框架-->
+	<iframe src="./46.subFrame.html" id="frame1"></iframe>
+	<br>
+	<input type="button" value="引用frame2框架" onclick="referFrames2();">
+</body>
+</html>
+<!--Frame 标签定义了放置在每个框架中的 HTML 文档。-->

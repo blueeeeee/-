@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<title>从下往上的信息滚动特效</title>
+	<script type="text/javascript">
+		var timer=null;//定时器
+		//页面加载完成的事件回调函数
+		function init(){
+			var time=20;//定义滚动的时间间隔，毫秒
+			//获取容器的DOM
+			var container=document.getElementById('container');
+			var d1=document.getElementById('con1');
+			var d2=document.getElementById('con2');
+			d2.innerHTML=d1.innerHTML;
+			function MyMarquee(){//定义滚动的函数
+				//如果d2的高度已经超过最大的限制
+				//console.log(d2.offsetHeight);
+				//console.log(container.scrollTop);
+				if(d2.offsetHeight<=container.scrollTop)    
+				//把容器的滚动条恢复到最初位置
+					container.scrollTop-=d1.offsetHeight;
+				else{
+					//滚动条的位置移动一像素
+					container.scrollTop++;
+				}
+			}
+			timer=setInterval(MyMarquee,time);//开始一个定时执行
+			container.onmouseover=function(){//定义鼠标移入事件
+				clearInterval(timer);//结束滚动
+			}
+			container.onmouseout=function(){//定义鼠标移出事件
+				timer=setInterval(MyMarquee,time);//再次开始
+			}
+		}
+	</script>
+</head>
+<body style="text-align: center;margin:0 auto;" onload="init();">
+	<div id="container" style="overflow:hidden;height: 300px">
+		<table align="left" cellpadding="0" cellspace="0" border="0">
+			<tr>
+				<td id="con1" valign="top">
+					<img src="img.jpg">
+				</td>
+			</tr>
+			<tr>
+				<td id="con2" valign="top"></td>
+			</tr>
+		</table>
+	</div>
+</body>
+</html>
+
+<!--
+	offsetHeight与Height的区别是增加了boder的高度.
+	高度详解：http://www.cnblogs.com/yuteng/articles/1894578.html
+	当网页加载完以后，就开始通过scrollTop属性来控制容器层内部的滚动条，当滚动到第二行的底部时，再把滚动条又恢复到最顶部。
+-->

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<title>联动的省市下拉菜单</title>
+	<script type="text/javascript">
+		var arr=new Array();//数据数组
+		//定义数据，结构为：id，名字，父id
+		arr[arr.length]=[1,'北京市',null];
+		arr[arr.length]=[2,'四川省',null];
+		arr[arr.length]=[3,'广东省',null];
+		arr[arr.length]=[4,'北京市',1];
+		arr[arr.length]=[5,'成都市',2];
+		arr[arr.length]=[6,'广州市',3];
+		arr[arr.length]=[7,'深圳市',3];
+		//动态设置下拉菜单项目
+		function fillOptions(type){
+			if (type=='province') {
+				//获取省份下拉菜单的DOM
+				var province=document.getElementById("province");
+				province.innerHTML='';//内容先置空
+				//填充省的字符
+				var proStr='<option value=""></option>'
+				//遍历数组
+				for (var i = 0; i <arr.length; i++) {
+					var item=arr[i];//当前项
+					//如果没有父id，则是省份
+					if (item[2]==null) 
+						proStr+='<option value='+item[0]+'>'+item[1]+'</option>'
+					}
+				province.innerHTML=proStr;//填充新内容
+				}else if (type=='city') {
+					//获取当前省份的id
+					var currProId=document.getElementById("province").value;
+					if(currProId=='')
+						return false;
+					var city=document.getElementById('city');
+					city.innerHTML='';//内容先置空
+					//填充式的字符
+					var cityStr='<option value=""></option>'
+					//遍历数组
+					for (var i = 0; i < arr.length; i++) {
+						var item=arr[i];//当前项
+						//判断是否为当前省下的城市
+						if (item[2]==currProId) 
+							cityStr+='<option value='+item[0]+'>'+item[1]+'</option>';
+						}
+					city.innerHTML=cityStr;	
+				}
+		}
+	</script>
+</head>
+<body style="text-align: center;" onload="fillOptions('province');">
+	<!--定义下拉菜单-->
+	省：<select id="province" onchange="fillOptions('city');"></select><br><br>
+	市：<select id="city"></select><br><br>
+</body>
+</html>

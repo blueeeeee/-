@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<title>动态修改一个链接的地址</title>
+	<script type="text/javascript">
+		function modifyURL(){
+			var myLink=document.getElementById('myLink');
+			myLink.href="https://www.baidu.com";
+		}
+	</script>
+	<style type="text/css">
+		a{text-decoration: none;}
+	</style>
+</head>
+<body style="text-align: center;">
+	<!--定义链接-->
+	<a href="#" id="myLink">一个链接</a><br>
+	<!--定义按钮-->
+	<input type="button" value="修改地址链接" id="myBtn" onclick="modifyURL();">
+</body>
+</html>

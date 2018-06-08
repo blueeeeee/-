@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<title>修改元素的属性值</title>
+	<script type="text/javascript">
+		//修改图片的高度和宽度属性
+		function modifyWH(){
+			//得到元素DOM
+			var myImg=document.getElementById("myImg");
+			myImg.width="600";
+			myImg.height="300";//不加引号也可，boolean和数字可不加引号
+		}
+	</script>
+</head>
+<body style="text-align: center;">
+	<p>
+		<input type="button" value="修改属性" onclick="modifyWH();">
+	</p>
+	<!--定义图片元素-->
+	<img id="myImg" src="./25img.png" type="button" width=200 height=100"/>
+</body>
+</html>
+
+<!--
+	修改高宽度时，若加上单位px则无效：
+	1.不符合规范，属性width，height是个非负数，直接写数字即可
+	2.typeof myImg.width 为number类型
+	3.三种方法改变图片显示大小：
+	document.getElementById("myImg").width=600;//方式①，通过改变属性值来改变图片大小
+	document.getElementById("myImg").setAttribute("width", "600");//方式②，通过改变属性值来改变图片大小
+	document.getElementById("myImg").style.width='600px';//方式③，通过css样式来改变图片大小,此处为字符串
+	当属性为自定义属性时，dom.attr的方式失效，如div添加的width属性。
+-->

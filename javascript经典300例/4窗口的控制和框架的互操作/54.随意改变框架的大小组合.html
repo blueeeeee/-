@@ -1,0 +1,24 @@
+<!--随意改变框架的大小组合-->
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<title>随意改变框架的大小组合</title>
+</head>
+<!--定义框架-->
+<frameset rows="*" cols="200,*" framespacing="0" frameborder="1" border="1" id="left_right">
+<frame src="54.left.html" name="leftFrame" noresize="noresize" scrolling="no" border="1"></frame>	
+<frame src="54.right.html" name="rightFrame" noresize="noresize" scrolling="no" border="1"></frame>
+</frameset>
+<noframes>
+	<body>您的浏览器无法处理框架！</body>
+</noframes>
+</html>
+
+
+<!--
+	不能与 <frameset></frameset> 标签一起使用 <body></body>标签。不过，如果您需要为不支持框架的浏览器添加一个 <noframes> 标签，请务必将此标签放置在 <body></body> 标签中！ 
+	frameborder  0,1  规定是否显示框架周围的边框
+	noresize   noresize  规定无法调整框架的大小
+	scrolling  yes,no,auto   规定是否在框架中显示滚动条。
+-->

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>悬浮的广告层</title>
+	<script type="text/javascript">
+		//保证层悬浮的函数
+		function goScroll(o){
+			//得到层距离顶部的距离
+			var space=document.getElementById(o).offsetTop;
+			console.log('offsetTop='+space);
+			document.getElementById(o).style.top=space+'px';//设置top属性
+			var goTo=0;//定义需要移动距离的变量
+			window.setInterval(function(){
+				var height=document.documentElement.scrollTop+document.body.scrollTop+space;//计算高度
+				//计算层的top值
+				//console.log('d1='+document.documentElement.scrollTop);
+				//console.log('d2='+document.body.scrollTop);
+				//console.log('height='+height);
+				var top=parseInt(document.getElementById(o).style.top);
+				if (height!=top) {//如果两者不一致，则需要移动
+					//需要移动的距离是高度减去top
+					goTo=height-parseInt((height-top)*0.9);
+					//把层定位
+					document.getElementById(o).style.top=goTo+'px';
+				}
+			},50);
+		}
+		function init(){
+			goScroll('con1');
+		}
+	</script>
+	<style type="text/css">
+		#con1{
+			background-color: blue;
+			left: 0;
+			top: 100px;
+			width: 100px;
+			height: 100px;
+			position: absolute;
+			z-index: -1;
+		}
+	</style>
+</head>
+<body style="text-align: center;" onload="init()">
+	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <div id="con1">
+    	这是一个广告
+    </div>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>

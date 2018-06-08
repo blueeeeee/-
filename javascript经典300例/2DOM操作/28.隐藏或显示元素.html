@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<title>隐藏或显示元素</title>
+	<script type="text/javascript">
+		//隐藏或显示元素
+		function showOrHide(){
+			//得到图片的DOM
+			var myImg=document.getElementById("myImg");
+			var display=myImg.style.display;//当前显示的样式
+			if (display!='none') {          //是否正在隐藏
+				myImg.style.display='none';//设为隐藏
+			}else{
+				myImg.style.display='';//取消隐藏
+			}
+		}
+	</script>
+</head>
+<body style="text-align: center;">
+	<p id="myContent">
+		<input type="button" value="隐藏或显示" onclick="showOrHide();">
+		<br>
+		<!--定义图片元素-->
+		<img src="./25img.png" id="myImg" width="200" height="100">
+	</p>
+</body>
+</html>

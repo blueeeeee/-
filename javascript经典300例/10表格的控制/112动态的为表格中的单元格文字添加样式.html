@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>动态地为表格中的单元格文字添加样式</title>
+	<script type="text/javascript">
+		function chCell(){//为表格改变样式的函数
+			var tb1=document.getElementById('tb1');//获取DOM
+			var rows=tb1.rows;//当前的行数
+			var len=tb1.rows.length;//当前的行数
+			for(var i=1;i<len;i++){//遍历所有行
+				var cells=rows[i].cells;//得到这一行的所有单元格
+				for(var j=0;j<cells.length;j++){//遍历单元格
+					cells[j].onclick=function(){//定义单元格的click事件
+						if (this.style.color==''||this.style.color=='black') 
+								this.style.color='red';
+							else
+								this.style.color='black';
+						};
+					}
+				}
+			}
+	</script>
+</head>
+<body style="text-align: center;" onload="chCell();">
+	<table id="tb1" align="center" border="1">
+		<tr>
+			<th>名字</th>
+			<th>年龄</th>
+		</tr>
+		<tr>
+			<td>A</td>
+			<td>12</td>
+		</tr>
+		<tr>
+			<td>C</td>
+			<td>15</td>
+		</tr>
+	</table>
+</body>
+</html>

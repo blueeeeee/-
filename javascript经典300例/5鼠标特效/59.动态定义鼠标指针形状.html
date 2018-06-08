@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<title>动态定义鼠标指针形状</title>
+	<script type="text/javascript">
+		//初始化鼠标形状
+		function initMouse(){
+			//通过标签名得到目标DOM，如果是全网页则这里可以用body
+			var pDom=document.getElementsByTagName("p")[0];
+			//修改样式的鼠标指针形状，pointer为手的形状
+			pDom.style.cursor='pointer';
+			}
+	</script>
+</head>
+<body style="text-align: center;" onload="initMouse()">
+	<!--定义一块区域-->
+	<p style="margin: 5px auto;width: 200px;height: 200px;background: lime;color: black;">
+		把鼠标移动到该区域
+	</p>
+</body>
+</html>
+<!--cursor可以设置的值：
+	text 文字编辑；auto 自动；pointer 手形状 IE下有hand；move 按左键或右键；not-allowed 不允许；
+	not-drop 无法释放；wait 等待，沙漏形状；help 帮助，问号；
+	crosshair：十字准星。
+-->

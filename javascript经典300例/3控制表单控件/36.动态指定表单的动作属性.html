@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>动态指定表单的动作属性</title>
+	<script type="text/javascript">
+		//动态指定表单的动作属性
+		function modifyAction(){
+			var f=document.forms[0];//获取表单DOM
+			var newURL=f.newURL.value;//选择的方法
+			f.action=newURL;//修改提交表单的action地址
+			//提示框展示结果
+			alert("表单当前的动作："+f.action);
+		}
+	</script>
+</head>
+<body style="text-align: center;">
+	<!--定义表单-->
+	<form method="post">
+		请选择提交方法：
+		<input type="text" name="newURL">
+		<br>
+		<input type="button" value="提交修改Action" onclick="modifyAction()">
+	</form>
+</body>
+</html>
+
+<!--
+	表单的动作（也就是表单提交的URL），可以是一个网页，也可以是一个其他的动态后台程序地址。在实际开发中，有时需要动态修改表单的提交地址，如从查询动作变成删除动作。
+-->
