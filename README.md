@@ -89,12 +89,13 @@
   
 * 静态页面  
   ---
-  记录了写的完整的页面，并通过md文本做了每个页面的总结
+  记录了写的完整的页面，并通过md文本做了每个页面的总结  
   1.[杂页](https://blueeeeee.github.io/Demo/静态页面/1杂页/one-index.html)  
   2.[主页](https://blueeeeee.github.io/Demo/静态页面/2主页/index.html)   
 
 * jQuery例
   ---  
+  记录了通过jQuery写的简单效果  
   1.[品牌列表的效果](https://blueeeeee.github.io/Demo/jQuery例/1品牌列表的效果.html)  
   2.[超链接提示](https://blueeeeee.github.io/Demo/jQuery例/2超链接提示.html)  
   3.[图片提示效果](https://blueeeeee.github.io/Demo/jQuery例/3图片提示效果.html)  
