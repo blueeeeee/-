@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>标题栏显示当前日期</title>
+	<script type="text/javascript">
+		//修改标题函数
+		function start(){
+			var date=new Date();
+			document.title=date.toString();
+		}
+	</script>
+</head>
+<body style="text-align: center;">
+	<p>
+		<input type="button" value="修改标题" onclick="start();">
+	</p>
+</body>
+</html>

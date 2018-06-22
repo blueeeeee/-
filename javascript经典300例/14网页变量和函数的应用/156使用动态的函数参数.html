@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>使用动态的函数参数</title>
+	<script type="text/javascript">
+		function fun(){
+			var len=arguments.length;//根据arguments变量的长度的到参数个数
+			alert(len+'个参数');//
+		}
+	</script>
+</head>
+<body style="text-align: center;">
+	<input type="button" value="传入一个参数" onclick="fun(1)"><br><br>
+	<input type="button" value="传入两个参数" onclick="fun(1,2)"><br><br>
+	<input type="button" value="传入三个参数" onclick="fun(1,2,3)">
+</body>
+</html>
+<!--arguments变量是每一个函数的与生俱来的数组变量，当一个函数被调用时，JavaScript解析器会根据实际传入的参数列表来填充这个数组变量arguments。因此，可以通过隐藏的arguments变量来判断实际参数的个数。-->

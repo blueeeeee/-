@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>闭包的概念和使用</title>
+	<script type="text/javascript">
+		function a(){      		//定义函数a
+			var n=100;          //定义一个局部变量n
+			var b=function(){	//定义函数b
+				n++;			//n自加1
+				return n;		//返回n的值
+			};
+			return b;			//a的结果返回b的函数
+		}
+		var c=a();				//执行a的函数，得到b，并赋值c
+		c();					//c函数执行一次，n的值变成101
+		alert(c());				//再打印n的值，为102
+	</script>
+</head>
+<body style="text-align: center;">
+</body>
+</html>
+
+<!--闭包真正的目的就是要把局部的函数永久地保存下来，被外部的变量和代码所访问。那如何称为一个闭包呢？当a内部的函数被a以外的函数所访问到，就称为一个闭包。-->

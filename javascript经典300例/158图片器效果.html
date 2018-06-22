@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>仿ipone图片查看器效果</title>
+	<script type="text/javascript">
+		var arr=['img.jpg','img.gif'];//定义图片数组，这里只有两张
+		function next(){//定义click图片的事件函数
+			var img=document.getElementById('the_img');//获取DOM
+			var src=img.src;//获取图片的源
+			var findIt=false;//定义一个变量
+			for (var i = 0; i < 
+				arr.length; i++) {//遍历图片数组
+				if (src.indexOf(arr[i]>-1)) {//如果实际的源于当前的源相同，就认为找到了图片
+					findIt=true;
+				}
+				if (findIt) {
+					var j=i+1;//把索引加一
+					console.log(j);
+					if (j==arr.length)//如果是最后一张，则跳转到第一张
+						j=0;
+					img.src=arr[j];//定义图片新的源
+					break;//退出循环
+				}
+			}
+		}
+	</script>
+</head>
+<body style="text-align: center;">
+	<h2>单击图片翻下一张</h2>
+	<img src="img.jpg" id="the_img" onclick="next()" width="250" height="200"/>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>仿QQ空间相册效果</title>
+	<script type="text/javascript">
+		function show(src){
+			//为目标图片指定DOM
+			document.getElementById('big').src=src;
+		}
+	</script>
+	<style type="text/css">
+		.list img{cursor:pointer;}
+	</style>
+</head>
+<body style="text-align: center;">
+	<p class="list">
+		<img src="img.jpg" width="100" height="100" onclick="show(this.src)">
+		<img src="img.gif" width="100" height="100" onclick="show(this.src)">
+	</p>
+	<p>
+		<img src="img.jpg" id="big">
+	</p>
+</body>
+</html>

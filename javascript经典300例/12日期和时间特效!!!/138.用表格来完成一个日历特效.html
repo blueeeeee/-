@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>用表格来完成一个日历特效</title>
+	<script type="text/javascript">
+		function init(){
+			var y=document.getElementById('y');//年份的DOM
+			var m=document.getElementById('m');//月份的DOM
+			var str='';//拼接字符
+			for(var i=2000;i<2030;i++){//为年份的下拉列表框制定可选项
+				str+='<option value="'+i+'">'+i+'</option>';
+			}
+			y.innerHTML=str;//动态指定年份的下拉列表内容
+			str='';//恢复空白字符
+			for(var i=1;i<=12;i++){//12个月，填充到月份
+				str+='<option value="'+i+'">'+i+'</option>';
+			}
+			m.innerHTML=str;//填充月份的DOM
+			m.onchange=function(){//月份的修改监听
+				//选择的年
+				var year=document.getElementById('y').value;
+				year=parseInt(year);//解析为数字型变量
+				var month=parseInt(document.getElementById('m').value);
+				var days=30;//默认为30天
+				if (isRunNian(year)&&month==2) {//如果是闰年的二月
+					days=29;//一共29天
+				}else if (!isRunNian(year)&&month==2) {
+					days=28;
+				}else if (month==1//替他月份为31天
+					||month==3
+					||month==5
+					||month==7
+					||month==8
+					||month==10
+					||month==12) {
+					days=31;
+				}
+				var str='<tr>';//开始拼接日子的表头，为星期
+				for(var i=1;i<=7;i++){//从星期一到星期日
+					str+='<td>星期'+i+'</td>';//显示星期几
+				}
+				str+='</tr>';//完成星期字符
+				var date=new Date(year,month-1,1);//!!创建指定年月日的日期
+				var week=date.getDay();//它对应的是星期几
+				var j=1;//定义j变量
+				while(true){//永真循环
+					str+='<tr>';//字符变量，拼接tr
+					for(var i=1;i<=7;i++){//循环7次
+						if (j==1&&i==week) {//如果星期对上了，则开始打印1号
+							str+='<td onclick="showDay('+j+');">'+j+'</td>';
+							j++;
+						}else if(j>1&&j<=days){//如果对上了则打印以后的
+							str+='<td onclick="showDay('+j+');">'+j+'</td>';
+							j++;
+						}else
+							str+='<td>&nbsp;</td>';
+					}
+					str+='</tr>';
+					if(j>=days)//如果j超过了当月的最大天数，则退出
+						break;
+				}
+				document.getElementById('tb1').innerHTML=str;//填充输入区域
+			};
+		}
+		function isRunNian(y){//闰年的判断函数
+			return ((y%4==0)&&(y%100==0))||(y%400==0);
+		}
+		function showDay(d){//显示日期，监听单元格的click事件
+			var y=document.getElementById('y').value;
+			var m=document.getElementById('m').value;
+			alert('您选择的日期是：'+y+'年'+m+'月'+d+'日');//展示结果
+		}
+	</script>
+</head>
+<body style="text-align: center;" onload="init();">
+	<p>
+		单击选择日期
+	</p>
+	<p>
+		<select id="y"></select>年
+		<select id="m"></select>月
+	</p>
+	<table id="tb1" border="1" align="center"></table>
+</body>
+</html>

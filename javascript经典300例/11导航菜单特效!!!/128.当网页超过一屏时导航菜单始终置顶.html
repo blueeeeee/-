@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>当网页超过一屏时导航菜单始终置顶</title>
+	<script type="text/javascript">
+		//初始化函数
+		function init(){
+			//获取顶部元素的DOM
+			var wrap=document.getElementById('wrap');
+			var scrollTop=0;//初始化为顶部
+			//监听页面滚动时间
+			window.onscroll=function(){
+				//获取当前的滚动距离
+				scrollTop=document.body.scrollTop||document.documentElement.scrollTop;
+				//超过150px像素的滚动，就把导航菜单DIV设置为固定
+				if(scrollTop>150){
+					wrap.className='the_top';//固定下来的样式
+				}else{
+					wrap.className='wrap';//恢复原有的样式
+				}
+			}
+		}
+	</script>
+	<style type="text/css">
+		*{margin: 0;padding: 0;}
+		.wrap{width: 100%}
+		.hd{width: 980px;height: 150px;margin: 0 auto;background-color: red;}
+		.bd{width: 980px;height: 40px;margin: 0 auto;background-color: blue;}
+		.the_top{position: fixed;width: 100%;}
+		.the_top .hd{display: none;}
+	</style>
+</head>
+<body style="text-align: center;" onload="init()">
+	<div id="wrap" class="wrap"> 
+		<div class="hd"></div>
+		<div class="bd"></div>
+	</div>
+	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>

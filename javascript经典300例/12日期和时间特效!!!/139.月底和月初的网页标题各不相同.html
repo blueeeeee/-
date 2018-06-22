@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>月底和月初的网页标题各不相同</title>
+	<script type="text/javascript">
+		//修改标题的函数
+		function start(){
+			var date=new Date();//当天的日期和时间
+			var str='';//拼接字符
+			var m=date.getDate();//月份
+			if (m<15) 
+				str='月初，要做好这个月的计划和安排哟';
+			if (m>=15) 
+				str='这个月已经过去超过一半了，要珍惜时间哟';
+			document.title=str;//修改标题
+		}
+	</script>
+</head>
+<body style="text-align: center;" onload="start();">
+	<p>
+		请看网页标题
+	</p>
+</body>
+</html>
+
+<!--
+getDate() 方法可返回月份的某一天。
+-->

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>切换样式表</title>
+	<link rel="stylesheet" type="text/css" href="css1.css">
+	<link rel="stylesheet" type="text/css" href="css2.css">
+	<script type="text/javascript">
+		function changeCss(){
+			//通过js得到文本所使用的样式表，使用的是css2
+			var rs=document.styleSheets[1];
+			//把当前的样式禁用
+			rs.disabled=true;
+		}
+	</script>
+</head>
+<body style="text-align: center;">
+	<span id="mytxt" class="myclass">测试文本</span>
+	<br>
+	<input type="button" onclick="changeCss();" value="更换样式表"/>	
+</body>
+</html>

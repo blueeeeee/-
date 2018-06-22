@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>显示登陆的时间</title>
+	<script type="text/javascript">
+		//定义时分秒数据的变量
+		var s=0;
+		var m=0;
+		var h=0;
+		function init(){
+			window.setInterval(function(){
+				s++;
+				if (s==60) {
+					s=0;
+					m+=1;
+				}
+				if (m==60) {
+					m=0;
+					h+=1;
+				}
+				//展示结果到网页上
+				document.getElementById('stay_time').innerHTML="您已经登录了：<br>"+h+"时"+m+"分"+s+"秒";
+			},1000);
+		}
+	</script>
+</head>
+<body style="text-align: center;" onload="init();">
+	<p id="stay_time"></p>
+</body>
+</html>

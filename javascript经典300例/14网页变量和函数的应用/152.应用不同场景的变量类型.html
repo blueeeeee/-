@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>应用不同场景的变量类型</title>
+	<script type="text/javascript">
+		var a;				//undefined
+		a=null;				//null
+		a=true;				//boolean
+		a=12.2;				//数字
+		a='abc';			//字符型
+		a={msg:'hello'};	//object
+		a={1,2,3};			//数组
+	</script>
+</head>
+<body style="text-align: center;">
+</body>
+</html>
+
+<!--
+	object是JavaScript特有的一种对象类型，它实质上是一种键值对；而数组则是一种比较特殊的object类型，它的写法也比较有特点，采用方括号表示。
+	某些时候，也把函数function称为一种数据类型，但因为函数比较特别，故读者可以把它当作object类型中的一种。另外，JavaScript提供了一个函数typeof()，专门用于返回指定变量的数据类型。
+-->

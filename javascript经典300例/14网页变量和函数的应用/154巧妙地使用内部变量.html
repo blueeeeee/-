@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>巧妙地使用内部变量</title>
+	<script type="text/javascript">
+		var scope='我是全局变量';//定义全局变量scope
+		function fun(){
+			//var scope;这是预解析
+			alert(scope);
+			var scope='我是局部变量';//重新定义一个局部变量，名称也是scope
+			alert(scope);
+		}
+		fun();//执行fun()函数
+	</script>
+</head>
+<body style="text-align: center;">
+</body>
+</html>
+
+<!--
+	输出结果为undefine和我是局部变量
+	fun()函数内会预解析
+-->

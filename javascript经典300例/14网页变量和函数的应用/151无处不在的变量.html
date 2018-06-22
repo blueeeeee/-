@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>无处不在的变量</title>
+	<script type="text/javascript">
+		var a,b;				//定义变量a和b
+		var c;					//定义变量c
+		function abc(){			//定义函数abc，它也是一个变量
+			a=10;				//为变量a赋值
+			b='hello';			//为变量b赋值
+			c=function(){};		//变量c本身是个函数
+		}
+		abc();					//执行abc函数
+		alert(b);				//展示b的值
+	</script>
+</head>
+<body style="text-align: center;">
+</body>
+</html>

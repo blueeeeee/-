@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>不同时段显示不同的标题欢迎词</title>
+	<script type="text/javascript">
+		//修改标题的函数
+		function start(){
+			var date=new Date();//当前的时间
+			var str='';//定义拼接字符变量
+			var hours=date.getHours();//得到小时数
+			if(hours<12)
+				str='早上好';
+			if (hours>=12&&hours<18)
+				str='下午好';
+			if (hours>=18)
+				str='晚上好';
+			document.title=str;
+		}
+	</script>
+</head>
+<body style="text-align: center;" onload="start()">
+	<p>请注意查看网页标题</p>
+</body>
+</html>

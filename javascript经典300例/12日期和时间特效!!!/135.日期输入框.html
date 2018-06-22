@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>日期输入框</title>
+	<script type="text/javascript">
+		function init(){
+			var y=document.getElementById('y');//年份的DOM
+			var m=document.getElementById('m');//月份的DOM
+			var str='';//拼接字符
+			for(var i=2000;i<2030;i++){//为年份的下拉菜单制定可选项
+				str+='<option value="'+i+'">'+i+'</option>';
+			}
+			y.innerHTML=str;//动态指定下拉菜单的内容
+			str='';//恢复空白字符
+			for(var i=1;i<=12;i++){//12个月，填充的月份
+				str+='<option value="'+i+'">'+i+'</option>';
+			}
+			m.innerHTML=str;//填充月份的DOM
+		}
+		function showDetails(){//展示细节的输入框
+			//选择的年
+			var year=document.getElementById('y').value;
+			year=parseInt(year);//解析为数字型变量
+			var month=parseInt(document.getElementById('m').value);
+			var days=30;//默认为30天
+			if (isRunNian(year)&&month==2) {//如果是闰年的2月
+				days=29;//一共是29天
+			}else if (!isRunNian(year)&&month==2) {
+				days=28;
+			}else if(month==1
+				||month==3
+				||month==5
+				||month==7
+				||month==8
+				||month==10
+				||month==12){
+				days=31;
+			}
+			var str='<tr>';//开始拼接日子的表头，为星期
+			for(var i=1;i<=7;i++){//从星期一到星期天
+				str+='<td>星期'+i+'</td>';//显示星期几
+			}
+			str+='</tr>';//完成星期字符
+			var date=new Date(year,month-1,1);//创建制定年月日的日期
+			var week=date.getDay();//它对应的是星期几
+			var j=1;//定义j变量
+			while(true){//永真循环
+				str+='<tr>';//字符变量，拼接tr
+				for(var i=1;i<=7;i++){//循环7次
+					if (j==1&&i==week) {//如果星期对上了，则开始打印1号
+						str+='<td onclick="fillDay('+j+');">1</td>';
+						j++;
+					}else if (j>1&&j<=days) {//如果对上以后，则打印1号以后的
+						str+='<td onclick="fillDay('+j+');">'+j+'</td>';
+						j++;
+					}else
+					str+='<td>&nbsp;</td>';
+				}
+				str+='</tr>';
+				if (j>=days)//如果j超过了当月的最大天数，则退出
+					break;
+			}
+			document.getElementById('tb1').innerHTML=str;//填充输入区域
+		}
+		function isRunNian(y){
+			return ((y%4==0)&&(y%100!=0))||(y%400==0);//判断是否为闰年
+		}
+		function fillDay(d){
+			var y=document.getElementById('y').value;//得到年
+			var m=document.getElementById('m').value;//得到月
+			//为当前的输入框指定值
+			window.currDateInput.value=y+'年'+m+'月'+d+'日';
+		}
+		function inputDate(input){//日期输入框的onfocus事件
+			window.currDateInput=input;//设置为当前的日期输入框
+			var d=document.getElementById('d_div');
+			var y=document.getElementById('y');
+			var m=document.getElementById('m');
+			var now=new Date();//当前的日期
+			y.value=now.getFullYear();//年份
+			m.value=now.getMonth()+1;//月份
+			d.style.display='block';//显示日历选择区域
+			showDetails();//为日历填充数据
+		}
+	</script>
+</head>
+<body style="text-align: center;" onload="init()">
+	<p>
+		<input type="text" onfocus="inputDate(this)">
+	</p>
+	<div id="d_div" style="border: 1px solid red;display: none;width: 400px;margin: 0 auto;padding:5px;">
+		<p>
+			<select id="y"></select>年
+			<select id="m" onchange="showDetails()"></select>月
+		</p>
+		<table id="tb1" border="1" align="center"></table>
+	</div>
+</body>
+</html>

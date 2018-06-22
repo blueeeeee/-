@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>隐藏和显示的切换效果</title>
+	<style type="text/css">
+		.myclass{
+			color: white;
+			background-color:black;
+			padding:5px;
+		}
+	</style>
+	<script type="text/javascript">
+		function showHide(){
+			//获取目标DOM
+			var mytxt=document.getElementById('mytxt');
+			if (mytxt.style.dispaly=='none')
+				mytxt.style.display='inline';
+			else
+				mytxt.style.display='none';//把显示的值设置为none
+		}
+	</script>
+</head>
+<body style="text-align: center;">
+	<span id="mytxt" class="myclass">测试文本</span>
+	<br>
+	<input type="button" onclick="showHide();" value="隐藏/显示"/>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>让样式动起来</title>
+	<style type="text/css">
+		.myclass{
+			color: blue;
+		}
+	</style>
+	<script type="text/javascript">
+		function changeStyle(){
+			var rs=document.styleSheets[0].cssRules;
+			if (!rs) //有的浏览器不支持cssRules，需要用rules得到
+				document.styleSheets[0].rules;
+			rs[0].style.color='pink';
+		}	
+	</script>
+</head>
+<body style="text-align: center;">
+	<span id="mytxt" class="myclass">测试文本</span>
+	<br>
+	<input type="button" onclick="changeStyle();" value="改变文本颜色">	
+</body>
+</html>

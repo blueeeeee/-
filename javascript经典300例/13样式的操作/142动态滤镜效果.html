@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>动态滤镜效果</title>
+	<style type="text/css">
+		.myclass{
+			color: white;
+			background-color: black;
+			padding:5px;
+		}
+	</style>
+	<script type="text/javascript">
+		var timer=null;
+		//按钮的click事件监听函数
+		function timeHide(){
+			//获取目标DOM
+			var mytxt=document.getElementById("mytxt");
+			if(mytxt.style.opacity=='')//如果目标的opacity属性为默认
+				mytxt.style.opacity=1;//则设置为1，表示完全显示
+			timer=setInterval(function(){//开始一个timer定时器
+				if (mytxt.style.opacity>0) {//如果大于0，则一直自减0.1
+					mytxt.style.opacity=mytxt.style.opacity-0.1;
+				}
+				if (mytxt.style.opacity==0)//当完全隐藏以后，则取消定时器
+					window.clearInterval(timer);//取消定时器
+			},200);//定时间隔为200毫秒
+		}
+	</script>
+</head>
+<body style="text-align: center;">
+	<span id="mytxt" class="myclass">测试文本</span>
+	<br><br>
+	<input type="button" onclick="timeHide();" value="渐隐">
+</body>
+</html>

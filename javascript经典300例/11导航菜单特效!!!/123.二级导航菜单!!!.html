@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<title>二级导航菜单</title>
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+	<script type="text/javascript">
+		//使用jquery的加载回调函数开始定义菜单的功能
+		$(function(){
+			var menus=$('.menu a');//得到菜单下的所有链接
+			for (var i = 0; i < menus.length; i++) {
+				var m=menus[i];//得到当前的链接
+				$(m).mouseover(function(){
+					//得到当前鼠标移入的菜单项的下标
+					var index=$('.menu a').index(this);
+					$('.sub_menu').hide();//把所有的二级菜单隐藏
+					$('.sub_menu').eq(index).show();//显示当前下标的菜单项
+					//计算出这个菜单项所处位置
+			$('.sub_menu').eq(index).css('margin-left',(100*index)+'px');
+				})
+			}
+		})
+	</script>
+	<style type="text/css">
+		.menu{
+			list-style-type: none;
+			width: 400px;
+			margin: 10px auto 0;
+			padding:0;
+		}
+		.menu li{
+			float: left;
+			width: 98px;
+			border: 1px solid black;
+		}
+		.menu a{
+			color: black;
+			width: 100%;
+			text-decoration: none;
+			display: block;
+		}
+		.menu a:hover{
+			background-color: pink;
+		}
+		.clearfix:after{		/*清除浮动*/
+			visibility: hidden;
+			display: block;
+			font-size: 0;
+			clear: both;
+			height: 0;
+			content: ".";
+		}
+		.sub_menu{
+			border: 1px solid black;
+			width: 100px;
+			padding:0;
+			display: none;
+			margin: 0;
+		}
+		.sub_div{
+			width: 400px;
+			margin: 0 auto;
+		}
+
+	</style>
+</head>
+<body style="text-align: center;">
+	<ul class="menu clearfix">
+		<li><a href="#">菜单</a></li>
+		<li><a href="#">菜单</a></li>
+		<li><a href="#">菜单</a></li>
+		<li><a href="#">菜单</a></li>
+	</ul>
+	<div class="sub_div">
+		<ul class="sub_menu">
+			<li><a href="#">菜单</a></li>
+		</ul>
+		<ul class="sub_menu">
+			<li><a href="#">菜单</a></li>
+			<li><a href="#">菜单</a></li>			
+		</ul>
+		<ul class="sub_menu">
+			<li><a href="#">菜单</a></li>
+		</ul>
+		<ul class="sub_menu">
+			<li><a href="#">菜单</a></li>
+			<li><a href="#">菜单</a></li>
+			<li><a href="#">菜单</a></li>
+		</ul>
+	</div>
+</body>
+</html>
+
+<!--
+	可同时为同一标签设置两个类
+	display：none 不为元素保留空间
+-->

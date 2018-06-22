@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>查看今天是否为节假日</title>
+	<script type="text/javascript">
+		function start(){
+			setInterval(function(){
+				var now=new Date();//当前的时间
+				var m=now.getMonth()+1;//月份
+				var d=now.getDate();//日
+				var str='';//拼接字符
+				str+=now.getYear()+1900+'年';//年
+				str+=now.getMonth()+1+'月';//月
+				str+=now.getDate()+'日';//日
+				str+=now.getHours()+'时';//时
+				str+=now.getMinutes()+'分';//分
+				str+=now.getSeconds()+'秒';//秒
+				if (now.getDate()>=5) //如果是星期六或星期天
+					str+=',今天是周末';
+				else if (m==1&&d==1)//如果是1月1日
+					str+=',今天是元旦节';
+				else if(m==5&&d==1)//如果是5月1日
+					str+=',今天是劳动节';
+				else if (m==10&&d==1) //如果是10月1日
+					str+=',今天是国庆节';
+				else
+					str+=',今天不是节假日';
+				document.getElementById('left').innerHTML=str;
+			},1000);
+		}
+	</script>
+</head>
+<body style="text-align: center;">
+	<p>
+		<input type="button" value="查看今天是否节假日" onclick="start();">
+	</p>
+	<h2 id="left"></h2>
+</body>
+</html>

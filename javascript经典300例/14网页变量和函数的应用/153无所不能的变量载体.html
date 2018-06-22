@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>无所不能的变量载体</title>
+	<script type="text/javascript">
+		//定义变量f，并为他赋值，函数名是f
+		var f=function(){
+			alert('我是一个函数');//函数功能是执行alert操作
+		};
+		//定义函数callme（),传入的参数就是一个函数
+		function callme(fun){
+			fun();
+		}
+	</script>
+</head>
+<!--在body里定义onload事件，当启动时调用callme（)函数-->
+<body style="text-align: center;" onload="callme(f);">
+</body>
+</html>

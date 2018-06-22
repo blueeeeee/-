@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>访问外部定义的css样式</title>
+	<style type="text/css">
+		.myclass{
+			color: blue;
+		}
+	</style>
+	<script type="text/javascript">
+		//访问外部样式表
+		//console.log(document.styleSheets.length);
+		function showStyle(){
+			var rs=document.styleSheets[0].cssRules;
+		if (!rs)
+			document.styleSheets[0].rules;
+		//访问第一条规则颜色的样式
+		}
+	</script>
+</head>
+<body style="text-align: center;">
+	<span id="mytxt" class="myclass">测试文本</span>
+	<br>
+	<input type="button" onclick="showStyle();" value="查看文本的颜色"/>
+</body>
+</html>

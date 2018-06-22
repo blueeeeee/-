@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<title>动态加载导航菜单</title>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+	<script type="text/javascript">
+		var arr=[ ];//定义数据数组变量
+		//为菜单指定数据，包含了名字和URL
+		arr[arr.length]=[{name:'菜单1',url:'#'},{name:'菜单11',url:'#'}];
+        arr[arr.length]=[{name:'菜单2',url:'#'}];
+        arr[arr.length]=[{name:'菜单3',url:'#'},{name:'菜单31',url:'#'},{name:'菜单32',url:'#'}];
+        //在jquery的加载回调函数里操作
+        $(function(){
+        	//定义菜单的html内容，以ul开头
+        	var html='<ul class="menu clearfix">';
+        	//根据数组变量的长度，开始串联一级菜单
+        	for(var i=0;i<arr.length;i++){
+        		html+='<li><a href="#">菜单'+(i+1)+'</a></li>';
+        	}
+        	html+='</ul>';
+        	//一级菜单组合完成
+        	//开始组合二级菜单
+        	html+='<div class="sub_div clearfix">';
+        	//使用两次循环开始串联二级菜单
+        	for(var i=0;i<arr.length;i++){
+        		var a=arr[i];
+        		html+='<ul class="sub_menu">';//使用sub_menu的ul
+        		for(var j=0;j<a.length;j++){
+        			var item=a[j];//得到数据
+        			//拼接字符
+        			html+='<li><a href="'+item['url']+'">'+item['name']+'</a></li>';
+        		}
+        		html+='</ul>';//完成ul
+        	}
+        	html+='</div>';//完成全部菜单的html
+        	$('body').append(html);//挂接在body里
+        	//开始指定菜单的功能
+        	var menus=$('.menu a');//得到菜单下的所有链接
+        	for (var i = 0; i < menus.length; i++) {
+        		var m=menus[i];//得到当前的链接
+        		$(m).mouseover(function(){//为菜单链接定义onmouseover事件
+        			//得到当前鼠标移入的菜单项的下标
+        			var index=$('.menu a').index(this);
+        			$('.sub_menu').hide();//把所有的二级菜单隐藏
+        			$('.sub_menu').eq(index).show();//显示当前下表的菜单项
+        			//计算出这个菜单项所处的位置
+        			$('.sub_menu').eq(index).css('margin-left',(100*index)+'px');
+        		});
+        	}
+        });
+	</script>
+	<style type="text/css">
+		.menu{
+			list-style-type: none;
+			width: 300px;
+			margin: 10px auto 0;
+			padding:0;
+		}
+		.menu li{
+			float: left;
+			width: 98px;
+			border: 1px solid black;
+		}
+		.menu a{
+			color: black;
+			width: 100%;
+		}
+		.menu a:hover{
+			background-color: pink;
+		}
+		.clearfix:after{
+			visibility: hidden;
+			display: block;
+			font-size: 0;
+			content: ".";
+			clear:both;
+			height: 0;
+		}
+		.sub_div{
+			width: 305px;
+			margin: 0 auto;
+		}
+		.sub_menu{
+			border: 1px solid black;
+			width: 100px;
+			padding:0;
+			display: none;
+			margin: 0;
+			float: left;
+		}
+	</style>
+</head>
+<body style="text-align: center;">	
+</body>
+</html>

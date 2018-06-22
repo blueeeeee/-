@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>用javascript代码替代css实现链式样式</title>
+	<script type="text/javascript">
+		function linkAble(p){
+			var link=document.getElementById('link');
+			link.style.cursor='pointer';//修改文本的鼠标样式
+			link.onmouseover=function(){
+				this.style.color='red';
+			};
+			link.onmouseout=function(){
+				this.style.color='black';
+			};
+			link.onclick=function(){
+				alert('我被单击了');
+			}
+		}
+	</script>
+</head>
+<body style="text-align: center;" onload="linkAble();">
+	<span id="link">我是一个链接哟</span>
+</body>
+</html>

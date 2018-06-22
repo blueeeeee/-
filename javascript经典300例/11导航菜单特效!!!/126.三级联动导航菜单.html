@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<title>三级联动导航菜单</title>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+	<script type="text/javascript">
+		var arr=[];//定义数据数组变量
+		//为菜单指定数据，包含了名字和url
+		arr[0]=[{name:'菜单1',url:'#'},{name:'菜单11',url:'#'}];
+		arr[1]=[{name:'菜单2',url:'#'}];
+		arr[2]=[{name:'菜单3',url:'#'},{name:'菜单31',url:'#'},{name:'菜单32',url:'#',child:[{name:'菜单321',url:'#'}
+		]}];//包含子菜单
+		//在jquery的加载回调函数里操作
+		$(function(){
+			//定义菜单的html内容，以ul开头
+			var html='<ul class="menu clearfix">';
+			//根据数组变量的长度，开始串联一级菜单
+			for(var i=0;i<arr.length;i++){
+					html+='<li><a href="#">菜单'+(i+1)+'</a></li>';
+			}
+			html+='</ul>';
+			//一级菜单组合完成
+			//开始组合二级菜单
+			html+='<div class="sub_div clearfix">';
+			//使用两次循环开始串联二级菜单
+			for(var i=0;i<arr.length;i++){
+				var a=arr[i];//得到当前数据
+				html+='<ul class="sub_menu">';//拼接二级菜单项
+				var sub_count=1;//开始计数id
+				for(var j=0;j<a.length;j++){
+					var item=a[j];//得到数据
+					var sub='';//定义拼接有子菜单的class属性
+					if(item['child'])//如果包含三级菜单
+						sub='sub sub_'+j+'_'+sub_count++;
+						//拼接动态的二级菜单的字符
+					html+='<li><a href="'+item['url']+'" class="'+sub+'" index="'+j+'">'+item['name']+'</a></li>';
+					}
+					html+='</ul>';//完成二级菜单
+					var sub_count=1;//开始为三级菜单的id计数
+					for(var j=0;j<a.length;j++){//遍历三级菜单
+						var item=a[j];//得到数据
+						if (item['child']) {
+							var b=item['child'];//得到子菜单项的数据
+							//拼接第三层的字符
+						html+='<ul class="third_menu" id="'+'sub_'+j+'_'+sub_count+++'">';
+						//遍历第三层的数据变量
+						for(var k=0;k<b.length;k++){
+							html+='<li><a href="'+b[k]['url']+'">'+b[k]['name']+'</a></li>';
+						}
+			            html+='</ul>';//完成第三层
+					}
+				}
+			}
+            html+= '</div>';
+            $('body').append(html);//挂接在body里
+			var menus=$('.menu a');//得到菜单下的所有链接
+			for (var i = 0; i < menus.length; i++) {
+				var m=menus[i];//得到当前的链接
+				$(m).mouseover(function(){
+				//得到当前鼠标移入的菜单项的下标
+					var index=$('.menu a').index(this);
+					$('.sub_menu').hide();//把其他二级菜单隐藏
+					$('.third_menu').hide();//把三级菜单隐藏
+					$('.sub_menu').eq(index).show();//显示对应的二级菜单
+					//计算二级菜单应该定位的位置
+					$('.sub_menu').eq(index).css('margin-left',(100*index)+'px');
+			});
+			}
+			//为包含三级菜单的二级菜单定义onmouseover事件
+			$('.sub').mouseover(function(){
+				//得到它的class属性
+				var className=$(this).attr('class');
+				//得到三级菜单的id值
+				var subId=className.split(' ')[1];
+				$('#'+subId).show();//显示三级菜单
+				var index=$(this).attr('index');//得到它的下标
+				//计算三级菜单显示的坐标位置
+				$('#'+subId).css('margin-top',(parseInt(index)*20)+'px');
+			});		
+		});
+	</script>
+	<style type="text/css">
+		.menu{
+			list-style-type: none;
+			width: 500px;
+			margin:10px auto 0;
+			padding:0;
+		}
+		.menu li{
+			float: left;
+			width: 98px;
+			border: 1px solid black;
+		}
+		.menu a{
+			color: black;
+			width: 100%;
+		}
+		.menu a:hover{
+			background-color: pink;
+			display: block;
+		}
+		.clearfix:after{
+			visibility: hidden;
+			display: block;
+			font-size: 0;
+			content:".";
+			height: 0;
+			clear:both;
+		}
+		.sub_div{
+			width: 505px;
+			margin:0 auto;
+		}
+		.sub_menu{
+			border: 1px solid black;
+			width: 100px;
+			padding:0;
+			display: none;
+			margin:0;
+			float: left;
+		}
+		.third_menu{
+			display: none;
+			float: left;
+			border: 1px solid black;
+			width: 100px;
+			padding:0;
+			margin:0;
+		}
+	</style>
+</head>
+<body style="text-align: center;">
+</body>
+</html>

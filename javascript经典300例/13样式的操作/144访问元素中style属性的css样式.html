@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>访问元素中style属性的CSS样式</title>
+	<script type="text/javascript">
+		function showStyle(){
+			var mytxt=document.getElementById('mytxt');
+			alert(mytxt.style.color);//展示目标style的颜色
+		}
+	</script>
+</head>
+<body style="text-align: center;">
+	<span id="mytxt" style="color: red;">测试文本</span>
+	<br>
+	<input type="button" onclick="showStyle();" value="查看文本的颜色">
+</body>
+</html>

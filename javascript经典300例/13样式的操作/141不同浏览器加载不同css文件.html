@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>不同浏览器加载不同的CSS文件</title>
+	<link rel="stylesheet" type="text/css" href="css1.css">
+	<link rel="stylesheet" type="text/css" href="css2.css">
+	<script type="text/javascript">
+		function chooseCss(){
+			if (window.navigator.userAgent.indexOf("MSIE")>=1) {
+					document.styleSheets[1].disabled=true;
+			}else if (window.navigator.userAgent.indexOf("Firefox")>=1) {
+				//如果浏览器为firefox
+				//把样式1禁用
+				document.styleSheets[0].disabled=true;
+			}else{
+				//其他浏览器
+				docuemnt.styleSheets[0].disabled=true;
+			}
+		}
+	</script>
+</head>
+<body style="text-align: center;" onload="chooseCss()">
+	<span id="mytxt" class="myclass">测试文本</span>
+</body>
+</html>

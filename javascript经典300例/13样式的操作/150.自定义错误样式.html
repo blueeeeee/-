@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>自定义错误样式</title>
+	<style type="text/css">
+		.myerr{
+			border-bottom: 1px dotted red;
+		}
+	</style>
+	<script type="text/javascript">
+		function save(){
+			var t1=document.getElementById('t1');
+			var t2=document.getElementById('t2');
+			if (t1.value=='') {//如果t1为空，则修改class
+				t1.className='myerr';
+			}
+			if (t2.value=='') {//如果t2为空，则修改class
+				t2.className='myerr';
+			}
+		}
+	</script>
+</head>
+<body style="text-align: center;">
+	<form>
+		姓名：<input type="text" name="t1" id="t1" class=""><br><br>
+		年龄：<input type="text" name="t2" id="t2" class="">
+	</form>
+	<br>
+	<input type="button" onclick="save()" value="保存">
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<title>凸显正在浏览的菜单项的导航菜单</title>
+	<script type="text/javascript">
+		var currIndex=1;//正在浏览的菜单项的下标
+		function init(){
+			//得到菜单DOM
+			var menu=document.getElementById('menu');
+			//遍历所有的菜单项
+			var items=menu.children;
+			for (var i = 0; i < items.length; i++) {
+				var item=items[i];//得到当前的菜单项
+				//如果遍历到正在浏览的菜单项，就添加样式
+				if(i==currIndex)
+					item.className='curr';
+			}
+		}
+	</script>
+	<style type="text/css">
+		.menu{						/*菜单的整体样式*/
+			list-style-type: none;
+			width: 400px;
+			margin: 10 auto;
+		}
+		.menu li{					/*菜单的列表样式*/
+			float: left;
+			width: 98px;
+			border: 1px solid black;
+		}
+		.menu a{					/*菜单链接的样式*/
+			color: black;
+			width: 100%;
+			text-decoration: none;
+			display:block;
+		}
+		.menu a:hover{				/*链接在鼠标移入的样式*/
+			background-color: pink;
+		}
+        .curr{
+        	background-color: pink;
+        }
+	</style>
+</head>
+<body style="text-align: center;" onload="init();">
+	<ul class="menu" id="menu">
+		<li><a href="#">菜单</a></li>
+		<li><a href="#">菜单</a></li>
+		<li><a href="#">菜单</a></li>
+		<li><a href="#">菜单</a></li>
+	</ul>
+</body>
+</html>
+
+<!--
+	代码定义了一个currIndex变量，它的值一般由服务器端决定；然后遍历所有的菜单项，当下标与currIndex一致时，就可以把当前的那个菜单项加上预定义好的CSS样式。
+-->

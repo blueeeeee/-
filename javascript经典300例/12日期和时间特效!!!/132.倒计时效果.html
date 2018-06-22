@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>倒计时效果</title>
+	<script type="text/javascript">
+		//开始倒计时函数
+		function start(){
+			setInterval(function(){
+				var now=new Date();
+				//得到下一个元旦的时间戳
+				var end=new Date(now.getYear()+1+1900,0,1);
+				//得到距离元旦时间戳的毫秒数
+				var time=end.getTime()-now.getTime();
+				var str=getTimeText(time);
+				document.getElementById('left').innerHTML='距离明年元旦还有:'+str;
+			},1000);
+		}
+		//得到时间表示形式的函数
+		function getTimeText(time){
+			time/=1000;//除去毫秒的尾数
+			var days=time/(24*60*60);//得到天数
+			var hour=time%(24*60*60)/(60*60);//得到小时数
+			var min=time%(24*60*60)%(60*60)/60;//得到分钟数
+			var sec=time%(24*60*60)%(60*60)%60;//得到秒数
+			var str='';//定义拼接变量
+			if (days>0)
+				str+=Math.floor(days)+'天';
+			if (hour>0) 
+				str+=Math.floor(hour)+'时';
+			if (min>0)
+				str+=Math.floor(min)+'分';
+			str+=Math.floor(sec)+'秒';
+			return str;
+		}
+	</script>
+</head>
+<body style="text-align: center;">
+	<p>
+		<input type="button" value="进入倒计时" onclick="start()">
+	</p>
+	<h2 id="left"></h2>
+</body>
+</html>

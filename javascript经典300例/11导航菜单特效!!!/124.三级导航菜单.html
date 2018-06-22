@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<title>三级导航菜单</title>
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+	<script type="text/javascript">
+		//使用jquery的加载回调函数开始定义菜单的功能
+		$(function(){
+			var menus=$('.menu a');//得到菜单下的所有链接
+			for (var i = 0; i < menus.length; i++) {
+				var m=menus[i];//得到当前的链接
+				$(m).mouseover(function(){
+					//得到当前鼠标移入的菜单项的下标
+					var index=$('.menu a').index(this);
+					$('.sub_menu').hide();//把所有的二级菜单隐藏
+					$('.third_menu').hide();//三级菜单也隐藏
+					$('.sub_menu').eq(index).show();//显示当前下标的菜单项
+					//计算出这个菜单项所处位置
+			$('.sub_menu').eq(index).css('margin-left',(100*index)+'px');
+				})
+			}
+			//为包含第三级菜单的二级菜单定义onmouseover事件
+			$('.sub').mouseover(function(){
+				//得到它的class属性
+				var className=$(this).attr('class');
+				//得到三级菜单的id值
+				var subId=className.split(' ')[1];
+				$('#'+subId).show();//显示三级菜单
+				var index=$(this).attr('index');//二级菜单上的index
+				//计算三级菜单显示的坐标位置
+				$('#'+subId).css('margin-top',(parseInt(index)*20)+'px');
+			});
+		});
+	</script>
+	<style type="text/css">
+		.menu{
+			list-style-type: none;
+			width: 500px;
+			margin: 10px auto 0;
+			padding:0;
+		}
+		.menu li{
+			float: left;
+			width: 98px;
+			border: 1px solid black;
+			list-style-type: none;
+		}
+		.menu a{
+			color: black;
+			width: 100%;
+			display: block;
+			text-decoration: none;
+		}
+		.menu a:hover{
+			background-color: pink;
+		}
+		.clearfix:after{		/*清除浮动*/
+			visibility: hidden;
+			display: block;
+			font-size: 0;
+			clear: both;
+			height: 0;
+			content: ".";
+		}
+		.sub_div{
+			width: 505px;
+			margin: 0 auto;
+		}
+		.sub_menu{
+			border: 1px solid black;
+			width: 100px;
+			padding:0;
+			display: none;
+			margin: 0;
+			float: left;
+		}
+		.sub_div li{
+			list-style-type: none;
+		}
+		.sub_div a{
+			text-decoration: none;
+			color: black;
+			display: block;
+		}
+		.sub_div a:hover{
+			background-color: blue;
+		}
+		
+		.third_menu{
+			display: none;
+			float: left;
+			border: 1px solid black;
+			width: 100px;
+			padding:0;
+			margin: 0;
+		}
+	</style>
+</head>
+<body style="text-align: center;">
+	<ul class="menu clearfix">
+		<li><a href="#">菜单</a></li>
+		<li><a href="#">菜单</a></li>
+		<li><a href="#">菜单</a></li>
+		<li><a href="#">菜单</a></li>
+	</ul>
+	<div class="sub_div clearfix">
+		<ul class="sub_menu">
+			<li><a href="#" class="sub sub_1" index="0">菜单</a></li>
+		</ul>
+		<ul class="third_menu" id="sub_1">
+			<li><a href="#">菜单</a></li>
+			<li><a href="#">菜单</a></li>	
+		</ul>
+		<ul class="sub_menu">
+			<li><a href="#">菜单</a></li>
+			<li><a href="#">菜单</a></li>			
+		</ul>
+		<ul class="sub_menu">
+			<li><a href="#">菜单</a></li>
+		</ul>
+		<ul class="sub_menu">
+			<li><a href="#">菜单</a></li>
+			<li><a href="#" class="sub sub_2" index="1">菜单</a></li>
+			<li><a href="#">菜单</a></li>
+		</ul>
+		<ul class="third_menu" id="sub_2">
+			<li><a href="#">菜单</a></li>
+			<li><a href="#">菜单</a></li>
+		</ul>
+	</div>
+</body>
+</html>

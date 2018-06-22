@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>调用动态函数</title>
+	<script type="text/javascript">
+		function fun(){
+			var val=document.getElementById('text').value;
+			window[val].call(this);//获取动态的函数变量，然后使用call调用它
+		}
+		function f1(){
+			alert('我是f1');
+		}
+		function f2(){
+			alert('我是f2');
+		}
+	</script>
+</head>
+<body style="text-align: center;">
+	<input type="text" value="" id="text"><br><br>
+	<input type="button" value="调用" onclick="fun()">
+</body>
+</html>
+
+<!--Function.prototype的call()函数，它是所有函数类型的变量都自带的函数。-->
