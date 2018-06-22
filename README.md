@@ -26,7 +26,25 @@
   8.[隐藏或显示元素](https://blueeeeee.github.io/Demo/javascript经典300例/2DOM操作/28.隐藏或显示元素.html)  
   9.[倒排序子元素](https://blueeeeee.github.io/Demo/javascript经典300例/2DOM操作/29.倒排序子元素!!!.html)  
   10.[删除所有子元素](https://blueeeeee.github.io/Demo/javascript经典300例/2DOM操作/30.删除所有的子元素.html)  
-  
+  * 控制表单控件  
+  1.[遍历所有表单控件](https://blueeeeee.github.io/Demo/javascript经典300例/3控制表单控件/31.遍历所有的表单控件!!!.html)  
+  2.[动态选择聚焦的控件](https://blueeeeee.github.io/Demo/javascript经典300例/3控制表单控件/37.动态选择聚焦的控件.html)  
+  3.[设置下拉菜单的值](https://blueeeeee.github.io/Demo/javascript经典300例/3控制表单控件/41.设置下拉菜单的值.html)  
+  4.[批量为所有表单加一个说明](https://blueeeeee.github.io/Demo/javascript经典300例/3控制表单控件/40.批量为所有的表单控件加一个说明...html)  
+  5.[勾选全部复选框](https://blueeeeee.github.io/Demo/javascript经典300例/3控制表单控件/43.勾选全部复选框.html)  
+  6.[为表单聚焦控件设置醒目样式](https://blueeeeee.github.io/Demo/javascript经典300例/3控制表单控件/44.为表单的聚焦控件设置醒目的样式.html)  
+  * 窗口的控制和框架的互操作(略)  
+  1.[计算窗口内框架的个数](https://blueeeeee.github.io/Demo/javascript经典300例/4窗口的控制和框架的互操作/45.计算窗口内框架的数量.html)  
+  2.[打开一个新窗口](https://blueeeeee.github.io/Demo/javascript经典300例/4窗口的控制和框架的互操作/51.打开一个新窗口.html)  
+  3.[网页打开5s后弹出广告窗口](https://blueeeeee.github.io/Demo/javascript经典300例/4窗口的控制和框架的互操作/57.网页打开5秒后弹出广告窗口.html)  
+  * 鼠标特效  
+  1.[禁用鼠标右键](https://blueeeeee.github.io/Demo/javascript经典300例/5鼠标特效/58.禁用鼠标右键.html)  
+  2.[鼠标进出时字体大小改变](https://blueeeeee.github.io/Demo/javascript经典300例/5鼠标特效/60.鼠标进出时字体大小变化.html)  
+  3.[双击鼠标滚动到网页底部](https://blueeeeee.github.io/Demo/Demo/javascript经典300例/5鼠标特效/61.双击鼠标滚动到网页底部.html)  
+  4.[鼠标左键按下弹出窗口](https://blueeeeee.github.io/Demo/javascript经典300例/5鼠标特效/62.鼠标左键按下弹出窗口.html)  
+  5.[鼠标放上链接出现不同的颜色](https://blueeeeee.github.io/Demo/javascript经典300例/5鼠标特效/63.鼠标放上链接出现不同的颜色.html)  
+  6.[用鼠标拖动图片](https://blueeeeee.github.io/Demo/javascript经典300例/5鼠标特效/64.用鼠标拖动图片!!!.......html)  
+  7.[让鼠标滑轮失效](https://blueeeeee.github.io/Demo/javascript经典300例/5鼠标特效/65.让鼠标滑轮失效.html)  
 * 静态页面  
   ---
   1.[杂页](https://blueeeeee.github.io/Demo/静态页面/1杂页/one-index.html)  
