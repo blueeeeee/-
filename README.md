@@ -1,5 +1,5 @@
 # Demo
-记录我在学习过程中写的一些小demo
+漫漫学习路，记录我在学习过程中写的一些小demo...
 * 简历实例  
   ---  
   1.[简历one](https://blueeeeee.github.io/Demo/简历/resume.html)  
@@ -75,7 +75,7 @@
   9.[用户输入完以后立刻进行格式校验](https://blueeeeee.github.io/Demo/javascript经典300例/8文本输入框和下拉菜单的特效!/100.用户输入完以后立刻进行格式校验.html)  
   10.[鼠标划过文本框改变其背景颜色](https://blueeeeee.github.io/Demo/javascript经典300例/8文本输入框和下拉菜单的特效!/101.鼠标划过文本框改变其背景颜色.html)  
   11.[输入文字时文本框闪烁](https://blueeeeee.github.io/Demo/javascript经典300例/8文本输入框和下拉菜单的特效!/102.输入文字时文本边框闪烁.html)  
-  * __层的应用__
+  * __层的应用__  
   1.[从下往上的信息滚动特效](https://blueeeeee.github.io/Demo/javascript经典300例/9层的应用!!/103.从下往上的信息滚动特效!!.html)  
   2.[灯箱效果](https://blueeeeee.github.io/Demo/javascript经典300例/9层的应用!!/104.灯箱效果.html)  
   3.[让层的叠放次序分明](https://blueeeeee.github.io/Demo/javascript经典300例/9层的应用!!/105.让层的叠放次序分明.html)  
@@ -85,10 +85,11 @@
   7.[带关闭按钮的右下角提示层](https://blueeeeee.github.io/Demo/javascript经典300例/9层的应用!!/110.带关闭按钮的右下角的提示层.html)  
   8.[底部工具栏](https://blueeeeee.github.io/Demo/javascript经典300例/9层的应用!!/111.底部工具栏.html)  
   
-  __未完待续__  
+  __未完待续...__  
   
 * 静态页面  
   ---
+  记录了写的完整的页面，并通过md文本做了每个页面的总结
   1.[杂页](https://blueeeeee.github.io/Demo/静态页面/1杂页/one-index.html)  
   2.[主页](https://blueeeeee.github.io/Demo/静态页面/2主页/index.html)   
 
