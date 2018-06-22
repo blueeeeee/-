@@ -6,7 +6,7 @@
   2.[简历two](https://blueeeeee.github.io/Demo/简历/resume2.html)
 * javascrip经典案例  
   ---  
-  下面展示部分： 
+  通过看《javascript经典300例》，敲一遍例子，学到了一些原生js处理页面的方法，目前还在研读，没有敲完，每敲一个实例并通过注释写下了自己的一些总结，便于再次理解翻看，下面展示部分实例效果，详见代码文件： 
   * 网页特效  
   1.[动态关闭窗口](https://blueeeeee.github.io/Demo/javascript经典300例/1网页特效/3.动态关闭窗口.html)  
   2.[若干秒不操作自动关闭窗口](https://blueeeeee.github.io/Demo/javascript经典300例/1网页特效/5.若干秒后不操作自动关闭页面!!!.html)  
@@ -74,7 +74,8 @@
   8.[三级联动的省市县下拉菜单](https://blueeeeee.github.io/Demo/javascript经典300例/8文本输入框和下拉菜单的特效!/99.三级联动的省市县下拉菜单.html)  
   9.[用户输入完以后立刻进行格式校验](https://blueeeeee.github.io/Demo/javascript经典300例/8文本输入框和下拉菜单的特效!/100.用户输入完以后立刻进行格式校验.html)  
   10.[鼠标划过文本框改变其背景颜色](https://blueeeeee.github.io/Demo/javascript经典300例/8文本输入框和下拉菜单的特效!/101.鼠标划过文本框改变其背景颜色.html)  
-  11.[输入文字时文本框闪烁](https://blueeeeee.github.io/Demo/javascript经典300例/8文本输入框和下拉菜单的特效!/102.输入文字时文本边框闪烁.html)  * __层的应用__
+  11.[输入文字时文本框闪烁](https://blueeeeee.github.io/Demo/javascript经典300例/8文本输入框和下拉菜单的特效!/102.输入文字时文本边框闪烁.html)  
+  * __层的应用__
   1.[从下往上的信息滚动特效](https://blueeeeee.github.io/Demo/javascript经典300例/9层的应用!!/103.从下往上的信息滚动特效!!.html)  
   2.[灯箱效果](https://blueeeeee.github.io/Demo/javascript经典300例/9层的应用!!/104.灯箱效果.html)  
   3.[让层的叠放次序分明](https://blueeeeee.github.io/Demo/javascript经典300例/9层的应用!!/105.让层的叠放次序分明.html)  
@@ -84,7 +85,8 @@
   7.[带关闭按钮的右下角提示层](https://blueeeeee.github.io/Demo/javascript经典300例/9层的应用!!/110.带关闭按钮的右下角的提示层.html)  
   8.[底部工具栏](https://blueeeeee.github.io/Demo/javascript经典300例/9层的应用!!/111.底部工具栏.html)  
   
-  __未完待续__
+  __未完待续__  
+  
 * 静态页面  
   ---
   1.[杂页](https://blueeeeee.github.io/Demo/静态页面/1杂页/one-index.html)  
