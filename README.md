@@ -11,6 +11,6 @@
   
 * 静态页面  
   ---
-  1.[杂页]（https://blueeeeee.github.io/Demo/静态页面/1杂页/one-index.html)  
+  1.[杂页](https://blueeeeee.github.io/Demo/静态页面/1杂页/one-index.html)  
   2.[主页](https://blueeeeee.github.io/Demo/静态页面/2主页/index.html)
   
