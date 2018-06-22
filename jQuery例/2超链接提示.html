@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>超链接的提示效果</title>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+	<script type="text/javascript">
+	$(function(){
+		var x=10;
+		var y=20;
+		$("a.tooltip").mouseover(function(e){
+			this.myTitle=this.title;
+			this.title="";
+			//创建<div>元素
+			var tooltip="<div id='tooltip'>"+this.myTitle+"</div>";
+			$("body").append(tooltip);//把它追加到文档中
+			$("#tooltip")
+				.css({
+					"top":(e.pageY+y)+"px",
+					"left":(e.pageX+x)+"px"
+				}).show("fast");//设置x坐标和y坐标，并显示
+		}).mouseout(function(){
+			this.title=this.myTitle;
+			$("#tooltip").remove();//移除
+		}).mousemove(function(e){
+			$("#tooltip")
+				.css({
+					"position":"absolute",
+					"top":(e.pageY+y)+"px",
+					"left":(e.pageX+x)+"px"
+				});
+		});
+	})
+	</script>
+</head>
+<body>
+	<p><a href="#" class="tooltip" title="这是我的超链接提示1">提示1.</a></p>
+	<p><a href="#" class="tooltip" title="这是我的超链接提示2">提示2.</a></p>
+	<br><br><br><br>
+	<p><a href="#" title="这是自带提示1">自带提示1</a></p>
+	<p><a href="#" title="这是自带提示2">自带提示2</a></p>
+</body>
+</html>
+
+<!--
+pageX()属性是鼠标指针的位置，相对于文档的左边缘。 
+pageY()属性是鼠标指针的位置，相对于文档的上边缘。 
+
+为什么当鼠标滑出时，要把属性值又赋给属性title呢？
+因为当鼠标滑出时，需要考虑再次滑入时属性title的值，如果不将myTitle的值重新赋给title属性，当再次滑入时，title的值为空。
+-->

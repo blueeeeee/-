@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>图片提示效果</title>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			var x=10;
+			var y=20;
+			$("a.tooltip").mouseover(function(e){
+				this.myTitle=this.title;
+				this.title="";
+				var imgTitle=this.myTitle?"<br/>"+this.myTitle:"";
+				var tooltip="<div id='tooltip'><img src='"+this.href+"' alt='产品预览图'/>"+imgTitle+"</div>";//创建div元素
+				$("body").append(tooltip);//把它追加到文档中
+				$("#tooltip img")
+					.css({
+						"top":(e.pageY+y)+"px",
+						"left":(e.pageX+x)+"px",
+						"height":"400px",
+						"width":"400px"
+					}).show("fast");//设置X坐标和Y坐标，并且显示
+			}).mouseout(function(){
+				this.title=this.myTitle;
+				$("#tooltip").remove();//移除
+			}).mousemove(function(e){
+				$("#tooltip")
+					.css({
+						"position":"absolute",
+						"top":(e.pageY+y)+"px",
+						"left":(e.pageX+x)+"px"
+					});
+			});
+		})
+	</script>
+	<style type="text/css">
+		*{margin: 0;padding:0;}
+		li{
+			list-style-type: none;
+			display: inline;
+		}
+		img{
+			border: 1px solid gray;
+			margin: 10px;
+		}
+	</style>
+</head>
+<body>
+	<ul>
+		<li><a href="./images/apple.jpg" class="tooltip" title="苹果"><img src="./images/apple.jpg"></a></li>
+		<li><a href="./images/grape.jpg" class="tooltip" title="葡萄"><img src="./images/grape.jpg"></a></li>
+		<li><a href="./images/bna.jpg" class="tooltip" title="香蕉"><img src="./images/bna.jpg"></a></li>
+		<li><a href="./images/melon.jpg" class="tooltip" title="西瓜"><img src="./images/melon.jpg"></a></li>
+	</ul>
+</body>
+</html>
+
+<!--
+	为什么当鼠标滑出时，要把属性值又赋给属性title呢？
+	因为当鼠标滑出时，需要考虑再次滑入时属性title的值，如果不将myTitle的值重新赋给title属性，当再次滑入时，title的值为空。
+-->

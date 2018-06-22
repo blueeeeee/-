@@ -1,0 +1,78 @@
+<html>
+<head>
+<title>品牌列表的效果</title>
+<meta http-equiv="content-type" content="text/html;charset=utf-8">
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		var $category=$("ul li:gt(5):not(:last)");
+		$category.hide();//隐藏上面获取到的jQuery对象
+		var $toggleBtn=$('div.showmore>a');//获取显示全部品牌按钮
+		$toggleBtn.click(function(){
+			if ($category.is(":visible")) {
+				$category.hide();
+				$(this).find('span')
+						.css("background","lime")
+						.text("显示全部品牌");
+				$('ul li').removeClass("promoted");//去掉高亮样式
+			}else{
+				$category.show();//显示全部品牌
+				$(this).find('span')
+						.css("background","url(./images/img.jpg) no-repeat 0 0")
+						.text("精简显示品牌");//链式操作
+				$("ul li").filter(":contains('佳能'),:contains('尼康'),:contains('奥林巴斯')")
+						.addClass("promoted");//添加高亮样式	
+			}
+			return false;//由于给超链接添加onclick事件，让浏览器认为用户没有单击该超链接，阻止超链接跳转
+		})	
+	})
+</script>
+<style type="text/css">
+	*{margin: 0;padding: 0;}
+	li{list-style-type: none;}
+	a{text-decoration: none;text-align: center;line-height: 1.5em;}
+	.SubCategoryBox{
+		width: 600px;
+		border:1px solid black;
+		margin: 10px auto;
+	}
+	.SubCategoryBox li{
+		width: 199px;
+		float: left;
+	}
+	.showmore{
+		clear: both;
+		margin: 5px auto;
+		width: 100px;
+		border: 1px dotted black;
+		color: black;
+	}
+	.promoted a,.promoted i{
+			color: red;
+	}
+</style>
+</head>
+<body style="text-align: center;">
+<div class="SubCategoryBox">
+	<ul>
+		<li><a href="#">佳能</a><i>(30440)</i></li>
+		<li><a href="#">索尼</a><i>(27220)</i></li>
+		<li><a href="#">三星</a><i>(20808)</i></li>
+		<li><a href="#">尼康</a><i>(17821)</i></li>
+		<li><a href="#">松下</a><i>(12289)</i></li>
+		<li><a href="#">卡西欧</a><i>(8242)</i></li>
+		<li><a href="#">富士</a><i>(14894)</i></li>
+		<li><a href="#">柯达</a><i>(9520)</i></li>
+		<li><a href="#">宾得</a><i>(2195)</i></li>
+		<li><a href="#">理光</a><i>(4114)</i></li>
+		<li><a href="#">奥林巴斯</a><i>(3091)</i></li>
+		<li><a href="#">明基</a><i>(1466)</i></li>
+		<li><a href="#">爱国者</a><i>(3091)</i></li>
+		<li><a href="#">其他品牌相机</a><i>(7275)</i></li>
+	</ul>
+	<div class="showmore">
+		<a href="more.html"><span>显示全部品牌</span></a>
+	</div>
+</div>
+</body>
+</html>
