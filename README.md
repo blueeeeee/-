@@ -45,6 +45,27 @@
   5.[鼠标放上链接出现不同的颜色](https://blueeeeee.github.io/Demo/javascript经典300例/5鼠标特效/63.鼠标放上链接出现不同的颜色.html)  
   6.[用鼠标拖动图片](https://blueeeeee.github.io/Demo/javascript经典300例/5鼠标特效/64.用鼠标拖动图片!!!.......html)  
   7.[让鼠标滑轮失效](https://blueeeeee.github.io/Demo/javascript经典300例/5鼠标特效/65.让鼠标滑轮失效.html)  
+  * 按钮特效  
+  1.[在网页上为用户定义一个打印按钮](https://blueeeeee.github.io/Demo/javascript经典300例/6按钮特效/69.在网页上为用户定义一个打印按钮.html)  
+  2.[enter键自动提交表单](https://blueeeeee.github.io/Demo/javascript经典300例/6按钮特效/70.Enter键自动提交表单.html)  
+  3.[按钮在单击以后失效](https://blueeeeee.github.io/Demo/javascript经典300例/6按钮特效/71.按钮在单击以后失效.html)  
+  4.[删除按钮的提醒功能](https://blueeeeee.github.io/Demo/javascript经典300例/6按钮特效/72.删除按钮的提醒功能.html)  
+  5.[图片式的按钮](https://blueeeeee.github.io/Demo/javascript经典300例/6按钮特效/73.图片式的按钮.html)  
+  6.[不同的状态展示不同样式的按钮](https://blueeeeee.github.io/Demo/javascript经典300例/6按钮特效/75.不同的状态展示不同样式的按钮!!!!!.html)  
+  7.[注册按钮倒计时的效果](https://blueeeeee.github.io/Demo/javascript经典300例/6按钮特效/76.注册按钮倒计时的效果.html)  
+  8.[阅读完协议后才可以单击注册按钮](https://blueeeeee.github.io/Demo/javascript经典300例/6按钮特效/77.阅读完协议后才可以单击注册按钮!!!!!.html)  
+  9.[会变色的按钮](https://blueeeeee.github.io/Demo/javascript经典300例/6按钮特效/78.会变色的按钮.html)  
+  * 链接特效  
+  1.[用链接模拟一个按钮](https://blueeeeee.github.io/Demo/javascript经典300例/7链接特效/82.用链接模拟一个按钮.html)  
+  2.[用链接替代表单提交按钮](https://blueeeeee.github.io/Demo/javascript经典300例/7链接特效/83.用链接替代表单提交按钮.html)  
+  3.[动态改变一个链接的地址)(https://blueeeeee.github.io/Demo/javascript经典300例/7链接特效/84.动态改变一个链接的地址.html)  
+  4.[让所有链接在新窗口打开](https://blueeeeee.github.io/Demo/javascript经典300例/7链接特效/85.让所有链接在新窗口打开.html)  
+  5.[回到顶部的链接](https://blueeeeee.github.io/Demo/javascript经典300例/7链接特效/88.回到顶部的链接.html)  
+  6.[需要确认的链接](https://blueeeeee.github.io/Demo/javascript经典300例/7链接特效/89.需要确认的链接.html)  
+  7.[几条链接交替显示](https://blueeeeee.github.io/Demo/javascript经典300例/7链接特效/90.几条链接交替显示.html)  
+  * _文本输入框和下拉菜单的特效_  
+  
+  
 * 静态页面  
   ---
   1.[杂页](https://blueeeeee.github.io/Demo/静态页面/1杂页/one-index.html)  
