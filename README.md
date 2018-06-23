@@ -91,7 +91,8 @@
   ---
   记录了写的完整的页面，并通过md文本做了每个页面的总结  
   1.[杂页](https://blueeeeee.github.io/Demo/静态页面/1杂页/one-index.html)  
-  2.[主页](https://blueeeeee.github.io/Demo/静态页面/2主页/index.html)   
+  2.[主页](https://blueeeeee.github.io/Demo/静态页面/2主页/index.html)  
+  3.[电商主页](https://blueeeeee.github.io/Demo/静态页面/3电商/index.html)  
 
 * jQuery例
   ---  
