@@ -1,0 +1,34 @@
+*{padding:0;margin: 0;}
+table,th,tr,td{
+	border-collapse: collapse;
+	border:1px solid #5e5e5e;
+	margin: 30px auto;
+	padding: 10px 20px;
+}
+li{
+	list-style: none;
+}
+tbody th{
+	background:#ccc;
+}
+thead{
+	background: #666;
+}
+.row li{
+	float:left;
+    padding-right: 20px;
+}
+tbody tr:nth-child(odd)
+{
+	background: #e6e6fa;
+}
+tbody tr:nth-child(even)
+{
+	background: #fff0f5;
+}
+/*遇到的问题
+对表头thead只有一格内容设置时，
+无法设置样式，需在thead内加上tr，td(或th)。
+因为thead和tr非实际元素，
+在同一行中要表示单元格必须要用tr或td元素标签。
+*/
