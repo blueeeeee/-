@@ -1,9 +1,6 @@
 # Demo
-漫漫学习路，记录我在学习过程中写的一些小demo...
-* 简历实例  
-  ---  
-  1.[简历one](https://blueeeeee.github.io/Demo/简历/resume.html)  
-  2.[简历two](https://blueeeeee.github.io/Demo/简历/resume2.html)
+记录我在学习过程中写的一些小demo...
+
 * javascrip经典案例  
   ---  
   通过看《javascript经典300例》，敲一遍例子，学到了一些原生js处理页面的方法，目前还在研读，没有敲完，每敲一个实例并通过注释写下了自己的一些总结，便于再次理解翻看，下面展示部分实例效果，详见代码文件： 
@@ -87,13 +84,13 @@
   
   __未完待续...__  
   
-* 静态页面  
+* 练习demo 
   ---
   记录了写的完整的页面，并通过md文本做了每个页面的总结  
-  1.[杂页](https://blueeeeee.github.io/Demo/静态页面/1杂页/one-index.html)  
-  2.[主页](https://blueeeeee.github.io/Demo/静态页面/2主页/index.html)  
-  3.[电商主页](https://blueeeeee.github.io/Demo/静态页面/3电商/index.html)  
-
+  1.[杂页](https://blueeeeee.github.io/Demo/练习demo/1杂页/one-index.html)  
+  2.[主页](https://blueeeeee.github.io/Demo/练习demo/2主页/index.html)  
+  3.[电商主页](https://blueeeeee.github.io/Demo/练习demo/3电商/index.html)  
+  4.[瀑布流](https://blueeeeee.github.io/Demo/练习demo/4瀑布流/index.html)
 * jQuery例
   ---  
   记录了通过jQuery写的简单效果  
