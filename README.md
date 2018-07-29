@@ -91,7 +91,7 @@
   2.[主页](https://blueeeeee.github.io/Demo/练习demo/2主页/index.html)  
   3.[电商主页](https://blueeeeee.github.io/Demo/练习demo/3电商/index.html)  
   4.[瀑布流](https://blueeeeee.github.io/Demo/练习demo/4瀑布流/index.html)    
-  5.[选项卡-点击](https://blueeeeee.github.io/Demo/练习demo/6选项卡/tab-click.html）  
+  5.[选项卡-点击](https://blueeeeee.github.io/Demo/练习demo/6选项卡/tab-click.html)    
   6.[选项卡-滑动](https://blueeeeee.github.io/Demo/练习demo/6选项卡/tab-slide.html)
 * jQuery例
   ---  
