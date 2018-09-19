@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>吸顶条-jq</title>
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+	<style type="text/css">
+		div{margin:0;padding: 0;width:800px;height:30px;background: red;}
+	</style>
+</head>
+<body>
+	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+	<div>
+	这是一个吸顶条	
+	</div>
+	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			var top=$('div').offset().top;//到文档顶部			
+			$(document).scroll(function(){
+                if($(document).scrollTop()>=top){
+                	$('div').css({'position':'fixed','top':0})
+                }else{
+                	$('div').css({'position':'absolute','top':top})
+                }
+			})
+		})
+	</script>
+</body>
+</html>

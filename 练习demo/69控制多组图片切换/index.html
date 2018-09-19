@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>控制多组图片</title>
+	<style type="text/css">
+	html,body,div,p,input,span{margin:0;padding: 0;}
+	html{height:561px;}
+    body{background: url(images/bg.gif) repeat-x;height:561px;}
+    #pre,#next{border-radius:5px;padding: 5px;background: #ccc;margin-left:100px;margin-top:80px;margin-bottom: 0;outline: none;}
+    .pic1{width:600px;height:400px;margin:100px;margin-top: 50px;margin-bottom:0;}
+    .pic1 img{width:600px;height:350px;background: url(images/loader_ico.gif) no-repeat center center;}
+    .pic1 p,.pic2 p{color:#fff;text-align: center;}
+    .pic1 span,.pic2 span{color:#fff;}
+    .pic2{width: 350px;height:400px;float:left;position:relative;top:-400px;left:800px;}
+    .pic2 img{width:350px;height:350px;background: url(images/loader_ico.gif) no-repeat center center;}
+	</style>
+</head>
+<body>
+	<input type="button" value="上一组" id="pre">
+	<input type="button" value="下一组" id="next">
+	<div class="pic1">
+		<img>
+		<p>文字描述</p>
+		<span>图片数量</span>
+	</div>
+	<div class="pic2">
+		<img>
+		<p>文字描述</p>
+		<span>图片数量</span>
+	</div>
+
+	<script>
+		window.onload=function(){
+			var oPre=document.getElementById('pre');
+			var oNext=document.getElementById('next');
+			var aImg=document.getElementsByTagName('img');
+			var aP=document.getElementsByTagName('p');
+			var aSpan=document.getElementsByTagName('span');
+
+            var Image1=['images/1.jpg','images/2.jpg','images/3.jpg','images/4.jpg'];
+            var Text1=['第1组第1张','第1组第2张','第1组第3张','第1组第4张'];
+
+            var Image2=['images/2-1.jpg','images/2-2.jpg','images/2-3.jpg','images/2-4.jpg','images/2-5.jpg'];
+            var Text2=['第2组第1张','第2组第2张','第2组第3张','第2组第4张','第2组第5张'];
+
+            var num1=0;
+            var num2=0;
+            //分别初始化
+			function Init1(){
+                aImg[0].src=Image1[num1];
+                aP[0].innerHTML=Text1[num1];
+                aSpan[0].innerHTML=num1+1+'/'+Image1.length;
+			}
+			function Init2(){
+				aImg[1].src=Image2[num2];
+				aP[1].innerHTML=Text2[num2];
+				aSpan[1].innerHTML=num2+1+'/'+Image2.length;
+			}
+			Init1();
+			Init2();
+            //点击图片变到下一张
+            aImg[0].onclick=function(){
+            	num1++;
+            	if(num1==Image1.length) num1=0;
+            	Init1();
+            }
+            aImg[1].onclick=function(){
+            	num2++;
+            	if(num2==Image2.length) num2=0;
+            	Init2();
+            }
+            //点击按钮两组一起变
+            oNext.onclick=function(){
+            	aImg[0].click();
+            	aImg[1].click();
+            }
+            oPre.onclick=function(){
+            	num1--;
+            	num2--;
+            	if(num1<0) num1=Image1.length-1;
+            	if(num2<0) num2=Image2.length-1;
+            	Init1();
+            	Init2();
+            }
+		}
+	</script>
+</body>
+</html>

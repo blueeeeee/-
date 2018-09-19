@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>按钮控制广告上下滚动</title>
+	<style type="text/css">
+	body,div,p,h4,a,ul,li,img,input{margin: 0;padding: 0;}
+	li{list-style: none;}
+	a{text-decoration: none;}
+	.main{width:200px;height:500px;margin: 50px auto;border: 1px solid #ccc;border-radius: 10px;position: relative;}
+	h4{background: #6495ED;border-radius: 10px 10px 0 0;padding: 5px 10px;color: #fff;}
+	h4 a{position: absolute;right:10px;font-size: 12px;color: #fff;line-height: 21px;}
+	.up,.down{width: 200px;height:20px;}
+	.up{background: #CDC9C9 url(images/btn.png) no-repeat center -5px;}
+	.down{position: absolute;bottom:0;background: #CDC9C9 url(images/btn.png) no-repeat center -24px;border-radius: 0 0 5px 5px;}
+	img{width:90px;height:75px;}
+	.wrap{width: 180px;height:430px;position: relative;overflow: hidden;}
+	.wrap ul{width: 180px;margin: 0 10px;position: absolute;top:0px;}
+    li{border-bottom: 1px solid #ccc;position: relative;height: 110px;}
+    li p{width:60px;font-size: 14px;padding-top: 14px;padding-left: 5px;}
+    li img{position: absolute;top:10px;right:10px;}
+	</style>
+</head>
+<body>
+	<div class="main">
+		<h4>广告<a href="#">>>更多</a></h4>
+		<div class="up"></div>
+		<div class="wrap">
+			<ul>
+				<li>
+					<p>六翮飘飖私自怜，一离京洛十馀年</p>
+					<img src="images/1.jpg">
+				</li>
+				<li>
+					<p>
+						<strong>卜算子·咏梅</strong>
+						<br>
+						风雨送春归，飞雪迎春到
+					</p>
+					<img src="images/2.jpg">
+				</li>
+				<li>
+					<p>
+						<strong>春夜喜雨</strong>
+						<br>
+						随风潜入夜，润物细无声
+					</p>
+					<img src="images/3.jpg">
+				</li>
+				<li>
+					<p>已是黄昏独自愁，更著风和雨</p>
+					<img src="images/4.jpg">
+				</li>
+				<li>
+					<p>
+						<strong>大风歌</strong>
+						<br>
+						大风起兮云飞扬
+					</p>
+					<img src="images/5.jpg">
+				</li>
+				<li>
+					<p>风住尘香花已尽，日晚倦梳头</p>
+					<img src="images/6.jpg">
+				</li>
+				<li>
+					<p>
+						<strong>卜算子·咏梅</strong>
+						<br>
+						风雨送春归，飞雪迎春到
+					</p>
+					<img src="images/2.jpg">
+				</li>
+				<li>
+					<p>
+						<strong>大风歌</strong>
+						<br>
+						大风起兮云飞扬
+					</p>
+					<img src="images/5.jpg">
+				</li>
+				<li>
+					<p>
+						<strong>春夜喜雨</strong>
+						<br>
+						随风潜入夜，润物细无声
+					</p>
+					<img src="images/3.jpg">
+				</li>
+			</ul>
+		</div>
+		<div class="down"></div>
+	</div>
+
+	<script type="text/javascript">
+		window.onload=function(){
+			var oUp=document.getElementsByClassName('up')[0];
+			var oDown=document.getElementsByClassName('down')[0];
+			var oWrap=document.getElementsByClassName('wrap')[0];
+			var oUl=document.getElementsByTagName('ul')[0];
+            var speed=10;
+            var timer=null;
+            var iCur=oUl.offsetHeight-oWrap.offsetHeight;//能上移或下移的最大高度
+            
+            oDown.onmousedown=function(){
+            	oDown.style.opacity='0.5';
+                timer=setInterval(function(){
+                	if(-oUl.offsetTop<iCur){//如果top值小于能上移最大高度，ul可上移
+                		oUl.style.top=oUl.offsetTop-speed+'px';
+                	}
+                },100);
+            }            
+            oUp.onmousedown=function(){
+            	oUp.style.opacity='0.5';
+                timer=setInterval(function(){
+                	console.log(oUl.offsetTop);
+                	if(oUl.offsetTop<0){//如果top小于0，ul可下移
+                		oUl.style.top=oUl.offsetTop+speed+'px';
+                	}
+                },100);
+            }
+            oUp.onmouseup=oDown.onmouseup=function(){
+            	console.log(this);
+            	this.style.opacity='1';
+                clearInterval(timer);
+            }
+		}
+	</script>
+</body>
+</html>

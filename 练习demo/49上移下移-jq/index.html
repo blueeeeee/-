@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>上移下移</title>
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+	<style type="text/css">
+		div{width:200px;margin:100px auto;}
+		button{margin:5px;}
+		span{padding: 5px;}
+	</style>
+</head>
+<body>
+	<div>
+		<li><span>1.</span><button>上移</button><button>下移</button></li>
+		<li><span>2.</span><button>上移</button><button>下移</button></li>
+		<li><span>3.</span><button>上移</button><button>下移</button></li>
+		<li><span>4.</span><button>上移</button><button>下移</button></li>
+		<li><span>5.</span><button>上移</button><button>下移</button></li>
+	</div>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			
+			$('li>button').click(function(){	
+				if($(this).index()==1){
+                    $(this).parent().insertBefore($(this).parent().prev());
+				}else if($(this).index()==2){
+					$(this).parent().insertAfter($(this).parent().next());
+				}
+			})
+		})
+	</script>
+</body>
+</html>

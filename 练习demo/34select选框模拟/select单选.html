@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>select单选</title>
+	<style type="text/css">
+		body,div,ul,li{margin: 0;padding: 0;}
+		li{list-style: none;}
+		.main{width: 200px;margin:50px auto;}
+		.input{width:200px;height: 24px;border: 1px solid orange;text-indent: 10px;line-height: 24px;}
+		ul{border: 1px solid orange;width: 200px;text-align: center;border-top:none;border-bottom: none;display:none;}
+		li{line-height: 1.5em;border-bottom: 1px solid orange;cursor: pointer;}
+	</style>
+</head>
+<body>
+	<div class="main">
+		<div class="input"></div>
+		<ul>
+			<li>宋体</li>
+			<li>微软雅黑</li>
+			<li>黑体</li>
+			<li>新宋体</li>
+			<li>仿宋</li>
+			<li>楷体</li>
+		</ul>
+	</div>
+
+	<script type="text/javascript">
+		window.onload=function(){
+			var oInput=document.getElementsByClassName('input')[0];
+			var oUl=document.getElementsByTagName('ul')[0];
+			var aLi=oUl.getElementsByTagName('li');
+
+			oInput.onclick=function(ev){
+				var oEv=ev||event;
+				oUl.style.display='block';
+				oEv.cancelBubble=true;
+
+				for(var i=0;i<aLi.length;i++){
+					aLi[i].onclick=function(){
+						for(var i=0;i<aLi.length;i++){
+							aLi[i].style.background='';
+						}
+						this.style.background='orange';
+
+						oInput.innerHTML=this.innerHTML;
+					}
+					aLi[i].onmouseover=function(){
+						for(var i=0;i<aLi.length;i++){
+							aLi[i].style.background='';
+						}
+						this.style.background='orange';
+					}
+				}
+			}
+
+			window.onclick=function(){
+				oUl.style.display='none';
+			}
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>表格删除添加</title>
+	<style type="text/css">
+		td{text-align: center;width:100px;}
+		table{margin:10px;}
+	</style>
+</head>
+<body>
+	username:<input type="text" name="">
+	password:<input type="text" name="">
+	<input type="button" value="添加">
+	<table border="1">
+		<thead>
+			<td><input type="checkbox" name="all">全选</td>
+			<td>id</td>
+			<td>username</td>
+			<td>pass</td>
+			<td><a href="javascript:;" class="deleteAll">全删</a></td>
+		</thead>
+        <tbody></tbody>
+	</table>
+
+	<script type="text/javascript">
+		window.onload=function(){
+			var oTab=document.getElementsByTagName('table')[0];
+			var aInput=document.getElementsByTagName('input');
+			var arr=[{'username':['one','two','three']},{'pass':[123,123,123]}];
+            var onOff=true;
+            var oDeleteAll=oTab.getElementsByClassName('deleteAll')[0];
+            var aChecked=oTab.tBodies[0].getElementsByTagName('input');
+            var oAll=document.getElementsByName('all')[0];
+            //模拟动态添加json中的数据
+			for(var i=0;i<arr[0].username.length;i++){
+				var oTr=document.createElement('tr');
+				oTab.appendChild(oTr);
+				var oTd=null;
+                
+                var oTd=document.createElement('td');
+				oTd.innerHTML='<input type="checkbox" value="">选中';
+				oTr.appendChild(oTd);
+
+				var oTd=document.createElement('td');
+				oTd.innerHTML=oTab.tBodies[0].rows.length;
+				oTr.appendChild(oTd);
+
+				var oTd=document.createElement('td');
+				oTd.innerHTML=arr[0].username[i];
+				oTr.appendChild(oTd);
+
+				var oTd=document.createElement('td');
+				oTd.innerHTML=arr[1].pass[i];
+				oTr.appendChild(oTd);
+
+				var oTd=document.createElement('td');
+				oTd.innerHTML="<a href='javascript:;'>删除</a>";
+				oTr.appendChild(oTd);
+				var oA=oTd.getElementsByTagName('a')[0];
+				oA.onclick=function(){
+					oTab.tBodies[0].removeChild(this.parentNode.parentNode);
+				}
+
+                oTab.tBodies[0].appendChild(oTr);
+			}
+            //用户动态添加删除数据
+			aInput[2].onclick=function(){
+				var oTr=document.createElement('tr');
+				oTab.appendChild(oTr);
+				var oTd=null;
+                
+                var oTd=document.createElement('td');
+				oTd.innerHTML='<input type="checkbox" value="">选中';
+				oTr.appendChild(oTd);
+
+				var oTd=document.createElement('td');
+				oTd.innerHTML=oTab.tBodies[0].rows.length;
+				oTr.appendChild(oTd);
+
+				var oTd=document.createElement('td');
+				oTd.innerHTML=aInput[0].value;
+				oTr.appendChild(oTd);
+
+				var oTd=document.createElement('td');
+				oTd.innerHTML=aInput[1].value;
+				oTr.appendChild(oTd);
+
+				var oTd=document.createElement('td');
+				oTd.innerHTML="<a href='javascript:;'>删除</a>";
+				oTr.appendChild(oTd);
+				var oA=oTd.getElementsByTagName('a')[0];
+				oA.onclick=function(){
+					oTab.tBodies[0].removeChild(this.parentNode.parentNode);
+				}
+                oTab.tBodies[0].appendChild(oTr);
+			}
+            
+            oAll.onOff=true;
+			oAll.onclick=function(){     
+	            if(oAll.onOff){
+	                for(var i=0;i<aChecked.length;i++){	
+		            	aChecked[i].checked=true;
+		            }
+		            oAll.onOff=false;
+	            }else{
+                    for(var i=0;i<aChecked.length;i++){
+                    	aChecked[i].checked=false;
+                    }
+	                oAll.onOff=true;
+	            }
+			}
+
+			oDeleteAll.onclick=function(){
+				var arr1=[];
+                for(var i=0;i<aChecked.length;i++){
+                	if(aChecked[i].checked){
+                		arr1.push(oTab.tBodies[0].rows[i]);
+                	}
+                }
+                for(var i=0;i<arr1.length;i++){
+                    oTab.tBodies[0].removeChild(arr1[i]);
+                }     
+			}
+		}
+
+
+	</script>
+</body>
+</html>

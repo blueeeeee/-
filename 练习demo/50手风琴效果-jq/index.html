@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>手风琴效果-jq</title>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <style type="text/css">
+    	body,div,span,img{padding: 0;margin: 0;}
+    	.main{width:850px;height: 400px;margin:50px auto;font-size: 0;}
+    	.main div{height:400px;float: left;overflow: hidden;position: relative;}
+    	.one{width:50px;}
+    	.two{width:50px;}
+    	.three{width:50px;}
+    	.four{width:700px;}   	
+    	span{width:29px;padding:5px 10px;height:390px;border-left:1px solid #fff;display: inline-block;background: #000;opacity: 0.5;color: white;font-size: 18px;font-weight: bolder;position: absolute;z-index: 2;}
+    	img{width:700px;height:400px;float: left;}
+    </style>
+</head>
+<body>
+	<div class="main">
+		<div class="one">
+			<span>身向榆关那畔行，夜深千帐灯</span>
+			<img src="images/1.jpg">	
+		</div>
+		<div class="two">
+			<span>聒碎乡心梦不成，故园无此声</span>
+			<img src="images/2.jpg">
+		</div>
+		<div class="three">
+			<span>细看来，不是杨花，点点是离人泪</span>
+			<img src="images/3.jpg">
+		</div>
+		<div class="four">
+			<span>我是人间惆怅客，知君何事泪纵横</span>
+			<img src="images/4.jpg">
+		</div>		
+	</div>
+	<script type="text/javascript">
+		$(document).ready(function(){
+            $('span').mouseover(function(){
+            	$(this).parent().animate({width:'700px'}); 
+            	$(this).parent().siblings().animate({width:'50px'}); 	            	       
+            })
+		})
+	</script>
+	
+</body>
+</html>

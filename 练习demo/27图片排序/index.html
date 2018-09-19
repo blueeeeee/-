@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>图片排序</title>
+	<style type="text/css">
+		body,div,input,ul,li,img,span{margin: 0;padding: 0;}
+		li{list-style: none;}
+		input{padding: 6px 10px;background: orange;outline: none;border：none;margin-top: 5px;}
+		.sort{margin-left: 550px;margin-right: 50px;}
+		ul{width: 1250px;background: -green;margin:20px auto;}
+		ul li{width: 200px;display: inline-block;background: -blue;margin:20px;}
+		ul img{width: 200px;height:200px;}
+		ul span{width:200px;display:inline-block;line-height: 1.8em;text-align:center;}
+	</style>
+</head>
+<body>
+	<div>
+        <input type="button" value="从大到小" class="sort">
+        <input type="button" value="打乱顺序">
+        <ul>
+        	<li><img src=""><span></span></li>
+        	<li><img src=""><span></span></li>
+        	<li><img src=""><span></span></li>
+        	<li><img src=""><span></span></li>
+        	<li><img src=""><span></span></li>
+        	<li><img src=""><span></span></li>
+        	<li><img src=""><span></span></li>
+        	<li><img src=""><span></span></li>
+        	<li><img src=""><span></span></li>
+        	<li><img src=""><span></span></li>
+        </ul>
+	</div>
+	<script type="text/javascript">
+		window.onload=function(){
+			var aInput=document.getElementsByTagName('input');
+			var aLi=document.getElementsByTagName('li');
+			var aImg=document.getElementsByTagName('img');
+			var aSpan=document.getElementsByTagName('span');
+
+			var json={"src":['images/1.jpg','images/2.jpg','images/3.jpg','images/4.jpg','images/5.jpg','images/6.jpg','images/7.jpg','images/8.jpg','images/9.jpg','images/10.jpg'],"text":['1.白雪公主','2.路飞','3.superman','4.白娘子','5.小丑','6.哆啦A梦','7.老爷子','8.蛇精','9.阿拉蕾','10.无脸男']};
+			var num=0;
+            var index=0;
+            function Init(){
+            	if(arguments[0]){//如果传入了一个参数
+            		for(var i=0;i<aLi.length;i++){
+	                    aImg[i].src=json['src'][arguments[0][i]];
+	                    aSpan[i].innerHTML=json['text'][arguments[0][i]];
+		            }
+            	}else{
+	            	for(var i=0;i<aLi.length;i++){
+	                    aImg[i].src=json['src'][i];
+	                    aSpan[i].innerHTML=json['text'][i];
+		            }            		
+            	}
+            }
+            Init();//初始化
+
+            aInput[0].onclick=function(){
+            	json['src'].sort(function(a,b){
+            		return parseInt(b.split('images/')[1])-parseInt(a.split('images/')[1])});
+                json['text'].sort(function(a,b){
+                	return parseInt(b)-parseInt(a);
+                })
+            	Init();
+            }
+
+            aInput[1].onclick=function(){
+            	var arr=[];
+            	while(arr.length<json['src'].length){
+            		var i=Math.round(Math.random()*9);
+            		if(arr.indexOf(i)==-1){
+            			arr.push(i);
+            		}
+            	}//产生一个数组，其中均为0~9的不重复数字
+                Init(arr);
+            }	
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>select多选</title>
+	<style type="text/css">
+		body,div,ul,li{margin: 0;padding: 0;}
+		li{list-style: none;}
+		.main{width: 300px;margin:50px auto;}
+		.input{width:300px;height: 24px;border: 1px solid orange;text-indent: 10px;line-height: 24px;}
+		ul{border: 1px solid orange;width: 300px;text-align: center;border-top:none;border-bottom: none;display:none;}
+		li{line-height: 1.5em;border-bottom: 1px solid orange;cursor: pointer;}
+	</style>
+</head>
+<body>
+	<div class="main">
+		<p>不按ctrl或shift只选一个，按则多选或重复点击删除</p>
+		<div class="input"></div>
+		<ul>
+			<li>宋体</li>
+			<li>微软雅黑</li>
+			<li>黑体</li>
+			<li>新宋体</li>
+			<li>仿宋</li>
+			<li>楷体</li>
+		</ul>
+	</div>
+
+	<script type="text/javascript">
+		window.onload=function(){
+			var oInput=document.getElementsByClassName('input')[0];
+			var oUl=document.getElementsByTagName('ul')[0];
+			var aLi=oUl.getElementsByTagName('li');
+            var onOff=true;
+            var arr=[];
+
+			oInput.onclick=function(ev){
+				var oEv=ev||event;
+				oUl.style.display='block';
+				oEv.cancelBubble=true;
+			}
+			document.onclick=function(){
+				oUl.style.display='none';
+			}
+			//给每个li绑定事件
+			for(var i=0;i<aLi.length;i++){
+			    aLi[i].index=i;
+			    aLi[i].onOff=true;
+                aLi[i].addEventListener('click',click1,false);
+                aLi[i].onmouseover=function(){
+                	this.style.background='orange';
+                }					
+                aLi[i].onmouseout=function(){
+                	if(this.onOff){//被点击的li背景不变
+                		this.style.background='';
+                	}
+                }
+			}		
+			function click1(ev){
+			    var oEv=ev||event;
+			    var str=this.innerHTML;
+
+                if(oEv.ctrlKey||oEv.shiftKey){
+                    oEv.cancelBubble=true;//取消选择面板消失
+                	if(this.onOff){	
+                		this.style.background='orange';
+                		if(arr.indexOf(str)==-1){//如果已经添加过不再重复添加
+                			arr.push(str);
+                		}
+	                	oInput.innerHTML=arr.join(' ');
+
+	                	this.onOff=false;
+                	}else{
+                		this.style.background='';
+                        var index=arr.indexOf(str);
+                        arr.splice(index,1);
+                        oInput.innerHTML=arr.join(' ');
+                        
+                        this.onOff=true;
+                	}              	
+                }else{
+                    for(var i=0;i<aLi.length;i++){
+					aLi[i].style.background='';
+				    }
+				    this.style.background='orange';
+                    arr=[];
+                    arr.push(str);
+                    var index=arr.indexOf(str);
+                    oInput.innerHTML=arr.join(' ');
+                    
+                    for(var j=0;j<aLi.length;j++){
+                    	aLi[j].onOff=true;
+                    }//防止上一次只选一个后将开关置反后未还原                    
+                    this.onOff=false;            
+                }	 		    
+			}	
+
+		}
+
+
+        //添加了一个数组的indexOf方法
+		Array.prototype.indexOf=function(key){
+			for(var i=0;i<this.length;i++){
+				if(this[i]==key){
+					return i;
+				}
+			}
+			return -1;
+		}
+	</script>
+</body>
+</html>

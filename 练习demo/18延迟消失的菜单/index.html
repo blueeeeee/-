@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>延迟消失的菜单</title>
+	<style type="text/css">
+		body,div,ul,li,a{margin: 0;padding: 0;}
+		li{list-style: none;}
+		a{text-decoration: none;}
+		.main{width: 600px;margin: 50px auto;margin: 50px auto;position: relative;}
+		.nav{width: 580px;background: #6495ED;border-radius: 8px;padding: 5px 10px;}
+        .nav li{display: inline-block;padding: 0 10px;border-right: 1px solid #ccc;}
+        .nav li:last-child{border-right: 0;position: absolute;right: 0;}
+        .nav li:nth-child(4){border-right: 0;}
+        .nav a{padding: 0 10px;border: 1px solid #6495ED;}
+        .nav a:hover{background: #D3D3D3;border: 1px solid #D3D3D3;border-radius: 8px;}
+        .item{font-size: 14px;border:1px solid #6495ed;border-radius: 5px;padding: 5px 10px;margin:10px 0;position:absolute;top:32px;display: none;}
+        .item li{display: inline-block;border-right: 1px solid #6495ED;padding: 0 5px;}
+        .item a:hover{text-decoration: underline;}
+        .one{width:256px;}
+        .two{width:200px;left:84px;}
+        .three{width:218px;left:170px;}
+        .four{width:362px;left:200px; }
+	</style>
+</head>
+<body>
+	<div class="main">
+		<ul class="nav">
+			<li><a href="#">首页</a></li>
+			<li><a href="#">关于我们</a></li>
+			<li><a href="#">作品</a></li>
+			<li><a href="#">博客</a></li>
+			<li><a href="#">>>更多</a></li>
+		</ul>
+		<ul class="item one">
+			<li><a href="#">最近更新</a></li>
+			<li><a href="#">活动</a></li>
+			<li><a href="#">报名试听</a></li>
+			<li><a href="#">学员反馈</a></li>
+		</ul>
+		<ul class="item two">
+			<li><a href="#">讲师</a></li>
+			<li><a href="#">方式</a></li>
+			<li><a href="#">理念</a></li>
+			<li><a href="#">联系我们</a></li>
+		</ul>
+		<ul class="item three">
+			<li><a href="#">船故</a></li>
+			<li><a href="#">留言箱</a></li>
+			<li><a href="#">留学e网</a></li>
+			<li><a href="#">ECcall</a></li>
+		</ul>
+		<ul class="item four">
+			<li><a href="#">瀑布流</a></li>
+			<li><a href="#">windows计算器</a></li>
+			<li><a href="#">弹出层效果</a></li>
+			<li><a href="#">3D球面标签云</a></li>
+		</ul>
+	</div>
+
+	<script type="text/javascript">
+		window.onload=function(){
+			var aUl=document.getElementsByTagName('ul');
+			var aLi=aUl[0].getElementsByTagName('li');
+			var timer=null;
+			var obj=null;
+
+			function show(){
+                if(this.tagName=='LI'){
+                	obj=aUl[this.index+1];
+                }else if(this.tagName=='UL'){
+                    obj=this;
+                }
+                clearInterval(timer);
+                for(var i=1;i<aUl.length;i++){
+                	aUl[i].style.display='none';
+                }
+				obj.style.display='block';
+			}
+			function hide(){
+                timer=setTimeout(function(){
+					obj.style.display='none';
+                },500)
+            }			
+
+			for(var i=0;i<aLi.length-1;i++){
+				aLi[i].index=i;
+				aLi[i].onmouseover=show;
+				aLi[i].onmouseout=hide;
+			}
+
+			for(var i=1;i<aUl.length;i++){			
+				aUl[i].onmouseover=show;
+				aUl[i].onmouseout=hide;
+			}
+		}
+	</script>
+</body>
+</html>

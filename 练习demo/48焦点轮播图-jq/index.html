@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>焦点轮播图——jq</title>
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+	<style type="text/css">
+		body,div,img,li,ul{margin: 0;padding: 0;}
+        .img img{width:700px;height:400px;}
+        .img{width:700px;height:400px;padding:10px;border:5px solid #ccc;margin:10px auto;}
+        .container{width:650px;height:90px;border:2px solid #ccc;font-size: 0px;overflow: hidden;margin:0 auto;position: relative;}
+        ul{width:1040px;position: absolute;left:0;}
+        ul li{list-style-type: none;display: inline-block;padding: 4px;}
+        .container img{width:120px;height:80px;border:1px solid #fff;}
+        span{width:24px;height: 30px;position: absolute;top:30px;display: block;top:480px;cursor: pointer;}
+        .left{left:300px;background: url(images/tab.png) no-repeat left center;}
+        .right{right:300px;background: url(images/tab.png) no-repeat right center;}
+        .container .active{border:1px solid red;}
+	</style>
+</head>
+<body>
+	<div class="img"><img src="images/1.jpg"></div>
+	<span class="left"></span>	
+	<div class="container">
+		<ul>
+			<li><img src="images/1.jpg" class="active"></li>
+			<li><img src="images/2.jpg"></li>
+			<li><img src="images/3.jpg"></li>
+			<li><img src="images/4.jpg"></li>
+			<li><img src="images/5.jpg"></li>
+			<li><img src="images/6.jpg"></li>
+			<li><img src="images/7.jpg"></li>
+			<li><img src="images/8.jpg"></li>
+		</ul>
+	</div>
+	<span class="right"></span>
+
+	<script type="text/javascript">
+		$(document).ready(function(){
+			var i=0;
+			function picChange(obj){
+                $('.img>img').attr('src','images/'+parseInt(i+1)+'.jpg');
+                obj.parent().siblings().children().removeClass('active');
+                obj.addClass('active');  				
+			}
+            //点击图片切换
+			$('li>img').click(function(){
+				i=parseInt($(this).parent().index());
+                picChange($(this));
+			})
+            //点击右边切换
+			$('.right').click(function(){
+				var left=parseInt($('ul').css('left'));
+				if(left<=0&&left>-390){
+					$('ul').css('left',left-130+'px');				
+				}	
+
+				i++;
+				if(i>=8){i=7;}					
+				var obj=$($('li>img').get(i));							
+				picChange(obj);
+			})
+			//点击左边切换
+			$('.left').click(function(){								
+				var left=parseInt($('ul').css('left'));
+				if(left<0&&left>=-390){
+                    $('ul').css('left',left+130+'px');	
+				}
+
+				i--;
+				if(i<=0){i=0;}				
+				var obj=$($('li>img').get(i));				
+                picChange(obj);				
+			})
+
+		})
+	</script>
+</body>
+</html>

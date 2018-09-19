@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>拖拽添加购物车</title>
+	<style type="text/css">
+		body,div,img,h4,span,ul,li,p{margin: 0;padding: 0;}
+		#shopping{width:720px;margin:10px auto;}
+		#shopping div{border:1px solid black;width:150px;padding: 10px;display: inline-block;}
+		img{width:150px;height:200px;}
+		#shopping_list{width:500px;height:230px;border: 1px solid red;margin:0 auto;position: relative;}
+		#shopping_list p{width:500px;position: absolute;left:0;bottom:0;line-height: 1.5em;border-top:1px solid red;}
+		#list_item{height:200px;overflow: auto;}
+		#list_item li{list-style: none;width:440px;line-height:2em;border-bottom:1px solid green;padding: 0 30px;background: #ace;}
+		#list_item span{float:right;}
+	</style>
+</head>
+<body>
+	<div id="shopping">
+		<div draggable='true'>
+			<img src="images/img1.jpg">
+			<h4>javascript语言精粹</h4>
+			<span>￥35</span>
+		</div>
+		<div draggable='true'>
+			<img src="images/img2.jpg">
+			<h4>javascript权威指南</h4>
+			<span>￥55</span>
+		</div>
+		<div draggable='true'>
+			<img src="images/img3.jpg">
+			<h4>精通javascript</h4>
+			<span>￥45</span>
+		</div>
+		<div draggable='true'>
+			<img src="images/img4.jpg">
+			<h4>DOM编程艺术</h4>
+			<span>￥70</span>
+		</div>
+	</div>
+	<div id="shopping_list">
+		<ul id="list_item">
+		</ul>
+		<p>
+			件数：<span class="count"></span>
+			总价：<span class="count"></span>
+		</p>			
+	</div>
+    <script type="text/javascript">
+    	window.onload=function(){
+    		var oDiv=document.getElementById('shopping');
+    		var aDiv=oDiv.getElementsByTagName('div');
+    		var aH4=oDiv.getElementsByTagName('h4');
+    		var aPrice=oDiv.getElementsByTagName('span');
+    		var oList=document.getElementById('shopping_list');
+    		var aSpan=oList.getElementsByClassName('count');
+    		var oItem=document.getElementById('list_item');
+    		var aLi=oItem.getElementsByTagName('li');
+            var count=0;//计算总价
+            var j=0;//计算商品数量
+            var hash={};//利用哈希表判断是否已添加
+
+    		for(var i=0;i<aDiv.length;i++){
+    			aDiv[i].index=i;
+                //开始拖拽
+                aDiv[i].ondragstart=function(ev){
+                    var oEv=ev||event;
+                    oEv.dataTransfer.effectAllowed='move';
+                    oEv.dataTransfer.setData('index',this.index);
+                    oEv.dataTransfer.setData('name',aH4[this.index].innerHTML);
+                    oEv.dataTransfer.setData('price',aPrice[this.index].innerHTML);
+                }
+                //拖入目标后
+                oList.ondragover=function(ev){
+                	var oEv=ev||event;
+                	oEv.preventDefault();
+                }
+                oList.ondrop=function(ev){
+                	var oEv=ev||event;
+                	oEv.preventDefault();
+                	oEv.dataTransfer.dropEffect='move';
+
+                	var oName=oEv.dataTransfer.getData('name');
+                	var oPrice=oEv.dataTransfer.getData('price');
+                    var iIndex=oEv.dataTransfer.getData('index');
+                    
+                   
+                    if(hash[iIndex]=='true'){
+                    	var bConfirm=confirm('购物车中已添加过 确认要添加吗？')
+                    	if(bConfirm==true){//如果用户确认添加
+                    		addLi();
+                    	}
+                    }else{
+                    	hash[iIndex]='true';
+                        addLi();
+                    }      
+                    //添加到列表
+                    function addLi(){
+	                	var oLi=document.createElement('li');
+	                	oLi.innerHTML=(++j)+' '+oName+"<span>"+oPrice+"</span>";
+	                	oItem.appendChild(oLi);
+
+	                	aSpan[0].innerHTML=j;
+	                	count+=parseInt(oPrice.substring(1));
+	                	aSpan[1].innerHTML='￥'+count;                    	
+                    }
+                }
+
+    		}
+    	}
+    </script>
+</body>
+</html>
+
+<!--IE部分不支持-->

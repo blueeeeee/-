@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>QQ列表</title>
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+	<style type="text/css">	
+	    div,ul,li,h2{padding: 0;margin:0;font-family:'宋体' }	
+		div{height:500px;width:200px;margin: 0 auto;}
+		ul{width: 200px;}
+		h2,li{line-height:2em;cursor: hand;}
+		h2{background:#6CA6CD url(plus.png) no-repeat 5px 16px;padding-left:40px; font-size: 24px;}
+		li{list-style-type: none;}
+		div ul li li{border-bottom:1px solid #6CA6CD;}
+		.uls{display:none;background: #E0EEE0;text-indent: 40px;}
+		.h2s{background:#6CA6CD url(minus.png) no-repeat 5px 16px;}
+		.lis{background:#DDA0DD;}
+	</style>
+</head>
+<body>
+<div>
+	<ul>
+		<li>
+			<h2>朋友</h2>
+			<ul class="uls">
+				<li>张三</li>
+				<li>李四</li>
+				<li>王二</li>
+				<li>黄一</li>
+			</ul>
+		</li>
+	</ul>
+	<ul>
+		<li>
+			<h2>家人</h2>
+			<ul class="uls">
+				<li>张三</li>
+				<li>李四</li>
+				<li>王二</li>
+				<li>黄一</li>
+			</ul>
+		</li>
+	</ul>
+	<ul>
+		<li>
+			<h2>同学</h2>
+			<ul class="uls">
+				<li>张三</li>
+				<li>李四</li>
+				<li>王二</li>
+				<li>黄一</li>
+			</ul>
+		</li>
+	</ul>
+</div>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('h2').attr('on',false); 	
+		$('h2').click(function(){			
+            if($(this).attr('on')=='false'){
+            	$('h2').next().css('display','none');
+            	$('h2').removeClass('h2s');
+                $(this).next().css('display','block');
+                $(this).addClass('h2s');
+                $('h2').attr('on',false);
+                $(this).attr('on',true);
+            }else{            	            	
+                $(this).next().css('display','none');               
+                $(this).removeClass('h2s'); 
+                $(this).attr('on',false);
+            } 
+		})
+		$('.uls>li').click(function(){		
+			if($(this).hasClass('lis')){
+				$(this).removeClass('lis');
+			}else{
+				$('.uls>li').removeClass('lis');
+				$(this).addClass('lis');					
+			}
+		})
+	})
+</script>
+</body>
+</html>

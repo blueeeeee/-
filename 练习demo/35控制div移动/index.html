@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>控制div移动</title>
+	<style type="text/css">
+		div{width:50px;height:50px;background: red;position: absolute;}
+	</style>
+</head>
+<body>
+	<div></div>
+
+	<script type="text/javascript">
+		window.onload=function(){
+			var oDiv=document.getElementsByTagName('div')[0];
+            oDiv.focus();
+			document.onkeydown=function(ev){
+				var oEv=ev||event;
+				if(oEv.keyCode==37){
+                    doMove(oDiv,'left',8,0);
+				}
+				if(oEv.keyCode==38){
+                    doMove(oDiv,'top',8,0);
+				}
+				if(oEv.keyCode==39){
+                    doMove(oDiv,'left',8,1250);
+				}
+				if(oEv.keyCode==40){
+                    doMove(oDiv,'top',8,500);
+				}
+			}
+
+			function getStyle(obj,attr){
+				return obj.currentStyle?obj.currentStyle[attr]:getComputedStyle(obj)[attr];
+			}
+
+			function doMove(obj,attr,dir,target,endFn){
+	    		dir=parseInt(getStyle(obj,attr))>target?-dir:dir;
+	    		clearInterval(obj.timer);
+	    		obj.timer=setInterval(function(){
+	                var speed=parseInt(getStyle(obj,attr))+dir;
+	                if(speed>target&&dir>0||speed<target&&dir<0){
+	                	speed=target;
+	                }
+	                obj.style[attr]=speed+'px';
+	                if(speed==target){
+	                	clearInterval(obj.timer);
+	                	endFn&&endFn();
+	                }
+	    		},50)
+	    	}
+		}
+	</script>
+</body>
+</html>

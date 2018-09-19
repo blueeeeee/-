@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>图片无缝滚动</title>
+	<style type="text/css">
+		body,div,ul,li,img{margin: 0;padding: 0;}
+		div{width: 1000px;height:140px;font-size: 0;border:5px solid #ace;overflow: hidden;position: relative;margin:100px auto;}
+		ul{position: absolute;top:0;left:0;}
+		li{list-style: none;display: inline-block; padding: 10px;}
+		img{width:180px;height:120px;}
+	</style>
+</head>
+<body>
+	<input type="button" value="左滚">
+    <input type="button" value="右滚">	
+	<div>
+		<ul>
+			<li><img src="images/1.jpg"></li>
+			<li><img src="images/2.jpg"></li>
+			<li><img src="images/3.jpg"></li>
+			<li><img src="images/4.jpg"></li>
+			<li><img src="images/5.jpg"></li>
+		</ul>
+	</div>
+	<script type="text/javascript">
+		window.onload=function(){
+			var oUl=document.getElementsByTagName('ul')[0];
+			var aBtn=document.getElementsByTagName('input');
+			var timer=null;
+			var iSpeed=-2;//控制方向可改变速度
+
+			oUl.innerHTML+=oUl.innerHTML;
+			oUl.style.width=oUl.children[0].offsetWidth*oUl.children.length+'px';
+            
+            function Move(){
+            	timer=setInterval(function(){
+	                if(oUl.offsetLeft<-oUl.offsetWidth/2){//往左滚
+	                	oUl.style.left=0;
+	                }else if(oUl.offsetLeft>0){//往右滚
+	                	oUl.style.left=-oUl.offsetWidth/2+'px';
+	                }
+	                oUl.style.left=oUl.offsetLeft+iSpeed+'px';
+	            },30)
+            }
+            Move();// 可改写为timer=setInterval(move,30);
+            oUl.onmouseover=function(){
+            	clearInterval(timer);
+            }
+            oUl.onmouseout=function(){
+            	Move();
+            }
+
+            aBtn[0].onclick=function(){
+                iSpeed=-2;
+            }
+            aBtn[1].onclick=function(){
+            	iSpeed=2;
+            }
+		}
+			
+	</script>
+</body>
+</html>

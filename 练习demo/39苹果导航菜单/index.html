@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>苹果导航菜单</title>
+	<style type="text/css">
+	    body{margin:0;}
+		div{width:100%;text-align: center;position: absolute;bottom:0;}
+        img{width:60px;height:60px;cursor: pointer;}
+	</style>
+</head>
+<body>
+	<div>
+		<img src="images/1.png">
+		<img src="images/2.png">
+		<img src="images/3.png">
+		<img src="images/4.png">
+		<img src="images/5.png">
+	</div>
+	<script type="text/javascript">
+		document.onmousemove=function(ev){
+			var oEv=ev||event;
+			var oDiv=document.getElementsByTagName('div')[0];
+			var aImg=document.getElementsByTagName('img');
+            var i=0;
+
+			for(var i=0;i<aImg.length;i++){
+                var x=aImg[i].offsetLeft+aImg[i].offsetWidth/2;
+                var y=aImg[i].offsetTop+oDiv.offsetTop+aImg[i].offsetHeight/2;
+
+                var a=x-oEv.clientX;
+                var b=y-oEv.clientY;
+                console.log(a+':'+b);
+                var dis=Math.sqrt(a*a+b*b);
+                
+                var scale=1-dis/100;
+                console.log(dis+':'+scale);
+                if(scale<0.5){
+                	scale=0.5;
+                }
+                aImg[i].style.width=scale*120+'px';
+                aImg[i].style.height=scale*120+'px';
+			}
+		};
+	</script>
+</body>
+</html>

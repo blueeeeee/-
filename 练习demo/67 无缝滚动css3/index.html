@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>无缝滚动css3</title>
+	<style type="text/css">
+		body,div,ul,li,img{margin: 0;padding: 0;}
+		@-webkit-keyframes move{
+			0%{left: 0}
+			100%{left:-800px;}
+		}
+		@keyframes move{
+			0%{left: 0}
+			100%{left:-800px;}
+		}
+		@-moz-keyframes move{
+			0%{left: 0}
+			100%{left:-800px;}
+		}
+		@-o-keyframes move{
+			0%{left: 0}
+			100%{left:-800px;}
+		}
+		#wrap{width:800px;height:150px;border:5px solid #ace;margin: 100px auto;overflow: hidden;position: relative;}
+		#list{width:1600px;font-size: 0;position: absolute;animation:5s move infinite linear;-webkit-animation: 5s move infinite linear;-moz-animation: 5s move infinite linear;-o-animation: 5s move infinite linear;}
+		#list li{display: inline-block;}
+		img{width: 200px;height: 150px;}
+		#wrap:hover #list{-webkit-animation-play-state: paused;}
+	</style>
+</head>
+<body>
+	<div id="wrap">
+		<ul id="list">
+			<li><img src="images/1.jpg"></li>
+			<li><img src="images/2.jpg"></li>
+			<li><img src="images/3.jpg"></li>
+			<li><img src="images/4.jpg"></li>
+			<li><img src="images/1.jpg"></li>
+			<li><img src="images/2.jpg"></li>
+			<li><img src="images/3.jpg"></li>
+			<li><img src="images/4.jpg"></li>
+		</ul>
+	</div>
+</body>
+</html>

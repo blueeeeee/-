@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>带缩略图的图片切换</title>
+	<style type="text/css">
+	body,div,p,img,span{margin:0;padding: 0;}
+    .main{width:400px;height:700px;margin:10px auto;}
+    .pic{width:400px;height:500px;background: lime url(images/loader_ico.gif) no-repeat center center;position:relative;border:1px solid#34495E;}
+    .pic img{width:400px;height:500px;}
+    .num,.text{position:absolute;background:#34495E;width:400px;text-align: center;opacity: 0.4;color:#fff;}
+    .num{top: 0;}
+    .text{bottom: 0;}
+    .pre,.next{height: 30px;width:24px;z-index: 2;display: block;position:absolute;top:235px;opacity: 0.1;}
+    .pre{background: url(images/tab.png) no-repeat left 0;left:-25px;}
+    .next{background: url(images/tab.png) no-repeat right 0;right:-25px;}
+    .list{height:64px;width:204px;margin:0 auto;position:relative;top:-40px;}
+    .list div{float:left;padding:5px;}
+    .list img{width:35px;height:40px;border:3px solid#34495E;visibility:hidden;}
+    .list .active{background: yellow;}
+    .list span{height:16px;width:16px;border-radius:8px;background:#34495E;display:block;margin:0 9px;}
+    
+	</style>
+</head>
+<body>
+	<div class="main">
+		<h3>带缩略图的图片切换</h3>
+		<div class="pic">
+			<p class="num">图片数量计算中</p>
+			<p class="text">文字描述</p>
+			<span class="pre"></span>
+			<img src="">
+			<span class="next"></span>
+		</div>
+        <!--实际情况若无缩略图动态添加-->
+		<div class="list">
+			<div><img src="images/1.png"><span></span></div>
+			<div><img src="images/2.png"><span></span></div>
+			<div><img src="images/3.png"><span></span></div>
+			<div><img src="images/4.png"><span></span></div>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		window.onload=function(){
+            var oMain=document.getElementsByClassName('main')[0];
+			var oPic=document.getElementsByClassName('pic')[0];
+	        var oNum=oPic.getElementsByClassName('num')[0];
+	        var oText=oPic.getElementsByClassName('text')[0];
+	        var oPre=oPic.getElementsByClassName('pre')[0];
+	        var oNext=oPic.getElementsByClassName('next')[0];
+	        var oImg=oPic.getElementsByTagName('img')[0];
+            var oList=document.getElementsByClassName('list')[0];
+            var aImg=oList.getElementsByTagName('img');
+            var aSpan=oList.getElementsByTagName('span');
+            
+            var Image=['images/1.png','images/2.png','images/3.png','images/4.png'];
+            var Text=['图片1','图片2','图片3','图片4'];
+            var num=0;
+            var timer=null;
+
+            //自动播放（不出现缩略图）
+            function autoPlay(){
+                timer=setInterval(function(){
+                    num++;
+                    if(num==aImg.length) num=0;
+                    Init();
+                },3000);
+            } 
+              
+            //setTimeout(autoPlay,2000);页面加载两秒后播放,实际4s
+            autoPlay();
+
+            oMain.onmouseover=function(){
+                clearInterval(timer);
+            }
+            oMain.onmouseout=autoPlay;
+
+            //初始化
+            function Init(){
+            	oNum.innerHTML=num+1+'/'+aImg.length;
+            	oText.innerHTML=Text[num];
+            	oImg.src=Image[num];
+                for(var i=0;i<aSpan.length;i++){
+                    aSpan[i].className='';
+                }
+                aSpan[num].className='active';
+            }
+            Init();
+
+            //左右图标滑过事件
+            oPre.onmouseover=function(){
+            	oPre.style.opacity='1';
+            }
+            oPre.onmouseout=function(){
+            	oPre.style.opacity='0.1'
+            }
+            oNext.onmouseover=function(){
+            	oNext.style.opacity='1';
+            }
+            oNext.onmouseout=function(){
+            	oNext.style.opacity='0.1'
+            }
+
+            //缩略图事件
+            for(var i=0;i<aSpan.length;i++){
+            	aSpan[i].index=i;
+                //缩略图滑过事件
+            	aSpan[i].onmouseover=function(){
+            		aImg[this.index].style.visibility='visible';
+            	}
+            	aSpan[i].onmouseout=function(){
+            		aImg[this.index].style.visibility='hidden';
+            	}
+            	//缩略图点击事件
+            	aSpan[i].onclick=function(){
+            		num=this.index;
+                    Init();
+            	}
+            }
+
+            //右图标点击事件
+            oNext.onclick=function(){
+            	num++;
+            	if(num==Image.length) num=0;
+            	Init();
+            }
+            //左图标点击事件
+            oPre.onclick=function(){
+            	if(num<0) num=Image.length-1;
+            	Init();
+            	num--;
+            }
+		}
+	</script>
+</body>
+</html>

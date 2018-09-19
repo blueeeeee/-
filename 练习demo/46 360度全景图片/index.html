@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>360度全景图片</title>
+	<style type="text/css">
+		img{position: absolute;top:50%;left:50%;margin-top: -180px;margin-left: -320px;}
+	</style>
+</head>
+<body>
+	<img src="img/0.jpg" id="img1">
+	<script type="text/javascript">
+		window.onload=function(){
+			var aImg=document.getElementsByTagName('img');
+            var x=0;
+            var lastImg=aImg[0];
+            var lastX=0;
+            var speed=0;
+            var timer=null;
+
+            for(i=1;i<77;i++){
+            	(function(oNewImg){
+                    var oImg=new Image();
+                    oImg.onload=function(){
+                    	oNewImg.src=this.src;
+                    }
+                    oImg.src='img/'+i+'.jpg'
+
+	            	oNewImg.style.display='none';
+	            	document.body.appendChild(oNewImg); 
+            	})(document.createElement('img'))
+            }
+
+			document.onmousedown=function(ev){
+                var oEv=ev||event;
+                var disX=oEv.clientX-aImg[0].offsetLeft;
+
+                clearInterval(timer);//鼠标按下时关闭定时器  
+
+                document.onmousemove=function(ev){
+                    var oEv=ev||event;
+                    x=oEv.clientX-disX;
+
+                    Move();
+
+                	speed=x-lastX;
+                	lastX=x;
+
+                    return false;
+                }
+                document.onmouseup=function(){
+                	document.onmousemove=document.onmouseup=null;
+                    //鼠标抬起后慢速旋转停止
+                	timer=setInterval(function(){
+                		x+=speed;
+		                if(speed>0){
+		                	speed--;
+		                }else if(speed<0){
+		                	speed++
+		                }else if(speed==0){
+		                	clearInterval(timer);
+		                }               		
+						Move();
+						console.log(speed);                     
+                	},30)                    
+                }
+                return false;
+			}
+
+            function Move(){
+                var l=parseInt(-x/10);
+                if(l>0){
+                	l=l%77;
+                }else{
+                    l=l-Math.floor(l/77)*77;//负数向下取整
+                }
+                
+                if(lastImg!=aImg[l]){
+                    lastImg.style.display='none';
+                    aImg[l].style.display='block';
+                    lastImg=aImg[l];                    	
+                }                          	
+            }			
+		}
+	</script>
+</body>
+</html>
+
+<!--IE10,11,ff有bug-->

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>多层级右键菜单</title>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <style type="text/css">
+    	body,ul,li{margin:0;padding: 0}
+        ul{border:1px solid #000;border-top: 0;}
+    	li{list-style-type: none;width:200px;height:49px;border-top: 1px solid #000;line-height: 49px;text-align: center;background: #ace;}
+        .main{position: relative;width:200px;height:200px;display: none;}
+        .two,.four{position: absolute;left:180px;display: none;}
+        .two li ul,.four li ul{position: absolute;left:180px;display: none;} 
+        .active{background: red}
+    </style>
+</head>
+<body>
+	<ul class="main">
+		<li>菜单1</li>
+		<li>菜单2->
+			<ul class="two">
+				<li>1</li>
+				<li>2</li>
+				<li>3->
+					<ul>
+						<li>1</li>
+						<li>2</li>
+						<li>3</li>
+						<li>4</li>
+					</ul>
+				</li>
+			</ul>
+		</li>
+		<li>菜单3</li>
+		<li>菜单4->
+			<ul class="four">
+				<li>1</li>
+				<li>2->
+					<ul>
+						<li>1</li>
+						<li>2</li>
+						<li>3</li>
+					</ul>
+				</li>
+				<li>3</li>
+			</ul>
+		</li>
+	</ul>
+
+	<script type="text/javascript">
+		$(document).ready(function(){
+			//点击右键出现菜单
+			$(document).contextmenu(function(ev){
+				$('.main').css({display:'block','top':ev.pageY,'left':ev.pageX});
+				return false;//取消默认行为
+			})
+			//点击文档菜单消失
+			$(document).click(function(){
+				$('.main').css({display:'none'});
+			})
+			//鼠标划过菜单
+			$('li').hover(function(){
+				$(this).addClass('active');
+				$(this).children().css({display:'block',top:parseInt($(this).index()*50+30)+'px'});
+			},function(){
+				$(this).removeClass('active');
+				$(this).children().css({display:''});
+			})
+		})
+	</script>
+</body>
+</html>

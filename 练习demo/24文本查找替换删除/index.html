@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>文本查找替换删除</title>
+	<style type="text/css">
+	body,div,input,ul,li,p,span{margin: 0;padding: 0}
+	li{list-style: none;}
+	.wrap{width:620px;margin:50px auto;position: relative; }
+	.text{width:500px;height: 270px;border:4px solid pink;text-indent:32px;line-height: 2em;padding: 10px;background: #E0FFFF;overflow: auto;}
+	.return{position: absolute;top:0;left:530px;}
+	.choose{width:80px;position: absolute;top:52px;left:530px;}
+	.choose li,.return{line-height: 50px;width: 80px;text-align: center;background: pink;cursor: pointer;}
+	.choose li:not(:first-child){border-top: 1px solid #E0FFFF;display: none;}
+    span{background: #BCEE68;}
+    .tab{width:460px;margin-top:10px;margin-left:10px;border:4px solid pink;padding: 10px 20px;position: relative;background: #E0FFFF;display: none;}
+    .tab ul{padding-top: 8px;margin-bottom:16px;border-bottom: 4px solid pink;}
+    .tab li{display: inline-block;width: 60px;line-height: 1.5em;text-align: center;cursor: pointer;}
+    .tab .close{position: absolute;top:5px;right:5px;background: none;cursor: pointer;}
+    .tab input{height:1.8em;line-height: 1.8em;}
+	</style>
+</head>
+<body>
+	<div class="wrap">
+		<div class="text">
+	        三公分阳光,三公分空气,堵在眼前像一面玻璃,挡住了你表情,剩下只有脚印,一直向前走,走不完距离,一直向后退不出回忆,很高兴有心事,帮我困住自己,你头发上淡淡青草香气,变成了风才能和我相遇,你的目光 蒸发成云,再下成雨我才能够靠近,感谢我不可以,住进你的眼睛,所以才能 拥抱你的背影,有再多的遗憾,用来牢牢记住,不完美的所有美丽。感谢我不可以，拥抱你的背影，所以才能 变成你的背影，躲在安静角落，不用你回头看，不用珍惜我。怀里所有温暖的空气，变成风也不敢和你相遇。我的心事，蒸发成云再下成雨，却舍不得淋湿你。
+	    </div>
+	    <div class="return">还原</div>
+	    <ul class="choose">
+	    	<li>展开</li>
+	    	<li>查找</li>
+	    	<li>替换</li>
+	    </ul>
+	    <div class="tab">
+	    	<span class="close">X</span>
+	    	<ul>
+	    		<li>查找</li><li>替换</li>
+	    	</ul>
+	    	<div class="input">
+	    		<input type="text" class="search_t">
+	    		<input type="button" value="查找" class="search_b">
+	    		<input type="text" class="alt_t">
+	    		<input type="button" value="替换" class="alt_b">
+	    	</div>
+	    </div>	
+	</div>
+
+	<script type="text/javascript">
+		window.onload=function(){
+			var oText=document.getElementsByClassName('text')[0];
+			var oChoose=document.getElementsByClassName('choose')[0];
+			var oReturn=document.getElementsByClassName('return')[0];
+			var aLi1=oChoose.getElementsByTagName('li');
+			var oTab=document.getElementsByClassName('tab')[0];
+			var oClose=oTab.getElementsByClassName('close')[0];
+			var aLi2=oTab.getElementsByTagName('li');
+			var oText1=oTab.getElementsByClassName('search_t')[0];
+			var oBtn1=oTab.getElementsByClassName('search_b')[0];
+			var oText2=oTab.getElementsByClassName('alt_t')[0];
+			var oBtn2=oTab.getElementsByClassName('alt_b')[0];
+
+			var onOff=true;
+			var text=oText.innerHTML;
+			var text1=oText.innerHTML;
+
+			oReturn.onclick=function(){
+				oText.innerHTML=text;
+			}
+            //点击展开菜单
+            aLi1[0].onclick=function(){
+                if(aLi1[0].onOff){
+                	aLi1[1].style.display=aLi1[2].style.display='block';
+                	aLi1[0].onOff=false;
+                }else{
+                	aLi1[1].style.display=aLi1[2].style.display='none';
+                	aLi1[0].onOff=true;
+                }	
+            }
+            
+            //点击展开菜单的查找和替换
+            aLi1[1].onclick=function(){
+            	oTab.style.display='block';
+            	aLi2[0].click();
+            }
+            aLi1[2].onclick=function(){
+            	oTab.style.display='block';
+            	aLi2[1].click();
+            }
+            //点击关闭按钮
+            oClose.onclick=function(){
+            	oTab.style.display='none';
+            	aLi1[1].style.display=aLi1[2].style.display='none';
+                oText.innerHTML=text1;//变成替换后的文本
+                oText1.value=oText2.value='';
+            }
+            //点击选项卡的查找和替换
+            aLi2[0].onclick=function(){
+            	this.style.background='pink';
+            	aLi2[1].style.background='none';
+            	oBtn1.style.display='inline-block';
+            	oText2.style.display='none';
+            	oBtn2.style.display='none';
+            }
+            aLi2[1].onclick=function(){
+            	this.style.background='pink'
+            	aLi2[0].style.background='none';
+            	oBtn1.style.display='none';
+            	oText2.style.display='inline-block';
+            	oBtn2.style.display='inline-block';
+            }
+            //查找功能
+            oBtn1.onclick=function(){
+            	var str=oText1.value;
+            	oText.innerHTML=text;//再次点击查找时，重新查找
+                if(!str){
+                	alert('请输入查找内容');
+                }else{
+                	if(oText.innerHTML.indexOf(str)==-1){
+                		alert('对不起，没有你要找的内容！');
+                	}
+                	oText.innerHTML=oText.innerHTML.split(str).join('<span>'+str+'</span>');
+                }
+            }
+            oBtn2.onclick=function(){
+                var str=oText1.value;
+                var newStr=oText2.value;
+                if(!str){
+                	alert('请输入被替换的内容');
+                }else{
+                	if(oText.innerHTML.indexOf(str)==-1){
+                		alert('找不到要替换的内容！')
+                	}else if(!newStr){
+                		confirm('确定要删除"'+str+'"吗？');
+                	}
+                	oText.innerHTML=oText.innerHTML.split(str).join('<span>'+newStr+'</span>');
+
+                	text1=oText.innerHTML.split('<span>'+newStr+'</span>').join(newStr);//将替换后的内容添加到原文,关闭面板后替换后的内容仍存在，并取消样式
+                }
+		    }
+        }
+	</script>
+</body>
+</html>

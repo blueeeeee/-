@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>简易祖玛小游戏</title>
+	<style type="text/css">
+		*{margin: 0;padding: 0;}
+		body{background: green;}
+		#div{margin: 20px auto;background: white;width: 600px;}
+	</style>
+</head>
+<body>
+	<div id="div">
+		<canvas id="c1" height="600" width="600"></canvas>
+	</div>
+    <script type="text/javascript">
+    	window.onload=function(){
+    		var oC=document.getElementById('c1');
+    		var oGC=oC.getContext('2d');
+            
+            var i=0;
+            var yImg=new Image();
+            yImg.src='person.png';
+            yImg.onload=function(){
+            	setInterval(function(){
+            		oGC.clearRect(0,0,oC.width,oC.height);
+
+            		oGC.beginPath();
+            		oGC.arc(300,200,200,-90*Math.PI/180,180*Math.PI/180,false);
+            		oGC.stroke();
+
+            		oGC.beginPath();
+            		oGC.arc(250,200,150,180*Math.PI/180,360*Math.PI/180,false);
+            		oGC.stroke();
+
+            		oGC.beginPath();
+            		oGC.arc(400,200,20,0*Math.PI/180,360*Math.PI/180,false);
+            		oGC.stroke();
+                    
+                    //画连续实心圆球
+                    for(var i=0;i<ball.length;i++){
+                    	oGC.beginPath();
+                    	oGC.moveTo(ball[i].x,ball[i].y);
+                    	oGC.arc(ball[i].x,ball[i].y,20,0*Math.PI/180,360*Math.PI/180);
+                    	oGC.fill();
+                    }
+                    //设置中心图片旋转
+                    oGC.save();
+                    oGC.translate(300,200);
+                    oGC.rotate(iRotate);
+                    oGC.translate(-40,-40);
+                    oGC.drawImage(yImg,0,0);
+                    oGC.restore();
+                    //画发出的子弹
+                    for(var i=0;i<bullet.length;i++){
+                    	oGC.save();
+                    	oGC.fillStyle='red';
+                    	oGC.beginPath();
+                    	oGC.moveTo(bullet[i].x,bullet[i].y);
+                    	oGC.arc(bullet[i].x,bullet[i].y,20,0*Math.PI/180,360*Math.PI/180);
+                    	oGC.fill();
+                    	oGC.restore();
+                    }
+                    //写文字
+                    oGC.save();
+                    oGC.font='60px impact';
+                    oGC.textBaseline='top';
+                    oGC.fillStyle='red';
+                    oGC.shadowOffsetX=10;
+                    oGC.shadowOffsetY=10;
+                    oGC.shadowColor='green';
+                    oGC.shadowBlur=5;
+                    var w=oGC.measureText('简易祖玛').width;
+                    oGC.fillText('简易祖玛',(oC.width-w)/2,450);
+                    oGC.restore();
+            	},1000/60);                       
+            //设置黑球旋转运动
+            setInterval(function(){
+                for(var i=0;i<ball.length;i++){
+                	ball[i].num++;
+                    if(ball[i].num==270){
+                    	ball[i].r=150;
+                    	ball[i].startX=250;
+                    	ball[i].startY=50;
+                    }
+                    if (ball[i].num ==270+180) {
+                    	alert('游戏结束');
+                    	window.location.reload();
+                    }
+                    //算运动后的小球中心
+                    ball[i].x=Math.sin(ball[i].num*Math.PI/180)*ball[i].r+ball[i].startX;
+                    ball[i].y=ball[i].r-Math.cos(ball[i].num*Math.PI/180)*ball[i].r+ball[i].startY;
+                }
+                //设置打出的子弹的运动
+                for(var i=0;i<bullet.length;i++){
+                	bullet[i].x=bullet[i].x+bullet[i].sX;
+                	bullet[i].y=bullet[i].y+bullet[i].sY;
+                }
+                //碰撞检测删除小球
+                for(var i=0;i<bullet.length;i++){
+                	for(var j=0;j<ball.length;j++){
+                		if(crush(bullet[i].x,bullet[i].y,ball[j].x,ball[j].y)){
+                			bullet.splice(i,1);
+                			ball.splice(j,1);
+                			break;
+                		}
+                	}
+                }
+            },30);
+            //定时添加运动小球
+            var ball=[];
+            setInterval(function(){
+            	ball.push({
+            		x:300,
+            		y:0,
+            		r:200,
+            		num:0,
+            		startX:300,
+            		startY:0
+            	})
+            },350);
+            //中心图片运动
+            var iRotate=0;
+            oC.onmousemove=function(ev){
+            	var ev=ev||event;
+
+            	var x=ev.clientX-oC.offsetLeft;
+            	var y=ev.clientY-oC.offsetTop;
+            	var a=x-300;
+            	var b=y-200;
+            	var c=Math.sqrt(a*a+b*b);
+            	//右边
+            	if(a>0&&b>0){
+            		iRotate=Math.asin(b/c)+90*Math.PI/180;
+            	}else if(a>0){
+            		iRotate=Math.asin(a/c);
+            	}
+            	//左边
+            	if (a<0&&b>0) {
+            		iRotate=-(Math.asin(b/c)+90*Math.PI/180);
+            	}else if(a<0){
+            		iRotate=Math.asin(a/c);
+            	}
+            }
+            //子弹运动
+            var bullet=[];
+            oC.onmousedown=function(ev){
+                var ev=ev||event;
+                var x=ev.clientX-oC.offsetLeft;
+                var y=ev.clientY-oC.offsetTop;
+                var a=x-300;
+                var b=y-200;
+                var c=Math.sqrt(a*a+b*b);
+                var speed=6;
+                var sX=speed*a/c;
+                var sY=speed*b/c;
+                bullet.push({
+                	x:300,
+                	y:200,
+                	sX:sX,
+                	sY:sY
+                });
+            }
+        }
+        function crush(x1,y1,x2,y2){
+        	var a=x1-x2;
+        	var b=y1-y2;
+        	var c=Math.sqrt(a*a+b*b);
+        	if(c<40){
+        		return true;
+        	}else{
+        		return false;
+        	}
+        }
+    }
+    </script>
+</body>
+</html>

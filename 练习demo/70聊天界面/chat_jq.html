@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>chat_jQuery</title>
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<style type="text/css">
+	body,div,span,input,p,img{margin: 0;padding:0;}
+	#bg{width:289px;height:594px;background: url(images/bg.gif) no-repeat;margin:0 auto;position:relative;}
+	#blank{width:237px;height:370px;border-bottom: 1px solid #bdcec6;position: absolute;top: 86px;left: 26px;overflow: auto;}
+	.right{float:right;margin-top: 5px;clear:both;margin-right: 5px;}
+	.p1,.p2{padding: 5px;border-radius: 5px;margin-top: 5px;max-width:165px;margin-bottom: 5px;}
+	.p1{float: right;background: green;margin-right: 5px;border: 1px solid green;}
+    .left{float:left;margin-top: 5px;clear:both;margin-left: 5px;}
+    .p2{float:left;background: #ccc;border:1px solid #ccc;margin-left: 5px;}
+	#form{width: 237px;height:48px;position:absolute;left:26px;top:457px;background: #f7f7f7;}
+	#ico,#text{width: 30px;height: 34px;border:1px solid #ded6e7;border-radius: 8px;margin-top: 8px;margin-left: 4px;float: left;}
+	#ico{width:30px;}
+	#ico img{margin:5px 3px;}
+	#text{width:140px;background: none;outline: none;text-indent: 8px;}
+	#submit{background: none;border: none;outline: none;color:#8c8494;font-size: 18px;line-height:50px;margin-left: 6px;}
+</style>	
+</head>
+<body>
+	<div id="bg">
+		<div id="blank"></div>
+		<div id="form">
+			<form autocomplete="off">
+				<div id="ico"><img src="images/ico.gif"></div>
+			    <input id="text" type="text">
+			</form>
+		    <input type="submit" id="submit" value="发送">	
+		</div>		
+	</div>
+    <script type="text/javascript">
+    	$(document).ready(function(){
+    		var i=0;
+    		//图片点击切换
+    		$('#ico>img').click(function(){
+                if(i%2==0){
+                	$('#ico>img').attr('src','images/ico1.gif');
+                }else{
+                	$('#ico>img').attr('src','images/ico.gif');
+                }
+                i++;
+    		});
+    		//点击发送
+    		$('#form>input').click(function(){
+                if(i%2==0&&$('#text').val()!=''){
+                	$('#blank').html("<div class='right'><img src='images/ico.gif' class='right'><p class='p1'>说："+$('#text').val()+"</p></div>"+$('#blank').html());
+                	$('#text').val('');
+                }else if(i%2==1&&$('#text').val()!=''){
+                	$('#blank').html("<div class='left'><img src='images/ico1.gif' class='left'><p class='p2'>说："+$('#text').val()+"</p></div>"+$('#blank').html());
+                	$('#text').val('');
+                }else{
+                    alert('说点啥吧~');	
+                }
+       		})
+       		//按回车发送
+       		$('#text').keydown(function(event){
+       			if(event.which=='13'){
+       				$('#form>input').click();
+       				return false;
+       			}
+       			return false;
+       		})
+    	})
+    </script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>鼠标绘制方块</title>
+	<style type="text/css">
+	    body,div{margin:0;padding: 0;}
+		div{border:1px solid green;height: 0;width: 0;position: absolute;}
+		.wrap{width:800px;height:500px;border:4px solid black;margin:50px auto;position: relative;}
+	</style>
+</head>
+<body>
+	<div class="wrap"></div>
+	<script type="text/javascript">
+		window.onload=function(){
+			var oWrap=document.getElementsByClassName('wrap')[0];
+            oWrap.onmousedown=function(ev){
+            	var oEv=ev||event;
+            	var t1=oEv.clientY-oWrap.offsetTop;
+            	var l1=oEv.clientX-oWrap.offsetLeft;
+            	var div=document.createElement('div');
+            	oWrap.appendChild(div);
+				
+                var aDiv=oWrap.children;
+                var oDiv=aDiv[aDiv.length-1];
+
+                oDiv.style.top=t1+'px';
+	            oDiv.style.left=l1+'px'; 
+	            oDiv.style.background='yellow';
+				
+                oWrap.onmousemove=function(ev){
+                	var oEv1=ev||event;
+
+                    oDiv.style.height=oEv1.clientY-oEv.clientY+'px';
+                    oDiv.style.width=oEv1.clientX-oEv.clientX+'px';	
+                }
+
+                oWrap.onmouseup=function(){
+                	oWrap.onmouseup=oWrap.onmousemove=null;                  
+                }
+                return false;
+            }
+		}
+	</script>
+</body>
+</html>

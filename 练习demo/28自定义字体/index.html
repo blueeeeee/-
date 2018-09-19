@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>自定义字体</title>
+	<style type="text/css">
+		body,div,select,option,input,textarea{margin:0;padding:0;font-size:18px;}
+		.main{width: 600px;margin:50px auto;}
+		.text,textarea{width: 580px;height:150px;border: 1px solid #ccc;line-height: 1.8em;overflow: auto;}
+		.text{background: #F5F5F5;font-weight: bold;}
+		select,option{width: 100px;height: 1.8em;margin: 10px 0;line-height: 1.8em;}
+		textarea{resize: none;}
+		.sure{padding: 2px 10px;}
+		span{display: inline-block;margin:0 4px;padding-bottom: 16px;width:24px;text-align: center;background: url(images/1.png) repeat-x center 24px;}
+	</style>
+</head>
+<body>
+	<div class="main">
+		<div class="text">
+			
+		</div>
+		<select>
+			<option>微笑</option>
+			<option>色</option>
+			<option>吻</option>
+			<option>爱心</option>
+			<option>衰</option>
+		</select>
+		<br>
+		<textarea>这是自定义的字体</textarea>
+		<input type="button" value="确定" class="sure">
+	</div>
+
+	<script type="text/javascript">
+		window.onload=function(){
+            var oText=document.getElementsByClassName('text')[0];
+            var oSel=document.getElementsByTagName('select')[0];
+            var aOption=document.getElementsByTagName('option');
+            var aSpan=document.getElementsByTagName('span');
+            var oArea=document.getElementsByTagName('textarea')[0];
+            var oSure=document.getElementsByClassName('sure')[0];
+            var aColor=['red','	#CD950C','blue','green','#6A5ACD'];
+
+            oSure.onclick=change;
+            
+            function change(){
+	            //oSel.onchange=function{
+	            	oText.innerHTML='';
+	        		function getIndex(){
+	        			for(var i=0;i<aOption.length;i++){
+	        				aOption[i].index=i;                            
+	        				if(oSel.value==aOption[i].innerHTML){
+	        					return aOption[i].index;
+	        				}
+	        			}
+	        		}
+	        		Init(getIndex());
+	        	//}            	
+            }
+            Init(0);
+            function Init(index){
+                var arr=oArea.value.split('');
+                oText.style.color=aColor[index];
+                for(var i=0;i<arr.length;i++){
+                	oText.innerHTML+="<span>"+arr[i]+"</span>"
+                	aSpan[i].style.background="url(images/"+parseInt(index+1)+".png) repeat-x center 24px";
+                }                
+            }
+            
+		}
+	</script>
+</body>
+</html>

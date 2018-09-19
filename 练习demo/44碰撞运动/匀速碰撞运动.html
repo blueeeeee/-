@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>匀速碰撞运动</title>
+	<style type="text/css">
+		body,div{margin:0;padding: 0}
+        div{width:80px;height:80px;background: red;position: absolute;}
+	</style>
+</head>
+<body>
+	<input type="button" value="开始运动">
+	<div></div>
+
+	<script type="text/javascript">
+		window.onload=function(){
+			var oBtn=document.getElementsByTagName('input')[0];
+			var oDiv=document.getElementsByTagName('div')[0];
+            var iSpeedx=6;
+            var iSpeedy=8;
+			oBtn.onclick=startMove;
+
+			function startMove(){
+				timer=setInterval(function(){
+					var t=oDiv.offsetTop+iSpeedy;
+					var l=oDiv.offsetLeft+iSpeedx;
+
+					if(t>=document.documentElement.clientHeight-oDiv.offsetHeight){
+						iSpeedy*=-1;
+						t=document.documentElement.clientHeight-oDiv.offsetHeight;
+					}else if(t<=0){
+						iSpeedy*=-1;
+						t=0;
+					}
+
+					if(l>=document.documentElement.clientWidth-oDiv.offsetWidth){
+						iSpeedx*=-1;
+						l=document.documentElement.clientWidth-oDiv.offsetWidth;
+					}else if(l<=0){
+						iSpeedx*=-1;
+						l=0;
+					}	
+					oDiv.style.left=l+'px';
+					oDiv.style.top=t+'px';	
+				},30)	
+			}
+		}
+	</script>
+</body>
+</html>

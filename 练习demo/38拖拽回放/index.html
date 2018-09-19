@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>拖拽回放</title>
+	<style type="text/css">
+	input{margin-bottom: 10px;}
+	div{height:100px;width:100px;background: red;position: absolute;}
+	</style>
+</head>
+<body>
+	<input type="button" value="拖拽回放">
+	<div></div>
+	<script type="text/javascript">
+		window.onload=function(){
+			var oBtn=document.getElementsByTagName('input')[0];
+			var aDiv=document.getElementsByTagName('div');
+			var oDiv=document.getElementsByTagName('div')[0];
+			var position={'left':[],'top':[]};
+            var timer=null;
+            var onOff=false;
+
+			oDiv.onmousedown=function(ev){
+				oDiv.onOff=true;//确定发生拖拽，清除定时器
+				var oEv=ev||event;
+				var disX=oEv.clientX-this.offsetLeft;
+				var disY=oEv.clientY-this.offsetTop;
+                //记录下最初的位置
+			    position.top.push(this.offsetTop);
+			    position.left.push(this.offsetLeft);
+
+                if(oDiv.setCapture){oDiv.setCapture();}
+				document.onmousemove=function(ev){
+					var oEv=ev||event;
+					var T=oEv.clientY-disY;
+					var L=oEv.clientX-disX;
+
+					//记录移动过程中的位置
+                    position.top.push(T);
+                    position.left.push(L);
+
+                    if(T<0){
+						T=0;
+					}else if(T>document.documentElement.clientHeight-oDiv.offsetHeight){
+                        T=document.documentElement.clientHeight-oDiv.offsetHeight;
+					}
+					if(L<0){
+						L=0;
+					}else if(L>document.documentElement.clientWidth-oDiv.offsetWidth){
+						L=document.documentElement.clientWidth-oDiv.offsetWidth;
+					}
+
+					oDiv.style.top=T+'px';
+					oDiv.style.left=L+'px';
+				}
+				document.onmouseup=function(){
+					oDiv.onOff=false;
+					document.onmousemove=document.onmouseup=null;
+					if(oDiv.releaseCapture){oDiv.releaseCapture();}
+				}
+				return false;
+			}
+            
+			oBtn.onclick=function(){
+                timer=setInterval(function(){
+					oDiv.style.left=position.left.pop()+'px';
+                	oDiv.style.top=position.top.pop()+'px';
+                		                
+	                if(position.left.length==0||oDiv.onOff==true){//判断回放过程中是否拖拽
+	                	oDiv.style.left=position.left.pop()+'px';
+                	    oDiv.style.top=position.top.pop()+'px'; 
+	                	clearInterval(timer);
+	                }                    
+                },30)					
+			}
+		}
+	</script>
+</body>
+</html>

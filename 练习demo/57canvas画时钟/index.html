@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>canvas画时钟</title>
+	<style type="text/css">
+		body{background: black;}
+		#c1{background: white;}
+	</style>
+</head>
+<body>
+	<canvas width='400' height='400' id="c1">
+	</canvas>
+	<script type="text/javascript">
+		window.onload=function(){
+			var oC=document.getElementById('c1');
+			var oGc=oC.getContext('2d');
+            
+            function toDarw(){
+            	//定义起点和半径
+            	var x=200;
+            	var y=200;
+            	var r=150;
+            	//获取时间
+            	var oDate=new Date();
+            	var oHours=oDate.getHours();
+            	var oMin=oDate.getMinutes();
+            	var oSen=oDate.getSeconds();
+                //计算时分秒针运动角度 弧度=角度*Math.PI/180;
+                var oHoursVal=(-90+oHours*30+oMin/2)*Math.PI/180;
+                var oMinVal=(-90+oMin*6)*Math.PI/180;
+                var oSenVal=(-90+oSen*6)*Math.PI/180;
+
+
+            	oGc.clearRect(0,0,oC.width,oC.height);
+                
+                //画秒针刻度
+                oGc.beginPath();
+				for(var i=0;i<60;i++){
+					oGc.moveTo(x,y);
+					oGc.arc(x,y,r,6*i*Math.PI/180,6*(i+1)*Math.PI/180,false);
+								
+	            }
+	            oGc.closePath();
+	            oGc.stroke();	
+
+	            oGc.fillStyle='white';
+	            oGc.beginPath();
+	            oGc.moveTo(x,y);
+	            oGc.arc(x,y,r*19/20,0,360*Math.PI/180,false);
+	            oGc.closePath();
+	            oGc.fill();
+
+	            //画小时刻度
+	            oGc.lineWidth=3;
+
+	            oGc.beginPath();
+	            oGc.moveTo(x,y);
+	            for(var i=0;i<12;i++){
+	            	oGc.moveTo(x,y);
+	            	oGc.arc(x,y,r,30*i*Math.PI/180,30*(i+1)*Math.PI/180,false);
+	            }
+	            oGc.closePath();
+	            oGc.stroke();
+
+	            oGc.fillStyle='white';
+	            oGc.beginPath();
+	            oGc.moveTo(x,y);
+	            oGc.arc(x,y,r*18/20,0,360*Math.PI/180,false);
+	            oGc.closePath();
+	            oGc.fill();
+
+	            //画时针
+	            oGc.lineWidth=5;
+	            oGc.beginPath();
+	            oGc.moveTo(x,y);
+	            oGc.arc(x,y,r*10/20,oHoursVal,oHoursVal,false);
+	            oGc.closePath();
+	            oGc.stroke();
+
+	            //画分针
+	            oGc.lineWidth=3;
+	            oGc.beginPath();
+	            oGc.moveTo(x,y);
+	            oGc.arc(x,y,r*14/20,oMinVal,oMinVal,false);
+	            oGc.closePath();
+	            oGc.stroke();
+
+	            //画秒针
+	            oGc.lineWidth=1;
+	            oGc.beginPath();
+	            oGc.moveTo(x,y);
+	            oGc.arc(x,y,r*18/20,oSenVal,oSenVal,false);
+	            oGc.closePath();
+	            oGc.stroke();
+			}
+
+			setInterval(toDarw,1000);
+			toDarw();
+		}
+	</script>
+</body>
+</html>

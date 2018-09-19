@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>放大镜效果-jq</title>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>	
+    <style type="text/css">
+        body,div,img{margin:0;padding: 0;}
+    	.img{width:200px;height:300px;position: relative;left:100px;}
+    	.img img{width:200px;height:300px;}
+    	.mirror{width:80px;height:80px;background: yellow;opacity: 0.5;position: absolute;top:0;left:0;}
+    	.pic{width:480px;height:480px;border:2px solid red;position: absolute;left:450px;top:100px;overflow: hidden;}
+    	.pic img{width:1200px;height:1800px;position: absolute;}
+    </style>
+</head>
+<body>
+    <div class="img">
+    	<img src="1.png">
+    	<div class="mirror"></div>
+    </div>	
+    <div class="pic">
+    	<img src="1.png">
+    </div>
+    <script type="text/javascript">
+        $(function(){
+        	var disX=0;
+        	var disY=0;
+        	$('.mirror').mousedown(function(ev){
+                disX=ev.pageX-$(this).offset().left;
+                disY=ev.pageY-$(this).offset().top;
+
+                $(document).mousemove(function(ev){
+                	var L=ev.pageX-disX-$('.img').offset().left;
+                	var T=ev.pageY-disY;
+                    //限制在图片范围内
+                	if(L>120){L=120;}                		
+                	else if(L<0){L=0;}
+                		
+                	if(T>220){T=220;}
+                	else if(T<0){T=0;}
+
+                	$('.mirror').css({'top':T+'px','left':L+'px'});
+                    $('.pic>img').css({top:-T*6+'px',left:-L*6+'px'});//改变右边图片位置
+                })
+                $(document).mouseup(function(){
+                	$(document).off();
+                })
+                return false;
+        	})
+        })
+    </script>
+</body>
+</html>

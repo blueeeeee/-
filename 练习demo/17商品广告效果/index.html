@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>商品广告效果</title>
+	<style type="text/css">
+	body,div,ul,li,img{margin: 0;padding: 0;}
+	li{list-style: none;}
+	.main{width:800px;height:330px;margin:100px auto;position: relative;border: 1px solid pink;padding: 4px;}
+	img{height:330px;width: 600px;position: absolute;top: 5px;left: 105px;}
+	ul{width:98px;position: absolute;top: 5px;}
+	ul li{line-height: 49px;text-align: center;border: 1px solid pink;margin: 2px 1px;cursor: pointer;}
+	.active{background: pink;}
+	.one{left:0;}
+	.two{right:0;}
+	</style>
+</head>
+<body>
+	<div class="main">
+		<img src="images/1.jpg">
+		<ul class="one">
+			<li>天</li>
+			<li>外</li>
+			<li>星</li>
+			<li>沉</li>
+			<li>月</li>
+			<li>落</li>
+		</ul>
+		<ul class="two">
+			<li>篱</li>
+			<li>前</li>
+			<li>风</li>
+			<li>动</li>
+			<li>花</li>
+			<li>飞</li>
+		</ul>
+	</div>
+
+	<script type="text/javascript">
+		window.onload=function(){
+			var oMain=document.getElementsByClassName('main')[0];
+			var oImg=document.getElementsByTagName('img')[0];
+			var aLi=document.getElementsByTagName('li');
+            
+            var Img=['images/1.jpg','images/2.jpg','images/3.jpg','images/4.jpg','images/5.jpg','images/6.jpg','images/7.jpg','images/8.jpg','images/9.jpg','images/10.jpg','images/11.jpg','images/12.jpg'];
+            var num=-1;
+            var timer=null;
+            var aNli=[];
+            
+            //实现右边倒放效果，重新将li装入新数组
+            for(var i=0;i<aLi.length/2;i++){
+                aNli.push(aLi[i]);
+            }
+            for(var j=aLi.length-1;j>=aLi.length/2;j--){
+            	aNli.push(aLi[j]);
+            }
+            //自动播放
+            function autoPlay(){
+            	timer=setInterval(function(){
+	                num++;
+	                //if (num==aNli.length) {num=0;}
+	                num%=aNli.length;
+	                show();
+	            },1000);
+            }
+            autoPlay(aNli[0]);
+            //展示当前li及对应图片
+            function show(){
+        		for(var i=0;i<aNli.length;i++){
+        			aNli[i].className='';
+        		}
+        		aNli[num].className='active';
+        		oImg.src=Img[num];
+            }
+
+            //效果一：若移入广告板块，停止定时器
+            oMain.onmouseover=function(){
+                clearInterval(timer);
+                //num=-1; 离开后又从第一个广告开始
+            }
+            oMain.onmouseout=autoPlay;
+            
+            /*效果二：移入li，停止定时器，移开后从下一个li开始
+            for(var k=0;k<aNli.length;k++){
+            	aNli[k].index=k;
+                aNli[k].onmouseover=function(){
+                    clearInterval(timer);//有bug，涉及到每个li都会开一个定时器，关不完
+                	num=this.index;
+                	show();
+                }
+                aNli[k].onmouseout=function(){
+                	autoPlay(this);
+                }
+		    }*/
+        }
+	</script>
+</body>
+</html>

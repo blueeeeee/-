@@ -1,0 +1,130 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>数据操作，弹出信息</title>
+<!--<link href="css.css" rel="stylesheet" type="text/css" />-->
+<script src="data.js"></script>
+<style type="text/css">
+    div,ul,li,span,a,h4,em{margin: 0;padding: 0;}
+	#container{width:1000px;margin: 50px auto;}
+	#header{width: 1000px;border-bottom:2px solid orange;}
+	#header li{width:100px;text-align: center;line-height: 1.8em;list-style-type: none;display: inline-block;cursor: pointer;}
+	#listContent{width:1000px;}
+	#listContent a{display:inline-block;line-height: 2em;padding: 0 16px;}
+	#tips{z-index: 99;width:300px;height:148px;display: none;position: absolute;bottom:100px;border:2px solid orange;background: #cce;}
+	#arrow{background:url(arrow.png) no-repeat left center;width: 11px;height:17px;display: inline-block;position: absolute;top:65px;left:-11px;z-index: 99;}
+	#tipsContent{padding: 5px;}
+    #tipsContent li{display: inline-block;font-size: 16px;list-style: none;padding:2px 10px;}
+</style>
+</head>
+
+<body>
+	<div id="container">
+		<ul id="header"></ul>
+		
+		<div id="listContent"></div>
+	</div>
+	
+	<div id="tips">
+		<span id="arrow"></span>
+        <div id="tipsContent">
+        </div>
+	</div>
+
+	<script type="text/javascript">
+		window.onload=function(){
+            var oContainer=document.getElementById('container');
+            var oHeader=document.getElementById('header');
+            var aLi=oHeader.getElementsByTagName('li');
+            var oListContent=document.getElementById('listContent');
+            var oTip=document.getElementById('tips');
+            var oTipsContent=document.getElementById('tipsContent');
+            var aA=oListContent.getElementsByTagName('a');
+            //初始化及绑定事件
+			for(var i=0;i<data.length;i++){
+            	var oLi=document.createElement('li');
+                oHeader.appendChild(oLi);
+                oLi.innerHTML=data[i].name;
+
+              
+                aLi[i].index=i;
+                aLi[i].onclick=function(){
+                	for(var j=0;j<aLi.length;j++){
+                		aLi[j].style.background='';
+                	}
+                	this.style.background='orange';
+                	Init(this.index);
+                }     
+            } 
+            aLi[0].style.background='orange';   
+            Init(0); 
+
+            function Init(index){
+            	oListContent.innerHTML='';
+                for(var j=0;j<data[index].list.length;j++){
+
+	            	var oA=document.createElement('a');
+	            	oListContent.appendChild(oA);
+	            	oListContent.appendChild(document.createElement('br'));
+	            	oA.href='javascript:;'
+	            	oA.innerHTML=data[index].list[j].title;
+                    
+
+                    //鼠标移入事件
+                    aA[j].index=j;
+                    aA[j].onmouseover=function(){
+                        oTipsContent.innerHTML='';
+                        oTip.style.display='block';
+                    	
+                    	var oH4=document.createElement('h4');
+	                    oTipsContent.appendChild(oH4);
+	                    oH4.innerHTML=data[index].list[this.index].company;
+                        
+                        var oUl=document.createElement('ul');
+                        oTipsContent.appendChild(oUl);
+                         
+                        var oLi=document.createElement('li');
+                        oUl.appendChild(oLi);
+                        oLi.innerHTML="<strong>职位：</strong>"+data[index].list[this.index].position;
+
+                        var oLi=document.createElement('li');
+                        oUl.appendChild(oLi);
+                        oLi.innerHTML="<strong>人数：</strong>"+data[index].list[this.index].recruitingNumbers;
+
+                        var oLi=document.createElement('li');
+                        oUl.appendChild(oLi);
+                        oLi.innerHTML="<strong>工作区域：</strong>"+data[index].list[this.index].workingLocation;
+
+                        var oLi=document.createElement('li');
+                        oUl.appendChild(oLi);
+                        oLi.innerHTML="<strong>工作经验：</strong>"+data[index].list[this.index].workExperience;
+
+                        var oLi=document.createElement('li');
+                        oUl.appendChild(oLi);
+                        oLi.innerHTML="<strong>学历：</strong>"+data[index].list[this.index].education;
+
+                        var oLi=document.createElement('li');
+                        oUl.appendChild(oLi);
+                        oLi.innerHTML="<strong>工资：</strong>"+data[index].list[this.index].wage;
+
+                        var oLi=document.createElement('li');
+                        oUl.appendChild(oLi);
+                        oLi.innerHTML="<strong>加入时间：</strong>"+data[index].list[this.index].addDate;
+                        
+                        //控制显示的div的位置
+                        oTip.style.left=this.offsetLeft+this.offsetWidth+'px';
+                        oTip.style.top=this.offsetTop-60+'px';
+                    }
+
+                    aA[j].onmouseout=function(){
+                    	oTip.style.display='none';
+                    }
+	            	
+	            }          	
+            }
+            
+		}
+	</script>
+</body>
+</html>

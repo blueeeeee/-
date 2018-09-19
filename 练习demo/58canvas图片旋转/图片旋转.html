@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>canvas图片旋转</title>
+	<style type="text/css">
+		body{background: red;}
+		img{display: block;}
+	</style>
+</head>
+<body>
+	<input type="button" value="逆时针">
+	<input type="button" value="顺时针">
+	<div>
+		<img src="1.jpg">		
+	</div>
+   
+    <script type="text/javascript">
+		window.onload=function(){
+			var oImg=document.getElementsByTagName('img')[0];
+            var aBtn=document.getElementsByTagName('input');
+            //图片预加载
+            var yImg=new Image();
+            var iNow=0;
+            yImg.src=oImg.src;
+            yImg.onload=function(){
+            	draw(oImg);
+            }
+            
+            function draw(obj){
+            	var oC=document.createElement('canvas');
+            	var oGc=oC.getContext('2d');
+            	oC.width=obj.width;
+            	oC.height=obj.height;
+            	//将img标签替换为canvas
+            	obj.parentNode.replaceChild(oC,obj);
+            	oGc.drawImage(obj,0,0);
+              
+            	aBtn[1].onclick=function(){
+                    if(iNow==3){
+                    	iNow=0;
+                    }else{
+                    	iNow++;
+                    }
+                    toChange();
+            	}
+            	aBtn[0].onclick=function(){
+            		if(iNow==0){
+            			iNow=3;
+            		}else{
+            			iNow--;
+            		}
+            		toChange();
+            	}
+
+	            function toChange(){
+	            	switch(iNow){
+	            		case 1:
+		            		oC.height=obj.width;
+		            		oC.width=obj.height;
+		            		oGc.rotate(90*Math.PI/180);
+		            		oGc.drawImage(obj,0,-obj.height);
+		            	break;
+	                    case 2:
+	                        oC.height=obj.height;
+	                        oC.width=obj.width;
+	                        oGc.rotate(180*Math.PI/180);
+	                        oGc.drawImage(obj,-obj.width,-obj.height);
+	                    break;
+	                    case 3:
+	                        oC.height=obj.width;
+	                        oC.width=obj.height;
+	                        oGc.rotate(270*Math.PI/180);
+	                        oGc.drawImage(obj,-obj.width,0);
+	                    break;
+	                    case 0:
+	                        oC.height=obj.height;
+	                        oC.width=obj.width;
+	                        oGc.rotate(0);
+	                        oGc.drawImage(obj,0,0);
+	                    break;
+	            	}
+	            }        	
+            }
+		}
+	</script>
+</body>
+</html>

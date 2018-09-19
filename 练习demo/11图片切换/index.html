@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>7.30图片切换</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <div id="main">
+    	<input type="button" value="循环切换">
+    	<input type="button" value="顺序切换">
+    	<p>图片可以从最后一张循环切换到第一张</p>
+    	<span class="sp1">图片计数中</span>
+    	<span class="sp2">图片描述</span>
+    	<a href="javascript:;" class="pre"></a>
+    	<a href="javascript:;" class="next"></a>
+        <img id="omg">
+    </div>
+    <script type="text/javascript">
+    	window.onload=function(){
+    		var oDiv=document.getElementById('main');
+	    	var oBtn1=oDiv.getElementsByTagName('input')[0];
+	        var oBtn2=oDiv.getElementsByTagName('input')[1];
+	        var oSp1=oDiv.getElementsByClassName('sp1')[0];
+	        var oSp2=oDiv.getElementsByClassName('sp2')[0];
+	        var oPre=oDiv.getElementsByClassName('pre')[0];
+	        var oNext=oDiv.getElementsByClassName('next')[0];
+	        var oImg=document.getElementById('omg');
+	        var oP=oDiv.getElementsByTagName('p')[0];
+	        
+	        var aMgs=['images/1.jpg','images/2.jpg','images/3.jpg','images/4.jpg'];
+	        var aTexts=['怦','然','心','动'];
+
+	        var num=0;//通过改变num来切换图片和文字
+	        var bTag=true;//改变状态来切换图片是否循环
+
+	        var inTab=function(){
+	            oSp1.innerHTML=num+1+'/'+aMgs.length;
+	            oSp2.innerHTML=aTexts[num];
+                oImg.src=aMgs[num];
+	        }
+	        inTab();
+	        oBtn1.onclick=function(){
+	        	oP.innerHTML='图片可以从最后一张循环切换到第一张';
+	        	bTag=true;
+	        }
+	        oBtn2.onclick=function(){
+                oP.innerHTML='图片只能顺序播放，不能循环';
+                bTag=false;
+	        }
+	        oNext.onclick=function(){
+	        	num++;
+	        	if (num==aMgs.length&&bTag==true) {
+	        		num=0;
+	        		inTab();
+	        	}else if(num==aMgs.length&&bTag==false){
+	        		num=aMgs.length-1;
+	        		alert('已经是最后一张啦！');
+	        	}else{
+	        		inTab();
+	        	}
+	        }
+	        oPre.onclick=function(){
+	        	if (num==0&&bTag==true) {
+                    num=aMgs.length-1;
+                    inTab();
+	        	}else if (num==0&&bTag==false) {
+	        		num=0;
+	        		alert('这就是第一张哦');
+	        	}else{
+	        		num--;
+	        		inTab();
+	        	}
+	        }
+    	}
+
+    </script>	
+</body>
+</html>

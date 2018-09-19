@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>文字搬运工</title>
+	<style type="text/css">
+	body,div,ul,li,span,p{margin: 0;padding: 0;}
+	li{list-style: none;}
+	.wrap{width:900px;height:350px;border:6px solid #ccc;margin: 50px auto;position: relative;}
+	.left,.right{width: 360px;height: 330px;border: 2px solid #ccc;position: absolute;top:8px;padding: 2px;line-height: 1.8em;}
+	.left{display:block;background: #E0FFFF;left: 10px;font-size:16px;overflow: hidden;resize: none;}
+	.right{background: pink;right:10px;}
+	.middle{width:140px;position: absolute;top: 10px;left:380px;text-align: center;}
+	.middle div{padding: 10px 5px;background: orange;cursor: pointer;color:#fff;}
+	.middle span{line-height: 2em;}
+	.middle ul{margin-top: 20px;display: none;}
+	.middle li{display: inline-block;width: 6px;height:6px;background: orange;}
+	</style>
+</head>
+<body>
+	<div class="wrap">
+		<textarea class="left">三公分阳光,三公分空气,堵在眼前像一面玻璃,挡住了你表情,剩下只有脚印,一直向前走,走不完距离,一直向后退不出回忆,很高兴有心事,帮我困住自己,你头发上淡淡青草香气,变成了风才能和我相遇,你的目光 蒸发成云,再下成雨我才能够靠近,感谢我不可以,住进你的眼睛,所以才能 拥抱你的背影,有再多的遗憾,用来牢牢记住,不完美的所有美丽。感谢我不可以，拥抱你的背影，所以才能 变成你的背影，躲在安静角落，不用你回头看，不用珍惜我。怀里所有温暖的空气，变成风也不敢和你相遇。我的心事，蒸发成云再下成雨，却舍不得淋湿你。		
+		</textarea>
+		<div class="middle">
+			<div>把文字右移</div>
+			<p><span>0</span>/<span>0</span></p>
+			<ul>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
+		</div>
+		<div class="right">
+			
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		window.onload=function(){
+			var oLeft=document.getElementsByClassName('left')[0];
+            var oMiddle=document.getElementsByClassName('middle')[0];
+            var oClick=oMiddle.getElementsByTagName('div')[0];
+            var aSpan=oMiddle.getElementsByTagName('span');
+            var oUl=oMiddle.getElementsByTagName('ul')[0];
+            var aLi=oUl.getElementsByTagName('li');
+            var oRight=document.getElementsByClassName('right')[0];
+            var num=0;
+            var timer=null;
+            function Init(){
+            	aSpan[1].innerHTML=text.length;
+            	aSpan[0].innerHTML=num;
+                oLeft.innerHTML=text.substring(num,text.length);
+                oRight.innerHTML=text.substring(0,num);
+                for(var i=0;i<10;i++){
+                	aLi[i].style.background='orange';
+                }
+                aLi[num%10].style.background='red';            	
+            }
+            
+            oClick.onclick=function(){
+            	text=oLeft.value;
+            	if(text==''){
+            		return ;
+            	}else{
+	                oUl.style.display='block';
+	                oClick.style.opacity='0.5';	
+	                clearInterval(timer);
+	                timer=setInterval(function(){
+	                    num++;
+	                    Init();
+	                    if(num==text.length){
+	                    	clearInterval(timer);
+	                        oUl.style.display='none';
+	                        oClick.style.opacity='1';
+	                        num=0; 
+	                    }
+	                },50);            		
+            	}
+            }            
+		}
+	</script>
+</body>
+</html>

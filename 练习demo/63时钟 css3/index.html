@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>时钟 css3</title>
+	<style type="text/css">
+		div,span{margin: 0;padding: 0;}
+		#box{width:206px;height:206px;margin:100px auto;position: relative;}
+		#box span{width:2px;height:6px;background: #666;position: absolute;left:99px;top: 0;-webkit-transform-origin: 0 100px;-o-transform-origin: 0 100px;-moz-transform-origin: 0 100px;}
+		#dial{width:200px;height:200px;border:3px solid #000;border-radius: 50%;position: relative;}
+		#hand{width:12;height:12px;position: absolute;left:97px;top:97px;}
+        #hour{width:4px;height:45px;position: absolute;left:5px;bottom: 6px;background: #000; -webkit-transform-origin:bottom;-o-transform-origin:bottom;-moz-transform-origin: bottom;}
+        #min{width:2px;height: 60px;position: absolute;left:5px;bottom: 6px;background: #999; -webkit-transform-origin:bottom;-o-transform-origin:bottom;-moz-transform-origin: bottom;}
+        #sec{width:2px;height:85px;position: absolute;left:5px;bottom: 6px;background: red ;-webkit-transform-origin:bottom;-o-transform-origin:bottom;-moz-transform-origin: bottom;}
+        #center{height:12px;width:12px;border-radius: 10px;position: absolute;background: #000;}
+        #dial span:nth-of-type(5n+1){height:10px;}
+	</style>
+</head>
+<body>
+	<div id="box">
+		<div id="dial">
+		</div>
+		<div id="hand">
+			<div id="hour"></div>
+			<div id="min"></div>
+			<div id="sec"></div>
+			<div id="center"></div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		window.onload=function(){
+			var oDial=document.getElementById('dial');
+			var oHour=document.getElementById('hour');
+			var oMin=document.getElementById('min');
+			var oSec=document.getElementById('sec');
+            toDial(oDial);
+            toTime(oHour,oMin,oSec);
+            setInterval(function(){
+            	toTime(oHour,oMin,oSec);
+            },100)
+		}
+		//设置表针转动
+		function toTime(oHour,oMin,oSec){
+            var oDate=new Date();
+            var iSec=oDate.getSeconds();
+            var iMin=oDate.getMinutes();
+            var iHour=oDate.getHours()%12+iMin/60;
+            oSec.style.WebkitTransform="rotate("+(iSec*360/60)+"deg)";
+            oMin.style.WebkitTransform="rotate("+(iMin*360/60)+"deg)";
+            oHour.style.WebkitTransform="rotate("+(iHour*360/12)+"deg)";
+		}
+	    //添加时间刻度
+		function toDial(obj){
+			var str='';
+			var iDeg=6;
+			for(var i=0;i<60;i++){
+				str+="<span style='-webkit-transform:rotate("+iDeg*i+"deg)'></span>";
+			}
+			obj.innerHTML=str;
+		}
+	</script>	
+</body>
+</html>

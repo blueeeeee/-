@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>新闻列表</title>
+	<style type="text/css">
+		html,body,div,p,span,li,ul,h3{margin: 0;padding: 0;}
+		li{list-style: none;}
+		a{text-decoration: none;}
+        #main{width: 300px;margin:10px auto;border: 1px solid green;background: #aeeeee;}
+        #head{width: 290px;margin: 0 auto;border-bottom: 1px solid green;}
+        #head h3{display:inline-block;padding: 5px 0;padding-right: 73px;}
+        #head span{font-size: 16px;padding:3px;position: relative;top:4px;margin:0;border: 1px solid green;border-bottom:0;border-right: 0;}
+        #head span:last-child{border-right: 1px solid green;}
+        #head .active{background: #fff;}
+        .list li{width:290px;margin:5px auto;margin-bottom:0;border-bottom:1px dotted #fff;padding-top:10px;padding-bottom: 0;}
+        .number{color:#fff;padding: 0 3px;background: blue;margin:3px;}
+        li div{position: relative;left:30px;top:-10px;}
+        .one{position:relative;top:-10px;}
+        .two{background:url(images/1.gif) no-repeat;width:160px;height:70px;padding-left: 100px;display: none;}
+        .two a{background:url(images/play.png) no-repeat;font-size: 12px;color:blue;padding-left: 18px;margin-left: 110px;}
+        .more{position: relative;left: 240px;color: black;font-size: 14px;}
+	</style>
+</head>
+<body>
+    <div id="main">
+    	<div id="head">
+    		<h3>观看排行榜</h3>
+    		<span class="active">每日</span><span>每周</span><span>全部</span>
+    	</div>
+        <ul class="list">
+        	<li style="background: #fff;">
+        		<span class="number">1</span>
+        		<div>
+        			<p class="one" style="display: none;">解密：关于地球与人类的一千零一问</p>
+        			<p class="two" style="display: block;">
+        			解密：关于地球与人类的一千零一问<br>
+        			<a href="#">播放</a>
+        		    </p>
+        		</div>
+        	</li>
+        	<li>
+        		<span class="number">2</span>
+        		<div>
+        			<p class="one">解密：关于地球与人类的一千零一问</p>
+        			<p class="two">
+        			解密：关于地球与人类的一千零一问<br>
+        			<a href="#">播放</a>
+        		    </p>
+        		</div>
+        	</li>
+        	<li>
+        		<span class="number">3</span>
+        		<div>
+        			<p class="one">解密：关于地球与人类的一千零一问</p>
+        			<p class="two">
+        			解密：关于地球与人类的一千零一问<br>
+        			<a href="#">播放</a>
+        		    </p>
+        		</div>
+        	</li>
+        	<li>
+        		<span class="number">4</span>
+        		<div>
+        			<p class="one">解密：关于地球与人类的一千零一问</p>
+        			<p class="two">
+        			解密：关于地球与人类的一千零一问<br>
+        			<a href="#">播放</a>
+        		    </p>
+        		</div>
+        	</li>
+        	<li>
+        		<span class="number">5</span>
+        		<div>
+        			<p class="one">解密：关于地球与人类的一千零一问</p>
+        			<p class="two">
+        			解密：关于地球与人类的一千零一问<br>
+        			<a href="#">播放</a>
+        		    </p>
+        		</div>
+        	</li>
+        	<li>
+        		<span class="number">6</span>
+        		<div>
+        			<p class="one">解密：关于地球与人类的一千零一问</p>
+        			<p class="two">
+        			解密：关于地球与人类的一千零一问<br>
+        			<a href="#">播放</a>
+        		    </p>
+        		</div>
+        	</li>
+        	<li>
+        		<span class="number">7</span>
+        		<div>
+        			<p class="one">解密：关于地球与人类的一千零一问</p>
+        			<p class="two">
+        			解密：关于地球与人类的一千零一问<br>
+        			<a href="#">播放</a>
+        		    </p>
+        		</div>
+        	</li>
+        </ul>
+        <a href="#" class="more">更多>></a>
+    </div>
+
+    <script type="text/javascript">
+    	window.onload=function(){
+    		var oMain=document.getElementById('main');
+    		var aLi=oMain.getElementsByTagName('li');
+
+    		for(var i=0;i<aLi.length;i++){
+    			liHover(aLi[i]);
+    		}
+
+    		function Init(oLi){
+    			var oOne=oLi.getElementsByClassName('one')[0];
+    			var oTwo=oLi.getElementsByClassName('two')[0];
+
+    			    oOne.style.display='none';
+    				oTwo.style.display='block';
+    				oLi.style.background='#fff';
+    		}
+
+    		function liHover(oLi){
+    			var oOne=oLi.getElementsByClassName('one')[0];
+    			var oTwo=oLi.getElementsByClassName('two')[0];
+                
+    			oLi.onmouseover=function(){
+    				oOne.style.display='none';
+    				oTwo.style.display='block';
+    				oLi.style.background='#fff';
+    			}
+    			oLi.onmouseout=function(){
+    				oTwo.style.display='none';
+    				oOne.style.display='block';
+    				oLi.style.background='#aeeeee';
+    			}
+    		}
+    	}
+    </script>
+</body>
+</html>

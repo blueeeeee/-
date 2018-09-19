@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>导航栏-css3</title>
+	<style type="text/css">
+		body,div,img{margin: 0;padding: 0;}
+		body{background: #999;}
+		#menu{width: 50px;height:50px;position: fixed;right: 20px;bottom: 20px;}
+		#menu_list{height: 42px;width: 24px;position: relative;margin: 4px;}
+		#menu_list img{border-radius: 50%;position: absolute;left: 0;top: 0;-webkit-transform: 0.5s all ease;}
+        #home{width: 50px;height: 50px;background: url(images/home.png) no-repeat;border-radius: 50%;position: absolute;top: 0;left: 0;transition: 1s;}
+	</style>
+</head>
+<body>
+	<div id="menu">
+		<div id="menu_list">
+			<img src="images/prev.png">
+			<img src="images/open.png">
+			<img src="images/clos.png">
+			<img src="images/full.png">
+			<img src="images/refresh.png">
+		</div>
+		<div id="home"></div>
+	</div>
+	<script type="text/javascript">
+		window.onload=function(){
+			var aImg=document.getElementById('menu_list').getElementsByTagName('img');
+			var oHome=document.getElementById('home');
+            var bOff=true;
+            var iR=150;
+            //点击事件
+            oHome.onclick=function(){
+            	if(bOff){
+            		this.style.WebkitTransform="rotate(-360deg)";
+            		for(var i=0;i<aImg.length;i++){
+            			var oLt=toLT(iR,90/4*i);
+            			aImg[i].style.transition="0.5s "+i*100+"ms";
+            			aImg[i].style.left=-oLt.l+'px';
+            			aImg[i].style.top=-oLt.t+'px';
+            			aImg[i].style.WebkitTransform="scale(1) rotate(-720deg)"
+            		}
+            	}else{
+            		this.style.WebkitTransform="rotate(0deg)";
+            		for(var i=0;i<aImg.length;i++){
+            			aImg[i].style.transition="0.5s "+(aImg.length-i-1)*100+"ms";
+            			aImg[i].style.left=0+'px';
+            			aImg[i].style.top=0+'px';
+            			aImg[i].style.WebkitTransform="scale(1) ratate(0deg)";
+            		}
+            	}
+            	bOff=!bOff;
+            }
+            //给菜单图片加点击事件
+            for(var i=0;i<aImg.length;i++){
+                aImg[i].onclick=function(){
+                	this.style.transition="0.3s";
+                	this.style.WebkitTransform="scale(2) rotate(-720deg)";
+                	this.style.opacity=0.1;
+                	addEnd(this,end);
+                }
+            }
+            //菜单图片点击后恢复原状
+            function end() {
+            	this.style.transition="0.1s";
+            	this.style.opacity=1;
+            	this.style.WebkitTransform="scale(1) rotate(-720deg)";
+            	removeEnd(this,end);
+            }
+            //添加结束事件
+            function addEnd(obj,fn){
+            	obj.addEventListener('WebkitTransform',fn,false);
+            	obj.addEventListener('transitionend',fn,false);
+            }
+            //移除结束事件
+            function removeEnd(obj,fn){
+            	obj.removeEventListener('WebkitTransform',fn,false);
+            	obj.removeEventListener('transitionend',fn,false);
+            }
+            //求出各图片的位置
+            function toLT(iR,iDeg){
+                return({l:Math.round(Math.sin(iDeg/180*Math.PI)*iR),t:Math.round(Math.cos(iDeg/180*Math.PI)*iR)})
+            }
+		}
+	</script>
+</body>
+</html>

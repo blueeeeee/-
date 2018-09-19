@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>表情小游戏</title>
+	<style type="text/css">
+		body,p,div,h1,span,input,input{margin: 0;padding: 0;font-size: 18px;text-align: center;}
+		body{background: #C1FFC1;}
+		h1{font-size: 32px;margin-top:20px;}
+		p{margin:10px auto;width:630px;}
+		input{padding: 2px 5px;font-size: 14px;}
+		.score{border:4px solid #6A5ACD;border-right:none;padding:20px;position: absolute;left:124px;top:140px;background: 	#FFF68F;}
+		.game{width: 900px;height:450px;border:4px solid #6A5ACD;position: absolute;top:140px;left:250px;background: #fff;overflow: hidden;}
+		img{position: absolute;top:-50px;left:0;width: 40px;height:40px;cursor: pointer;outline: none;}
+	</style>
+</head>
+<body>
+    <h1>你的鼠标有多快</h1>
+    <p>游戏说明：点击开始游戏，随机掉下QQ表情，点中它，千万别让它掉下去！！</p>
+    <input type="button" value="开始游戏">
+    <div class="score">
+    	得分：<span>0</span>分<br>
+    	失分：<span>0</span>分<br>
+    </div>
+    <div class="game">
+    	<a href="javascript:"><img></a>
+    </div>
+
+    <script type="text/javascript">
+    	window.onload=function(){
+    		var oInput=document.getElementsByTagName('input')[0];
+    		var aSpan=document.getElementsByTagName('span');
+    		var oGame=document.getElementsByClassName('game')[0];
+    		var oA=document.getElementsByTagName('a')[0];
+            var oImg=oGame.getElementsByTagName('img')[0];
+
+    		var aImg=['images/1.png','images/2.png','images/3.png','images/4.png','images/5.png','images/6.png','images/7.png','images/8.png','images/9.png','images/10.png','images/11.png','images/12.png'];
+
+    		var onOff=true;
+            var oTimer=null;
+            var iSpeed=1;
+            var num=0;
+    		oInput.onclick=function(){
+    			if(num==0){			
+    		        oInput.value='正在游戏中...';
+    		        aSpan[1].innerHTML='0';
+    		        falling();
+    			}else{
+    				return ;
+    			}	    
+    		}
+
+			oA.onclick=function(){
+                if(oA.onOff){
+                    aSpan[0].innerHTML=parseInt(aSpan[0].innerHTML)+1;
+                    iSpeed++;
+                    if(iSpeed>10){
+                        iSpeed=10;
+                    }
+                    shake(oImg,'left',falling);  
+                    this.onOff=false;                  
+                }else{
+                    return ;//防止重复点击重复加分
+                }
+
+    		}    					
+    		function falling(){
+    			num++;
+    			aSpan[1].innerHTML=num-parseInt(aSpan[0].innerHTML)-1;
+    			if(parseInt(aSpan[1].innerHTML)==5){
+    				alert('游戏结束！得分为：'+aSpan[0].innerHTML);
+    				//回到初始状态，将计数和速度还原
+    				oInput.value='开始游戏';
+	    			aSpan[0].innerHTML=aSpan[1].innerHTML=0;
+	    			num=0;
+	    			iSpeed=1; 	    				
+    				return;	//如果达到最大失分就结束游戏
+    			}
+                oA.onOff=true;//每次下落时将图片开关打开，点击后就关闭，防止重复点击
+
+    			oImg.src=aImg[Math.round(Math.random()*11)];
+    			oImg.style.top=0;
+    			oImg.style.left=Math.round(Math.random()*860)+'px';//0-880的left值
+    			doMove(oImg,'top',iSpeed,450,function(){
+    				shake(oGame,'top',falling)//回调函数中的回调函数	
+    			});
+    		}	
+    	}
+
+    	//工具函数
+    	function getStyle(obj,attr){
+    		return obj.currentStyle?obj.currentStyle[attr]:getComputedStyle(obj)[attr];
+    	}
+    	function shake(obj,attr,endFn){
+    		if(obj.onOff) return;
+            obj.onOff=true;
+            var pos=parseInt(getStyle(obj,attr));
+            var arr=[];
+            var num=0;
+            for(var i=8;i>0;i--){
+            	arr.push(i,-i);
+            }
+            arr.push(0);
+            clearInterval(obj.shakeTimer);
+            obj.shakeTimer=setInterval(function(){
+            	obj.style[attr]=pos+arr[num]+'px';
+            	num++;
+            	if(num==arr.length){
+            		clearInterval(obj.shakeTimer);
+            		obj.onOff=false;
+            		endFn&&endFn();
+            	}
+            },20);
+    	}
+
+    	function doMove(obj,attr,dir,target,endFn){
+    		dir=parseInt(getStyle(obj,attr))>target?-dir:dir;
+    		clearInterval(obj.timer);
+    		obj.timer=setInterval(function(){
+                var speed=parseInt(getStyle(obj,attr))+dir;
+                if(speed>target&&dir>0||speed<target&&dir<0){
+                	speed=target;
+                }
+                obj.style[attr]=speed+'px';
+                if(speed==target){
+                	clearInterval(obj.timer);
+                	endFn&&endFn();
+                }
+    		},50)
+    	}
+    </script>	
+</body>
+</html>
+
+<!--存在bug，未显示到5就弹出了结果-->

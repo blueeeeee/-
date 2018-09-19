@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>留言板</title>
+	<style type="text/css">
+		input:first-child{width: 400px;line-height: 1.8em;}
+		ul{width: 480px;height:300px;padding-right:20px;padding-top:20px;padding-bottom:20px;border: 2px solid #ccc;overflow: auto;}
+		li{line-height: 1.8em;cursor:pointer;}
+		.active{background: orange;}
+	</style>
+</head>
+<body>
+	<div>
+		<input type="text" placeholder="请输入留言，上限5条">
+		<input type="button" value="留言">
+		<input type="button" value="批量删除">
+		<ul></ul>
+	</div>
+	<script type="text/javascript">
+		window.onload=function(){
+			var aInput=document.getElementsByTagName('input');
+			var oText=document.getElementsByTagName('ul')[0];
+						
+            var num=0;
+            var onOff=true;	
+            function addLi(){
+            	var oli=document.createElement('li');
+        		oText.appendChild(oli);
+        		var aLi=oText.getElementsByTagName('li');
+        		aLi[num].innerHTML=aInput[0].value;
+                (function addEvent(obj){
+	            	for(var i=0;i<obj.length;i++){
+	                    obj[i].onOff=true;
+		                obj[i].onclick=function(){
+		                	if(this.onOff){
+		                		this.className='active';
+		                		this.onOff=false;
+		                	}else{
+		                		this.className='';
+		                		this.onOff=true;
+		                	}
+		                }
+		    		}	
+	            })(aLi);//闭包添加click事件  	
+            }
+            
+            aInput[1].onclick=function(){
+            	if(aInput[0].value){
+                    if(num<5){
+                        addLi();
+                    }else{
+                    	num%=5;
+                    	oText.innerHTML='';
+                        addLi();
+                    }
+                    num++;
+            	}else{
+            		return ;
+            	}
+
+            }
+
+            aInput[2].onclick=function(){
+            	var aActive=oText.getElementsByClassName('active');
+            	for(var i=0;i<aActive.length;){//随操作进行，长度变短，故不设置i++
+            		oText.removeChild(aActive[0]);
+            		num--;//删除之后，仍能在原来未满5条留言的状态下继续添加
+            	}        
+            }
+		}
+	</script>
+</body>
+</html>

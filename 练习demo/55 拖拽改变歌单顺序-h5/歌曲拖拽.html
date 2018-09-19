@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>歌曲拖拽-h5</title>
+	<style type="text/css">
+		body,ul,li,span{margin:0;padding: 0;}
+		ul{border:1px solid green;width:300px;margin:100px auto;border-bottom: 0;}
+        li{width:260px;line-height: 30px;border-bottom:1px solid green;list-style-type: none;padding: 0 20px;background: pink;}
+        span{float:right;display: inline-block;}
+        p{text-align: center;}
+	</style>
+</head>
+<body>
+	<p>将被选歌曲（绿色）放至选中元素（红色）前</p>
+	<ul>
+		<li draggable='true'>1.first love<span>宇多田光</span></li>
+		<li draggable='true'>2.陪着你走<span>林忆莲</span></li>
+		<li draggable='true'>3.安可<span>莫文蔚</span></li>
+		<li draggable='true'>4.想念圣诞节<span>萧亚轩</span></li>
+		<li draggable='true'>5.路口<span>张震岳</span></li>
+		<li draggable='true'>6.我已经敢想你<span>林宥嘉</span></li>
+		<li draggable='true'>7.等<span>陈洁仪</span></li>
+		<li draggable='true'>8.Somebody New<span>Matt Wertz</span></li>
+	</ul>
+	<script type="text/javascript">
+		window.onload=function(){
+			var oUl=document.getElementsByTagName('ul')[0];
+			var aLi=document.getElementsByTagName('li');
+			var oImg=document.getElementsByTagName('img')[0];
+			for(var i=0;i<aLi.length;i++){
+				aLi[i].index=i;
+				//拖拽开始
+                aLi[i].ondragstart=function(ev){ 
+                    var oEv=ev||window.event;              	
+					oEv.dataTransfer.effectAllowed='move';
+                    //设置拖拽时背景图片
+					var oImg=new Image();
+					oImg.src='images/music.png';
+					oEv.dataTransfer.setDragImage(oImg,-10,-10);
+
+					oEv.dataTransfer.setData('index',this.index);
+                }
+                //拖拽过程
+                aLi[i].ondrag=function(ev){
+                	var oEv=ev||window.event;
+                    this.style.background='green'; 
+                }
+                //拖拽结束
+                aLi[i].ondragend=function(){
+                    this.style.background='pink';
+                }
+
+                //拖进目标
+                aLi[i].ondragenter=function(ev){
+                	var oEv=ev||event;
+                	ev.dataTransfer.effectAllowed='move';
+                	             	
+                }
+                //在目标中移动
+                aLi[i].ondragover=function(ev){
+                	var oEv=ev||window.event;
+                	oEv.preventDefault();
+
+					this.style.background='red'; 
+
+                }
+                //离开目标
+                aLi[i].ondragleave=function(){
+                	this.style.background='pink';
+                }
+                aLi[i].ondrop=function(ev){
+                    var oEv=ev||event;
+                    oEv.preventDefault();
+                    oEv.dataTransfer.dropEffect='move';
+
+                    var oldIndex=oEv.dataTransfer.getData('index');
+                    console.log(oldIndex);
+                    //将移动元素添加到被选元素前
+                    oUl.insertBefore(aLi[oldIndex],aLi[this.index]);
+                    //重新赋值索引并恢复原来的背景色
+                    for(var i=0;i<aLi.length;i++){
+                    	aLi[i].index=i;
+                    	aLi[i].style.background='pink';
+                    }
+                }
+			}
+		}
+	</script>
+</body>
+</html>
+
+<!--IE在setData与getData处报参数错误，且不支持setdragImg-->

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>可拖拽照片墙</title>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>	
+	<style type="text/css">
+		body,ul,li,img{margin: 0;padding: 0}
+		ul{width:540px;height:540px;font-size: 0;background: green;margin: 30px auto;position: relative;}
+		li{list-style-type: none;display: inline-block;margin: 10px;border:5px solid green;}
+		img{height:150px;width:150px;}
+		.active{border:5px dashed red;}
+	</style>
+</head>
+<body>
+	<ul>
+		<li><img src="images/1.jpg"></li>
+		<li><img src="images/2.jpg"></li>
+		<li><img src="images/3.jpg"></li>
+		<li><img src="images/4.jpg"></li>
+		<li><img src="images/5.jpg"></li>
+		<li><img src="images/6.jpg"></li>
+		<li><img src="images/7.jpg"></li>
+		<li><img src="images/8.jpg"></li>
+		<li><img src="images/9.jpg"></li>
+	</ul>
+	<script type="text/javascript">
+		window.onload=function(){
+			var oUl=document.getElementsByTagName('ul')[0];
+			var aLi=oUl.getElementsByTagName('Li');
+			var aPos=[];
+			var i=0;
+			var iMinIndex=2;
+            //布局转换
+			for(i=0;i<aLi.length;i++){
+                aPos[i]={'left':aLi[i].offsetLeft,'top':aLi[i].offsetTop};
+			}
+			for(i=0;i<aLi.length;i++){
+				aLi[i].style.top=aPos[i].top+'px';
+				aLi[i].style.left=aPos[i].left+'px';
+                
+                aLi[i].style.position='absolute';
+                aLi[i].style.margin=0;
+
+                aLi[i].index=i;
+			}
+
+	        //拖拽图片
+	        for(i=0;i<aLi.length;i++){
+	        	drag(aLi[i]);
+	        }
+
+	        function drag(obj){
+	        	obj.onmousedown=function(ev){
+	        		var oEv=ev||event;
+
+	        		obj.style.zIndex=iMinIndex++;
+
+	        		var disX=oEv.clientX-obj.offsetLeft;
+	        		var disY=oEv.clientY-obj.offsetTop;
+	        		document.onmousemove=function(ev){
+	        			var oEv=ev||event;
+	        			obj.style.left=oEv.clientX-disX+'px';
+	        			obj.style.top=oEv.clientY-disY+'px';
+	        			console.log(obj);
+	        			for(i=0;i<aLi.length;i++){
+	        				aLi[i].className='';
+	        			}
+	        			var oNear=findNearest(obj);
+
+	        			if(oNear){
+	        				oNear.className='active';
+	        			}
+	        			return false;
+	        		}
+	        		document.onmouseup=function(){
+	        			document.onmousemove=document.onmouseup=null;
+	        			var oNear=findNearest(obj);
+	        			if(oNear){
+	        				oNear.className='';
+
+	        				oNear.style.zIndex=iMinIndex++;
+	        				obj.style.zIndex=iMinIndex++;
+                            //交换位置
+	        				startMove(oNear,aPos[obj.index]);
+	        				startMove(obj,aPos[oNear.index]);
+                            //交换索引
+	        				var temp=0;
+	        				temp=obj.index;
+	        				obj.index=oNear.index;
+	        				oNear.index=temp;
+	        			}else{
+	        				startMove(obj,aPos[obj.index]);
+	        			}
+	        		};
+	        		clearInterval(obj.timer);
+	        		return false;
+	        	}
+	        }	
+			//碰撞检测
+			function cdTest(obj1,obj2){
+				var l1=obj1.offsetLeft;
+				var r1=obj1.offsetLeft+obj1.offsetWidth;
+				var t1=obj1.offsetTop;
+				var b1=obj1.offsetTop+obj1.offsetHeight;
+
+				var l2=obj2.offsetLeft;
+				var r2=obj2.offsetLeft+obj2.offsetWidth;
+				var t2=obj2.offsetTop;
+				var b2=obj2.offsetTop+obj2.offsetHeight;
+
+				if(r1<l2||b1<t2||l1>r2||t1>b2){
+					return false;
+				}else{
+					return true;
+				}
+			}
+			//获取两张图片间的距离
+			function getDis(obj1,obj2){
+	            var a=obj1.offsetLeft-obj2.offsetLeft;
+	            var b=obj1.offsetTop-obj2.offsetTop;
+	            return Math.sqrt(a*a+b*b)
+			}
+			//找到碰上的最近的图片
+			function findNearest(obj){
+				var iMin=99999999;
+				var iMinIndex=-1;
+
+				for(i=0;i<aLi.length;i++){
+					if(obj==aLi[i]) continue;
+					if(cdTest(obj,aLi[i])){
+						var dis=getDis(obj,aLi[i]);
+						if(iMin>dis){
+							iMin=dis;
+							iMinIndex=i;
+						}
+					}
+				}
+				if(iMinIndex==-1){
+					return null;
+				}else{
+					return aLi[iMinIndex];
+				}
+			}
+			function getStyle(obj,attr){
+				return obj.currentStyle?obj.currentStyle[attr]:getComputedStyle(obj,false)[attr];
+			}
+			//运动框架
+			function startMove(obj, json, fn)
+			{
+			    clearInterval(obj.timer);
+			    obj.timer=setInterval(function (){
+			        var bStop=true; 
+			        for(var attr in json)
+			        {
+			            var iCur=0;
+			            
+			            if(attr=='opacity')
+			            {
+			                iCur=parseInt(parseFloat(getStyle(obj, attr))*100);
+			            }
+			            else
+			            {
+			                iCur=parseInt(getStyle(obj, attr));
+			            }
+			            
+			            var iSpeed=(json[attr]-iCur)/8;
+			            iSpeed=iSpeed>0?Math.ceil(iSpeed):Math.floor(iSpeed);
+			            
+			            if(iCur!=json[attr])
+			            {
+			                bStop=false;
+			            }
+			            
+			            if(attr=='opacity')
+			            {
+			                obj.style.filter='alpha(opacity:'+(iCur+iSpeed)+')';
+			                obj.style.opacity=(iCur+iSpeed)/100;
+			            }
+			            else
+			            {
+			                obj.style[attr]=iCur+iSpeed+'px';
+			            }
+			        }
+			        
+			        if(bStop)
+			        {
+			            clearInterval(obj.timer);
+			            
+			            if(fn)
+			            {
+			                fn();
+			            }
+			        }
+			    }, 30)
+			}					                
+		}
+	</script>
+</body>
+</html>

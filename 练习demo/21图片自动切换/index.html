@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>图片自动切换</title>
+	<style type="text/css">
+		body,div,img,p,h2,ul,li{margin: 0;padding: 0;}
+		li{list-style: none;}
+		.main{width:500px;height:350px;margin:100px auto;border: 5px solid #ccc;position: relative;}
+		.wrap{width:500px;height:350px;overflow: hidden;position: relative;background: url(images/loader_ico.gif) no-repeat center center;}
+		.wrap ul{position: absolute;height:350px;width:2500px;left:0;}
+		.wrap img{width:500px;height:350px;float:left;}
+        .text{width:500px;height:100px;background: blue;position: absolute;left:0;bottom: 0;background: black;opacity:0.4;}
+        .text h2,.text p{color:#fff;padding:0 24px;line-height: 1.5em;}
+        .text p{text-indent: 16px;}
+	</style>
+</head>
+<body>
+	<div class="main">
+		<div class="wrap">
+			<ul>
+				<li><img src="images/1.jpg"></li>
+				<li><img src="images/2.jpg"></li>
+				<li><img src="images/3.jpg"></li>
+				<li><img src="images/4.jpg"></li>
+				<li><img src="images/5.jpg"></li>
+			</ul>
+		</div>
+		<div class="text">
+			<h2>静夜思</h2>
+			<p>床前明月光，疑是地上霜。　举头望明月，低头思故乡。床前明月光，疑是地上霜。　举头望明月，低头思故乡。</p>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		window.onload=function(){
+			var oMain=document.getElementsByClassName('main')[0];
+			var oUl=document.getElementsByTagName('ul')[0];
+			var oLi=oUl.getElementsByTagName('li')[0];
+			var oImg=oLi.getElementsByTagName('img')[0];
+			var oText=document.getElementsByClassName('text')[0];
+			var oH2=oText.getElementsByTagName('h2')[0];
+			var oP=oText.getElementsByTagName('p')[0];
+            
+            var aH2=['静夜思','终南望余雪','江雪','江上渔者','春夜喜雨'];
+            var aP=['床前明月光，疑是地上霜。　举头望明月，低头思故乡。床前明月光，疑是地上霜。　举头望明月，低头思故乡。','终南阴岭秀，积雪浮云端。林证明霁色，城中增暮寒。终南阴岭秀，积雪浮云端。林证明霁色，城中增暮寒。','千山鸟飞绝，万径人踪灭。孤舟蓑笠翁，独钓寒江雪。千山鸟飞绝，万径人踪灭。孤舟蓑笠翁，独钓寒江雪。','江上往来人，但爱鲈鱼美。君看一叶舟，出没风波里。江上往来人，但爱鲈鱼美。君看一叶舟，出没风波里。','好雨知时节，当春乃发生。随风潜入夜，润物细无声。好雨知时节，当春乃发生。随风潜入夜，润物细无声。'];
+            var num=0;
+            var iTimer=null;
+            /*暂时未知如何让图片出现完后再加载文字，以及循环自动播放*/
+            function Init(){
+            	oH2.innerHTML=aH2[num];
+            	oP.innerHTML=aP[num];
+            	oText.style.height=0;
+            	doMove(oUl,'left',10,-num*500);
+            	doMove(oText,'height',2,100);
+            	num++;	
+            }
+            Init();
+            function autoPlay(){
+            	iTimer=setInterval(function(){
+	            	Init();
+	            	if(num==aH2.length){	
+	            		clearInterval(iTimer);
+	            	} 
+	            },4000)
+            }
+            autoPlay(); 
+		}
+		
+		function getStyle(obj,attr){
+			return obj.currentStyle?obj.currentStyle[attr]:getComputedStyle(obj)[attr];
+		}
+		function doMove(obj,attr,dir,target,endFn){
+		    dir=parseInt(getStyle(obj,attr))<target?dir:-dir;
+		    clearInterval(obj.timer);
+		    obj.timer=setInterval(function(){
+		        var speed=parseInt(getStyle(obj,attr))+dir; 
+		        if(speed>target&&dir>0||speed<target&&dir<0){
+		        	speed=target;
+		        }
+		        obj.style[attr]=speed+'px';
+		        if(speed==target){
+		            setInterval(obj.timer);
+		            endFn&&endFn(); 
+		        }
+		    },30)
+		}
+	</script>
+</body>
+</html>

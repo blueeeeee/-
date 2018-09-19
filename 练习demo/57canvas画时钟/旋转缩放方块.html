@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>旋转缩放方块</title>
+	<style type="text/css">
+		body{background: black;}
+		#c1{background: white;}
+	</style>
+</head>
+<body>
+	<canvas height="400" width="400" id="c1">	
+	</canvas>
+	<script type="text/javascript">
+		window.onload=function(){
+			var oC=document.getElementById('c1');
+			var oGc=oC.getContext('2d');
+            /*方块移动
+			var num=0;
+			oGc.fillRect(0,0,100,100);
+			setInterval(function(){
+				num++;
+				oGc.clearRect(0,0,oC.width,oC.height);
+				oGc.fillRect(num,num,100,100);
+			},30)*/
+
+			var num=0;
+			var num2=0;
+			var value=1;
+			setInterval(function(){
+				num++;
+				oGc.save();
+				oGc.clearRect(0.0,0,oC.width,oC.height);
+				oGc.translate(100,100);
+				if(num2==100){
+					value=-1;
+				}else if(num2==0){
+					value=1;
+				}
+				num2+=value;
+				oGc.scale(num2*1/50,num2*1/50);
+				oGc.rotate(num*Math.PI/180);
+				oGc.translate(-50,-50);
+				oGc.fillRect(0,0,100,100);
+				oGc.restore();
+			},30)
+		}
+	</script>
+</body>
+</html>

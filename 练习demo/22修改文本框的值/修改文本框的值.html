@@ -1,0 +1,100 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>修改文本框的值</title>
+	<style type="text/css">
+		body,div,p,ul,li,p,span,h3,input,a{margin: 0;padding: 0;}
+		li{list-style: none;}
+		a{text-decoration: none;}
+		div{width:500px;margin:50px auto;}
+		h3{color:white;padding:10px 20px;background: green;border-bottom: 1px solid #fff;}
+		li{background: #7bbfea;padding: 5px 30px;padding-right:0;border-bottom: 1px solid #fff;height:30px;}
+		li input{padding: 3px;font-size:16px;width:90px;margin-top: 3px;background: none;border: none;outline: none;max-width:400px;}
+		li .active{border:1px solid green;background: #fff;max-width:400px;}
+		li a{display: inline-block;}
+		.write{width:16px;height:16px;background: url(pen.png) no-repeat;}
+        .save,.cancel{color:green;display:none;padding: 3px;}
+        .save:hover,.cancel:hover{color:white;background:green;}
+	</style>
+</head>
+<body>
+	<div>
+		<h3>分类名称</h3>
+		<ul>
+			<li>
+				<input type="text" value="请输入文本">
+				<a href="javascript:;" class="write" title="点击编辑"></a>
+				<a href="javascript:;" class="save">保存</a>
+				<a href="javascript:;" class="cancel">取消</a>
+			</li>
+			<li>
+				<input type="text" value="请输入文本">
+				<a href="javascript:;" class="write" title="点击编辑"></a>
+				<a href="javascript:;" class="save">保存</a>
+				<a href="javascript:;" class="cancel">取消</a>
+			</li>
+			<li>
+				<input type="text" value="请输入文本">
+				<a href="javascript:;" class="write" title="点击编辑"></a>
+				<a href="javascript:;" class="save">保存</a>
+				<a href="javascript:;" class="cancel">取消</a>
+			</li>
+			<li>
+				<input type="text" value="请输入文本">
+				<a href="javascript:;" class="write" title="点击编辑"></a>
+				<a href="javascript:;" class="save">保存</a>
+				<a href="javascript:;" class="cancel">取消</a>
+			</li>
+		</ul>
+	</div>
+
+	<script type="text/javascript">
+		window.onload=function(){
+			var aLi=document.getElementsByTagName('li');
+
+            for(var i=0;i<aLi.length;i++){
+            	textChange(aLi[i]);
+            }
+
+			function textChange(obj){
+				var oText=obj.getElementsByTagName('input')[0];
+                var oWrite=obj.getElementsByClassName('write')[0];
+			    var oSave=obj.getElementsByClassName('save')[0];
+			    var oCancel=obj.getElementsByClassName('cancel')[0];
+                
+                var sOld=oText.value;
+
+                oWrite.onclick=function(){
+                	oText.className='active';
+                	oText.style.width='200px';
+                    oWrite.style.display='none';
+                	oSave.style.display='inline-block';
+                	oCancel.style.display='inline-block';
+                }
+                
+                oSave.onclick=function(){
+                	var iLength=oText.value.length*16;
+                	oText.style.width=iLength+'px';
+                	oText.className='';
+                	oWrite.style.display='inline-block';
+                	oSave.style.display='none';
+                	oCancel.style.display='none';
+                	sOld=oText.value;
+                }
+
+                oCancel.onclick=function(){
+                	oText.value=sOld;
+                	oText.className='';
+                	oText.style.width=sOld.length*16+'px';
+                	oWrite.style.display='inline-block';
+                	oSave.style.display='none';
+                	oCancel.style.display='none';
+                }
+			}
+		}
+	</script>
+	
+</body>
+</html>

@@ -1,0 +1,29 @@
+#main{
+	width:500px;
+	height:350px;
+	margin: 100px auto;
+	text-align: center;
+	position: relative;
+	font-size: 14px;
+	font-family: '宋体';
+}
+
+.sp1,.sp2{
+	position: absolute;
+	width: 500px;
+	text-align: center;
+	left: 0;
+	z-index: 2;
+	background: #000;
+	opacity: 0.3;
+	color: #fff;
+}
+.sp1{top:80px;}
+.sp2{bottom: 0;}
+
+.pre,.next{width:24px;height:30px;position: absolute;top:210px;opacity: 0.4;}
+.pre{background: url(images/tab.png) no-repeat left 0;z-index:2;left: 10px;}
+.next{background: url(images/tab.png) no-repeat -24px 0;z-index: 2;right: 10px;}
+#main a:hover{opacity:0.9;}
+
+#omg{width: 500px;height:270px;position: absolute;bottom: 0;left: 0;}

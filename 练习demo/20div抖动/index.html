@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>div抖动</title>
+	<style type="text/css">
+	img{width:100px;height:100px;position: absolute;top:200px;}
+	</style>
+</head>
+<body>
+	<img src="images/1.jpg">
+	<img src="images/2.jpg">
+	<img src="images/3.jpg">
+	<img src="images/4.jpg">
+	<img src="images/5.jpg">
+
+	<script type="text/javascript">
+		function getStyle(obj,attr){
+			return obj.currentStyle?obj.currentStyle[attr]:getComputedStyle(obj)[attr];
+		}
+
+        function shake(obj,attr,endFn){
+        	if ( obj.onOff ) return; // 修复抖的bug,如果obj.onOff为真(num小于length)，执行return，后面的语句不执行
+            obj.onOff = true;
+
+            var pos=parseInt(getStyle(obj,attr));
+            var arr=[];
+            var num=0;
+            var shakeTimer=null;
+
+        	for(var i=20;i>0;i-=2){
+            	arr.push(i,-i);
+	        }
+            arr.push(0);
+            
+            clearInterval(obj.shakeTimer);
+
+            obj.shakeTimer=setInterval(function(){
+                obj.style[attr]=pos+arr[num]+'px';
+                num++;
+                if(num===arr.length){
+                	clearInterval(obj.shakeTimer);
+                	obj.onOff=false;//设置开关为假，当抖动停止时，在endFn之前
+                	endFn&&endFn();
+                }
+            },50);
+		}
+
+		window.onload=function(){
+			var aImg=document.getElementsByTagName('img');
+            for(var i=0;i<aImg.length;i++){
+            	aImg[i].style.left=80+i*110+'px';
+
+            	aImg[i].onmouseover=function(){
+            		var _this=this;
+            		shake(_this,'top',function(){
+            			var __this=_this;
+            			shake(__this,'left',function(){
+            				shake(__this,'top');
+            			});
+            		});
+            	};
+            }
+		};
+	</script>
+</body>
+</html>
