@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>后台管理</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <script src="http://code.jquery.com/jquery.js"></script>
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">    
+    <script src="js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/style2.css">
+</head>
+<body><!--导航--><nav class="navbar navbar-default">
+        <div class="container">
+            <!--小屏幕导航按钮和logo-->
+            <div class="navbar-header">
+                <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <!--<span class="sr-only">切换导航</span>-->
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>             
+                <a href="index.html" class="navbar-brand"> Admin </a>                
+            </div>
+            <!--小屏幕导航按钮和logo-->
+            <!--导航列表-->
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="index.html"><span class="glyphicon glyphicon-home"></span>&nbsp;&nbsp;后台首页</a></li>
+                    <li class="active"><a href="user_list.html"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;用户管理</a></li>
+                    <li><a href="content.html"><span class="glyphicon glyphicon-list-alt"></span>&nbsp;&nbsp;内容管理</a></li>
+                    <li><a href="tag.html"><span class="glyphicon glyphicon-tags"></span>&nbsp;&nbsp;标签管理</a></li>                    
+                </ul>    
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                      <a id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        admin
+                        <span class="caret"></span>
+                      </a>
+                      <ul class="dropdown-menu" aria-labelledby="dLabel">
+                        <li><a href=""><span class="glyphicon glyphicon-screenshot"></span>&nbsp;&nbsp;前台首页</a></li>
+                        <li><a href=""><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;个人主页</a></li>
+                        <li><a href=""><span class="glyphicon glyphicon-cog"></span>&nbsp;&nbsp;个人设置</a></li>
+                        <li><a href=""><span class="glyphicon glyphicon-credit-card"></span>&nbsp;&nbsp;账户中心</a></li>
+                        <li><a href=""><span class="glyphicon glyphicon-heart"></span>&nbsp;&nbsp;我的收藏</a></li>
+                      </ul>
+                    </li>
+                    <li><a href=""><span class="glyphicon glyphicon-off"></span>&nbsp;&nbsp;退出</a></li>                   
+                </ul>          
+            </div>
+            <!--导航列表-->
+        </div>
+    </nav>
+    <!--导航-->
+    <!--content-->
+        <div class="container">
+            <div class="row">
+                <div class="col-md-2">
+                    <div class="list-group">
+                        <a href="user_list.html" class="list-group-item">用户管理</a>
+                        <a href="user_search.html" class="list-group-item active">用户搜索</a>
+                        <a href="#" class="list-group-item" data-toggle="modal" data-target="#mymodal">添加用户</a>
+                    </div>
+                </div>
+                <div class="col-md-10">
+                    <div class="page-header">
+                        <h1>用户搜索</h1>                        
+                    </div> 
+                    <ul class="nav nav-tabs">
+                        <li><a href="user_list.html">用户列表</a></li>
+                        <li class="active" ><a href="user_search.html">用户搜索</a></li>
+                        <li><a href="#" data-toggle="modal" data-target="#mymodal">添加用户</a></li>
+                    </ul> 
+                    <form action="#" autocomplete="off" id="form">
+                        <div class="alert alert-info" role="alert">技巧提示：支持模糊搜索和匹配搜索
+                        </div>
+                        <div class="form-group">
+                            <label for="name">用户名</label>
+                            <input type="text" class="form-control" id="name"placeholder="输入用户名">
+                        </div>
+                        <div class="form-group">
+                            <label for="UID">UID</label>
+                            <input type="text" class="form-control" id="UID"placeholder="输入用户UID">
+                        </div>
+                        <div class="form-group">
+                            <label for="group">用户组</label>
+                            <select class="form-control" id="group">
+                                <option>限制会员</option>
+                                <option>新手上路</option>
+                                <option>注册会员</option>
+                                <option>中级会员</option>
+                                <option>高级会员</option>
+                            </select>
+                        </div>
+                        <button class="btn btn-default">搜索</button>
+                    </form> 
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="mymodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">添加用户</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form action="#" autocomplete="off">
+                            <div class="form-group">
+                                <label for="addname">用户名</label>
+                                <input type="text" class="form-control" id="addname" placeholder="请输入用户名">
+                            </div>
+                            <div class="form-group">
+                                <label for="addpass">密码</label>
+                                <input type="text" class="form-control" id="addpass" placeholder="请输入密码">
+                            </div>
+                            <div class="form-group">
+                                <label for="surepass">确认密码</label>
+                                <input type="text" class="form-control" id="surepass" placeholder="请确认密码">
+                            </div>
+                            <div class="form-group">
+                                <label for="addemail">邮箱</label>
+                                <input type="text" class="form-control" id="addemail" placeholder="请输入邮箱">
+                            </div>  
+                            <div class="form-group">
+                            <label for="addgroup">用户组</label>
+                                <select class="form-control" id="addgroup">
+                                    <option>限制会员</option>
+                                    <option>新手上路</option>
+                                    <option>注册会员</option>
+                                    <option>中级会员</option>
+                                    <option>高级会员</option>
+                                </select>
+                            </div>
+                        </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                            <button type="button" class="btn btn-primary">提交</button>
+                        </div>                                  
+                    </div>
+                </div>
+            </div>
+        </div> 
+    <!--content-->           
+    <!--footer-->
+    <div id="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    Copying&nbsp;&nbsp;2012-2015 www.maiziedu.com&nbsp;&nbsp;属ICP13014270
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--footer-->  
+
+</body>
+</html>
