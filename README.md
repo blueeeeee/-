@@ -1,5 +1,5 @@
 # Demo
-记录我在学习过程中写的一些小demo...
+记录我在学习过程根据所学的知识点中写的一些小demo...
   
 * 练习demo 
   ---
@@ -43,7 +43,7 @@
   36. [碰撞运动-重力](https://blueeeeee.github.io/Demo/练习demo/44碰撞运动/重力碰撞运动.html)   
   37. [碰撞运动-拖拽](https://blueeeeee.github.io/Demo/练习demo/44碰撞运动/拖拽碰撞运动.html)   
   38. [自动无缝滚动](https://blueeeeee.github.io/Demo/练习demo/45无缝滚动/index.html)  
-  39. [360度全景图片](https://blueeeeee.github.io/Demo/练习demo/46360度全景图片/index.html)  
+  39. [360度全景图片](https://blueeeeee.github.io/Demo/练习demo/46 360度全景图片/index.html)  
   
   * jQuery  
   
