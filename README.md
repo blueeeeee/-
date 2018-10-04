@@ -4,11 +4,12 @@
 * 练习demo 
   ---
     
-  * 原生JS（小效果） 
-  1. [选项卡套选项卡](https://blueeeeee.github.io/Demo/练习demo/7选项卡套选项卡/index.html)  
-  2. [带缩略图的图片切换](https://blueeeeee.github.io/Demo/练习demo/8带缩略图的图片切换/index.html)  
-  3. [不同方式图片切换](https://blueeeeee.github.io/Demo/练习demo/11图片切换/index.html)  
-  4. [QQ列表](https://blueeeeee.github.io/Demo/练习demo/12QQ列表/qq_list.html)  
+  * 原生JS（小效果）  
+  
+  1.[选项卡套选项卡](https://blueeeeee.github.io/Demo/练习demo/7选项卡套选项卡/index.html)  
+  2.[带缩略图的图片切换](https://blueeeeee.github.io/Demo/练习demo/8带缩略图的图片切换/index.html)  
+  3.[不同方式图片切换](https://blueeeeee.github.io/Demo/练习demo/11图片切换/index.html)  
+  4.[QQ列表](https://blueeeeee.github.io/Demo/练习demo/12QQ列表/qq_list.html)  
   5. [星级评分](https://blueeeeee.github.io/Demo/练习demo/13星级评分/index.html)    
   6. [百度音乐-全选操作](https://blueeeeee.github.io/Demo/练习demo/14百度音乐-全选操作/index.html)  
   7. [按钮控制广告滚动](https://blueeeeee.github.io/Demo/练习demo/16按钮控制商品图片上下滚动/index.html)  
