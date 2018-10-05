@@ -75,7 +75,5 @@
       10.[css3无缝滚动](https://blueeeeee.github.io/Demo/练习demo/67无缝滚动css3/index.html)  
       11.[css3 3d幻灯片](https://blueeeeee.github.io/Demo/练习demo/653D幻灯片/index.html)  
       12.[css3 3D图片轮换](https://blueeeeee.github.io/Demo/练习demo/663D图片轮换/index.html)  
-      ](https://blueeeeee.github.io/Demo/练习demo/21图片自动切换/index.html)  
-      13.[修改文本框的值](https://blueeeeee.github.io/Demo/练习demo/22修改文本框的值/index.html)  
-      14.[点击加分效果](https://blueeeeee.github.io/Demo/练习demo/23点击加分效果/index.html)  
-      15.[文本查找替换删除](https://blueeeeee.github.io/Demo/练习demo/24文本查找替换删除/index.html)      
+      13.[css3 折纸菜单栏](https://blueeeeee.github.io/Demo/练习demo/68折纸菜单栏css3/index.html)  
+     
