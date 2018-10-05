@@ -4,7 +4,7 @@
 * 练习demo 
   ---
     
-  * 原生JS（小效果）  
+  * ### 原生JS（小效果）  
   
     1.[选项卡套选项卡](https://blueeeeee.github.io/Demo/练习demo/7选项卡套选项卡/index.html)  
     2.[带缩略图的图片切换](https://blueeeeee.github.io/Demo/练习demo/8带缩略图的图片切换/index.html)  
@@ -50,7 +50,7 @@
     42.[控制多组图片切换](https://blueeeeee.github.io/Demo/练习demo/69控制多组图片切换/index.html)  
     43.[聊天界面](https://blueeeeee.github.io/Demo/练习demo/70聊天界面/chat.html)  
     
-   * jQuery  
+   * ### jQuery  
   
       1.[品牌列表的效果](https://blueeeeee.github.io/Demo/jQuery例/1品牌列表的效果.html)  
       2.[超链接提示](https://blueeeeee.github.io/Demo/jQuery例/2超链接提示.html)  
@@ -62,14 +62,15 @@
       8.[多层级右键菜单](https://blueeeeee.github.io/Demo/练习demo/52多层级右键菜单-jq/index.html)  
       9.[放大镜效果](https://blueeeeee.github.io/Demo/练习demo/53放大镜效果-jq/index.html)   
       
-   * H5/css3  
+   * ### H5/css3  
+   
       1.[拖拽改变歌单顺序](https://blueeeeee.github.io/Demo/练习demo/55拖拽改变歌单顺序/歌曲拖拽.html)   
       2.[拖拽添加购物车](https://blueeeeee.github.io/Demo/练习demo/56拖拽添加购物车/拖拽添加购物车.html)   
       3.[canvas画时钟](https://blueeeeee.github.io/Demo/练习demo/57canvas画时钟/index.html)  
       4.[canvas图片旋转](https://blueeeeee.github.io/Demo/练习demo/58canvas图片旋转/图片旋转.html)  
       5.[canvas像素显字](https://blueeeeee.github.io/Demo/练习demo/59canvas像素显字/像素显字.html)    
-      6.[canvas马赛克效果](https://blueeeeee.github.io/Demo/练习demo/61简易玛祖小游戏/index.html)  
-      7.[简易玛祖小游戏](https://blueeeeee.github.io/Demo/练习demo/50手风琴效果-jq/index.html)  
+      6.[canvas马赛克效果](https://blueeeeee.github.io/Demo/练习demo/60canvas马赛克效果/index.html)  
+      7.[简易玛祖小游戏](https://blueeeeee.github.io/Demo/练习demo/61简易玛祖小游戏/index.html)  
       8.[css3时钟](https://blueeeeee.github.io/Demo/练习demo/63时钟css3/index.html)  
       9.[旋转导航栏](https://blueeeeee.github.io/Demo/练习demo/64特殊导航栏/index.html)   
       10.[css3无缝滚动](https://blueeeeee.github.io/Demo/练习demo/67无缝滚动css3/index.html)  
@@ -77,3 +78,11 @@
       12.[css3 3D图片轮换](https://blueeeeee.github.io/Demo/练习demo/663D图片轮换/index.html)  
       13.[css3 折纸菜单栏](https://blueeeeee.github.io/Demo/练习demo/68折纸菜单栏css3/index.html)  
      
+   * ### 完整页面  
+   
+      1.[仿博客](https://blueeeeee.github.io/Demo/练习demo/2主页/index.html)  
+      2.[仿电商1](https://blueeeeee.github.io/Demo/练习demo/3电商/index.html)  
+      3.[仿电商2](https://blueeeeee.github.io/Demo/练习demo/9仿电商/index.html)  
+      4.[小说搜索(jq跨域获取接口数据)](https://blueeeeee.github.io/Demo/练习demo/58canvas图片旋转/图片旋转.html)  
+      5.[仿主页(bootstrap)](https://blueeeeee.github.io/Demo/bootstrap/index.html)    
+      6.[管理系统(bootstrap)](https://blueeeeee.github.io/Demo/练习demo/bootstrap/admin.html)    
