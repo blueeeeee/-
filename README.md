@@ -45,20 +45,19 @@
     37.[碰撞运动-拖拽](https://blueeeeee.github.io/Demo/练习demo/44碰撞运动/拖拽碰撞运动.html)   
     38.[自动无缝滚动](https://blueeeeee.github.io/Demo/练习demo/45无缝滚动/index.html)  
     39.[360度全景图片](https://blueeeeee.github.io/Demo/练习demo/46360度全景图片/index.html)  
-    40.[仿flash播放](https://blueeeeee.github.io/Demo/练习demo/51仿flash播放/index.html)  
+    40.[仿flash播放](https://blueeeeee.github.io/Demo/练习demo/51仿flash播放/flash.html)  
     41.[可拖拽照片墙](https://blueeeeee.github.io/Demo/练习demo/54可拖拽照片墙/index.html)  
     
     
- * jQuery  
+   * jQuery  
   
     1.[品牌列表的效果](https://blueeeeee.github.io/Demo/jQuery例/1品牌列表的效果.html)  
     2.[超链接提示](https://blueeeeee.github.io/Demo/jQuery例/2超链接提示.html)  
     3.[图片提示效果](https://blueeeeee.github.io/Demo/jQuery例/3图片提示效果.html)  
-    4.[吸顶条](https://blueeeeee.github.io/Demo/练习demo/47吸顶条-jq/index.html)  
+    4.[吸顶条](https://blueeeeee.github.io/Demo/练习demo/47&nbsp;吸顶条-jq/index.html)  
     5.[焦点轮播图](https://blueeeeee.github.io/Demo/练习demo/48焦点轮播图-jq/index.html)    
     6.[上移下移](https://blueeeeee.github.io/Demo/练习demo/49上移下移-jq/index.html)  
     7.[手风琴效果](https://blueeeeee.github.io/Demo/练习demo/50手风琴效果-jq/index.html)  
     8.[多层级右键菜单](https://blueeeeee.github.io/Demo/练习demo/52多层级右键菜单-jq/index.html)  
     9.[放大镜效果](https://blueeeeee.github.io/Demo/练习demo/53放大镜效果-jq/index.html)  
-    10.[点击控制一排div上下移动](https://blueeeeee.github.io/Demo/练习demo/19控制一排div/index.html)  
-    11.[鼠标滑过div抖动](https://blueeeeee.github.io/Demo/练习demo/20div抖动/index.html)    
+ 
