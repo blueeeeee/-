@@ -83,6 +83,6 @@
       1.[仿博客](https://blueeeeee.github.io/Demo/练习demo/2主页/index.html)  
       2.[仿电商1](https://blueeeeee.github.io/Demo/练习demo/3电商/index.html)  
       3.[仿电商2](https://blueeeeee.github.io/Demo/练习demo/9仿电商/index.html)  
-      4.[小说搜索(jq跨域获取接口数据)](https://blueeeeee.github.io/Demo/练习demo/62小说查询-jsonp/图片旋转.html)  
+      4.[小说搜索(jq跨域获取接口数据)](https://blueeeeee.github.io/Demo/练习demo/62小说查询-jsonp/noval.html)  
       5.[仿主页(bootstrap)](https://blueeeeee.github.io/Demo/bootstrap/index.html)    
       6.[管理系统(bootstrap)](https://blueeeeee.github.io/Demo/bootstrap/admin.html)    
