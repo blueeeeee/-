@@ -78,7 +78,7 @@
       12.[css3 3D图片轮换](https://blueeeeee.github.io/Demo/练习demo/663D图片轮换/index.html)  
       13.[css3 折纸菜单栏](https://blueeeeee.github.io/Demo/练习demo/68折纸菜单栏css3/index.html)  
      
-   * ### 完整页面  
+   * ### 完整页面（部分效果无法正常显示）
    
       1.[仿博客](https://blueeeeee.github.io/Demo/练习demo/2主页/index.html)  
       2.[仿电商1](https://blueeeeee.github.io/Demo/练习demo/3电商/index.html)  
