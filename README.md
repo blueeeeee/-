@@ -64,8 +64,8 @@
       
    * ### H5/css3  
    
-      1.[拖拽改变歌单顺序](https://blueeeeee.github.io/Demo/练习demo/55拖拽改变歌单顺序/歌曲拖拽.html)   
-      2.[拖拽添加购物车](https://blueeeeee.github.io/Demo/练习demo/56拖拽添加购物车/拖拽添加购物车.html)   
+      1.[拖拽改变歌单顺序](https://blueeeeee.github.io/Demo/练习demo/55拖拽改变歌单顺序-h5/歌曲拖拽.html)   
+      2.[拖拽添加购物车](https://blueeeeee.github.io/Demo/练习demo/56拖拽添加购物车-h5/拖拽添加购物车.html)   
       3.[canvas画时钟](https://blueeeeee.github.io/Demo/练习demo/57canvas画时钟/index.html)  
       4.[canvas图片旋转](https://blueeeeee.github.io/Demo/练习demo/58canvas图片旋转/图片旋转.html)  
       5.[canvas像素显字](https://blueeeeee.github.io/Demo/练习demo/59canvas像素显字/像素显字.html)    
