@@ -70,7 +70,7 @@
       4.[canvas图片旋转](https://blueeeeee.github.io/Demo/练习demo/58canvas图片旋转/图片旋转.html)  
       5.[canvas像素显字](https://blueeeeee.github.io/Demo/练习demo/59canvas像素显字/像素显字.html)    
       6.[canvas马赛克效果](https://blueeeeee.github.io/Demo/练习demo/60canvas马赛克效果/index.html)  
-      7.[简易玛祖小游戏](https://blueeeeee.github.io/Demo/练习demo/61简易玛祖小游戏/index.html)  
+      7.[简易玛祖小游戏](https://blueeeeee.github.io/Demo/练习demo/61简易祖玛小游戏/index.html)  
       8.[css3时钟](https://blueeeeee.github.io/Demo/练习demo/63时钟css3/index.html)  
       9.[旋转导航栏](https://blueeeeee.github.io/Demo/练习demo/64特殊导航栏/index.html)   
       10.[css3无缝滚动](https://blueeeeee.github.io/Demo/练习demo/67无缝滚动css3/index.html)  
