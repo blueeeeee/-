@@ -1,10 +1,10 @@
 # Demo
-记录我在学习过程根据所学的知识点中写的一些小demo...
+学习过程中的一些小demo...
   
 * 练习demo 
   ---
     
-  * ### 原生JS（小效果）  
+  * ### 原生JS 
   
     1.[选项卡套选项卡](https://blueeeeee.github.io/Demo/练习demo/7选项卡套选项卡/index.html)  
     2.[带缩略图的图片切换](https://blueeeeee.github.io/Demo/练习demo/8带缩略图的图片切换/index.html)  
@@ -78,7 +78,7 @@
       12.[css3 3D图片轮换](https://blueeeeee.github.io/Demo/练习demo/663D图片轮换/index.html)  
       13.[css3 折纸菜单栏](https://blueeeeee.github.io/Demo/练习demo/68折纸菜单栏css3/index.html)  
      
-   * ### 完整页面（部分效果无法正常显示）
+   * ### 整页
    
       1.[仿博客](https://blueeeeee.github.io/Demo/练习demo/2主页/index.html)  
       2.[仿电商1](https://blueeeeee.github.io/Demo/练习demo/3电商/index.html)  
